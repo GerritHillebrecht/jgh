@@ -33,7 +33,7 @@ export default function NavbarPopover() {
             <Popover.Button
               className={`
                 ${open ? '' : 'text-opacity-90'}
-                group inline-flex items-center rounded-md bg-[#3333] px-3 py-2 text-base font-medium text-stone-600 hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+                group inline-flex items-center rounded-md bg-[#3331] px-3 py-2 text-base font-medium text-stone-600 hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
             >
               <span>Solutions</span>
               <ChevronDownIcon
@@ -51,9 +51,9 @@ export default function NavbarPopover() {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
+              <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0">
                 <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                  <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-2">
+                  <div className="relative grid gap-8 bg-white p-7">
                     {solutions.map((item) => (
                       <a
                         key={item.name}

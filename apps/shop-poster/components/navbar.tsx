@@ -9,6 +9,7 @@ interface Route {
 export default function Navbar() {
   const routes: Route[] = [
     { path: '/', label: 'Home' },
+    { path: '/product', label: 'Products' },
     { path: '/about', label: 'About' },
   ];
 
