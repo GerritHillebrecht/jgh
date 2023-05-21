@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import NavbarPopover from './popover';
 
 interface Route {
   path: string;
@@ -14,7 +15,7 @@ export default function Navbar() {
   return (
     <header className="h-14 sm:h-16 px-4 flex justify-center shadow-2xl border-[1px] border-solid border-stone-100 sticky top-0 bg-white z-50">
       <nav className="max-w-7xl w-full mx-auto flex justify-between items-center">
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 items-center">
           {routes.map((route) => (
             <Link
               href={route.path}
@@ -24,7 +25,9 @@ export default function Navbar() {
               {route.label}
             </Link>
           ))}
+          <NavbarPopover />
         </div>
+
         <div className="flex space-x-4">
           <a
             href="/login"

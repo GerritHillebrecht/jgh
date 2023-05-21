@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import './global.css';
 import Navbar from './navbar';
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
   title: 'Welcome to shop-poster',
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         {children}
+        <Analytics />
       </body>
     </html>
   );
