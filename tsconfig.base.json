@@ -1,0 +1,24 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@jgh/ui-angular": ["libs/ui-angular/src/index.ts"],
+      "@jgh/ui-next": ["libs/ui-next/src/index.ts"],
+      "@jgh/ui-next/server": ["libs/ui-next/src/server.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
