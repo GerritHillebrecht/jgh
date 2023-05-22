@@ -1,7 +1,11 @@
 import { Metadata } from 'next';
-import './global.css';
-import Navbar from '../components/navbar';
 import { Analytics } from '@vercel/analytics/react';
+import './global.css';
+
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
+import Breadcrumb from '../components/breadcrumb';
+import { TrpcProvider } from '../utils/trpc-provider';
 
 export const metadata: Metadata = {
   title: 'Welcome to shop-poster',
@@ -17,7 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navbar />
-        {children}
+        <Breadcrumb />
+        <TrpcProvider>{children}</TrpcProvider>
+        <Footer />
         <Analytics />
       </body>
     </html>
