@@ -3,6 +3,7 @@ import Navbar from '../components/navbar/Navbar';
 import ToasterProvider from '../providers/ToasterProvider';
 import './global.css';
 import { Nunito } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata = {
   title: 'Airbnb',
@@ -25,6 +26,7 @@ export default function RootLayout({
         <Navbar />
         <ToasterProvider />
         {children}
+        <Analytics />
       </body>
     </html>
   );
