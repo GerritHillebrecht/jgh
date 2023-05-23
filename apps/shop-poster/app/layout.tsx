@@ -22,7 +22,9 @@ export default function RootLayout({
       <body>
         <Navbar />
         <Breadcrumb />
-        <TrpcProvider>{children}</TrpcProvider>
+        <TrpcProvider>
+        {children}
+        </TrpcProvider>
         <Footer />
         <Analytics />
       </body>
