@@ -1,0 +1,106 @@
+<div class="flex flex-col gap-4 h-full relative pt-6">
+  <!-- tags -->
+  <div class="absolute inset-x-0 top-0 z-10 flex flex-row justify-end gap-2">
+    <div
+      *ngIf="food.tags.new"
+      class="rounded-2xl bg-cyan-300 py-1 px-3 text-sm text-stone-950 flex flex-row gap-2 uppercase font-bold"
+    >
+      <fa-icon [icon]="newIcon"></fa-icon>
+      <span>neu</span>
+    </div>
+    
+    <div
+      *ngIf="food.tags.recommendation"
+      class="rounded-2xl bg-lime-300 py-1 px-3 text-sm text-stone-950 flex flex-row gap-2 uppercase font-bold"
+    >
+      <fa-icon [icon]="recommendationIcon"></fa-icon>
+      <span>Bestseller</span>
+    </div>
+    <div
+      *ngIf="food.tags.deal"
+      class="rounded-2xl bg-red-300 py-1 px-3 text-sm text-stone-950 flex flex-row gap-2 uppercase font-bold"
+    >
+      <fa-icon [icon]="dealIcon"></fa-icon>
+      <span>DEAL</span>
+    </div>
+  </div>
+  <!-- main image -->
+  <picture class="relative aspect-square">
+    <img
+      class="absolute inset-0 w-full h-full object-contain"
+      [src]="food.image"
+    />
+  </picture>
+  <!-- icons -->
+  <div class="icons flex gap-4">
+    <fa-icon
+      *ngIf="food.contains.vegan"
+      class="text-green-400"
+      matTooltip="Vegan"
+      [icon]="veganIcon"
+    ></fa-icon>
+    <fa-icon
+      *ngIf="food.contains.gluten"
+      class="text-yellow-400"
+      matTooltip="Enthält Gluten"
+      [icon]="glutenIcon"
+    ></fa-icon>
+    <fa-icon
+      *ngIf="food.contains.fish"
+      class="text-cyan-300"
+      matTooltip="Enthält Fisch"
+      [icon]="fishIcon"
+    ></fa-icon>
+    <fa-icon
+      *ngIf="food.contains.shrimp"
+      class="text-red-300"
+      matTooltip="Enthält Shrimp"
+      [icon]="shrimIcon"
+    ></fa-icon>
+    <fa-icon
+      *ngIf="food.contains.meat"
+      class="text-yellow-700"
+      matTooltip="Enthält Fleisch"
+      [icon]="meatIcon"
+    ></fa-icon>
+    <fa-icon
+      *ngIf="food.contains.egg"
+      matTooltip="Enthält Ei"
+      [icon]="eggIcon"
+    ></fa-icon>
+    <fa-icon
+      *ngIf="food.contains.cheese"
+      class="text-yellow-600"
+      matTooltip="Enthält Käse"
+      [icon]="cheeseIcon"
+    ></fa-icon>
+    <fa-icon
+      *ngIf="food.contains.hot"
+      class="text-red-500"
+      matTooltip="Vorsicht, scharf"
+      [icon]="hotIcon"
+    ></fa-icon>
+    <fa-icon
+      *ngIf="food.contains.heat"
+      class="text-red-300"
+      matTooltip="Wird heiß geliefert"
+      [icon]="heatIcon"
+    ></fa-icon>
+  </div>
+  <!-- name -->
+  <h2 class="uppercase font-extrabold text-2xl">{{ food.name }}</h2>
+  <!-- desc -->
+  <p class="opacity-75 leading-snug text-justify flex-grow">
+    {{ food.description }}
+  </p>
+  <!-- price & cta -->
+  <div class="flex justify-between items-center pt-1">
+    <p class="font-bold text-xl">{{ food.price | currency : 'EUR' }}</p>
+    <button
+      (click)="handleButtonclick()"
+      class="btn btn-primary uppercase font-bold py-2"
+    >
+      Auswählen
+    </button>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+{
+  "targets": {
+    "the-licious": {
+      "hosting": {
+        "the-licious": [
+          "the-licious"
+        ]
+      }
+    },
+    "dasstadtbistro": {
+      "hosting": {
+        "stadtbistro": [
+          "dasstadtbistro"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "dasstadtbistro"
+  }
+}

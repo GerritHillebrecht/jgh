@@ -1,0 +1,15 @@
+<section class="grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-col-4 gap-4 p-4">
+  <div
+    class="relative rounded-xl group aspect-[9/6] border-[1px] border-solid border-stone-700 overflow-hidden first-of-type:row-span-2 first-of-type:aspect-auto shadow-highlight"
+    *ngFor="let image of images"
+  >
+    <picture
+      class="absolute brightness-90 block inset-0 w-full h-full group-hover:brightness-110 transition"
+    >
+      <img
+        class="absolute block inset-0 w-full h-full object-cover"
+        [src]="image"
+      />
+    </picture>
+  </div>
+</section>

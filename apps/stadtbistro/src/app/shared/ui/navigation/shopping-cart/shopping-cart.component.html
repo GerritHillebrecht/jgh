@@ -1,0 +1,89 @@
+<div class="cart-menu" *ngIf="items$ | async as items">
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="text-stone-700">
+    <mat-icon
+      [matBadge]="count()"
+      [matBadgeHidden]="items.length === 0"
+      matBadgeColor="warn"
+      matBadgeSize="small"
+      class="relative top-[-4px] material-icons-outlined"
+    >
+      shopping_bag
+    </mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" class="cart-menu">
+    <div
+      (click)="$event.stopPropagation()"
+      class="flex flex-row gap-4 items-center px-4 border-b-[1px] border-solid border-stone-100"
+    >
+      <h2 class="uppercase font-bold">Dein Warenkorb</h2>
+      <div class="divider divider-vertical ml-auto"></div>
+      <button (click)="clearCart()" mat-icon-button color="warn">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <p class="px-4 pt-4 pb-2 sm:max-w-[500px]" *ngIf="!items.length">
+      Es befinden sich keine Artikel im Warenkorb, füge schnell etwas hinzu.
+    </p>
+    <div
+      mat-menu-item
+      *ngFor="let item of items"
+      (click)="$event.stopPropagation()"
+    >
+      <div
+        class="border-b-[1px] border-solid border-stone-100 p-4 flex flex-row gap-6"
+      >
+        <div
+          class="image bg-stone-200 mask mask-squircle p-1 flex items-center justify-center"
+        >
+          <picture>
+            <img
+              [src]="item.image"
+              [alt]="item.name"
+              class="w-16 h-16 object-contain"
+            />
+          </picture>
+        </div>
+        <div
+          class="details flex flex-col gap-2 sm:min-w-[200px] sm:max-w-[300px]"
+        >
+          <div class="flex flex-col">
+            <p class="font-bold uppercase">
+              {{ item.name }}
+            </p>
+            <p class="text-xs opacity-75">
+              {{ item.description }}
+            </p>
+          </div>
+          <div
+            class="text-sm flex flex-row items-center justify-between gap-3 grow-0 w-max px-3 py-2 border-[1px] border-solid border-stone-200 rounded-lg"
+          >
+            <button
+              (click)="removeItem(item, $event)"
+              class="flex justify-center items-center outline-none border-none p-0 m-0 text-center"
+            >
+              <mat-icon style="margin: 0 !important">remove</mat-icon>
+            </button>
+            <span class="text-center">{{ item.quantity }}</span>
+            <button
+              (click)="addItem(item, $event)"
+              class="flex justify-center items-center outline-none border-none p-0 m-0"
+            >
+              <mat-icon style="margin: 0 !important">add</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="px-4 pt-4 pb-2 flex items-center justify-center w-full"
+    >
+      <button
+        class="btn btn-success text-stone-50"
+        *ngIf="items.length"
+        [routerLink]="['cart']"
+      >
+        Bestellen ({{ total() }})
+      </button>
+    </div>
+  </mat-menu>
+</div>

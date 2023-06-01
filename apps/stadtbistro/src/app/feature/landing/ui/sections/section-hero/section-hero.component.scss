@@ -1,0 +1,50 @@
+.blend-bg {
+  position: relative;
+  isolation: isolate;
+
+  &:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+    background-image: url('../../../../../../assets/images/landing/blend-alt.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    mix-blend-mode: difference;
+    opacity: 0.05125;
+    transform: scaleX(-1);
+
+    z-index: -1;
+
+    animation: hue-rotate 20s infinite linear;
+  }
+}
+
+.plate-bg {
+  position: relative;
+  isolation: isolate;
+
+  @media screen and (orientation: landscape) {
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      left: 50%;
+      width: 50%;
+      background-image: url('../../../../../../assets/images/landing/plate-structure-dark-lowres.png');
+      background-size: 120%;
+      background-position: -10% center;
+      background-repeat: no-repeat;
+      filter: drop-shadow(0 0 1rem rgba(0, 0, 0, 0.5));
+    }
+  }
+}
+
+@keyframes hue-rotate {
+  to {
+    filter: hue-rotate(360deg);
+  }
+}

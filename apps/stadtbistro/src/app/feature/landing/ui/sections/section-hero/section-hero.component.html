@@ -1,0 +1,80 @@
+<section
+  class="blend-bg h-[100svh] sm:h-screen bg-stone-50 plate-bg overflow-hidden"
+>
+  <div
+    class="grid px-4 sm:px-8 xl:px-0 landscape:grid-cols-[4fr,5fr] max-w-7xl mx-auto w-full h-full relative gap-4"
+  >
+    <!-- TEXT -->
+    <div class="text flex flex-col justify-center gap-6 text-stone-700 portrait:h-full">
+      <p class="uppercase tracking-widest font-extrabold text-md -mb-4">
+        <span class="text-emerald-700">stadtbistro</span> presents
+      </p>
+      <h2 class="uppercase font-extrabold text-6xl xl:text-7xl">
+        The new guys in town
+      </h2>
+      <div class="icons flex flex-row gap-6 sm:gap-8 items-center">
+        <div
+          class="relative flex flex-col gap-1 items-center justify-center"
+          *ngFor="let icon of icons"
+          matTooltip="{{ icon.tooltip }}"
+        >
+          <img
+            [src]="icon.icon"
+            class="w-10 sm:w-12 aspect-square object-contain"
+            [alt]="icon.title"
+          />
+          <p
+            class="uppercase text-center w-full block text-[0.5rem] sm:text-xs tracking-[0.2em] font-bold whitespace-nowrap"
+          >
+            {{ icon.title }}
+          </p>
+        </div>
+      </div>
+      <p class="text-xs sm:text-base">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit
+        libero optio mollitia voluptatibus vel exercitationem impedit explicabo
+        officiis velit repellendus?
+      </p>
+      <div class="flex gap-2">
+        <button
+          [routerLink]="['menu', 'food']"
+          type="button"
+          class="btn btn-primary uppercase text-stone-50 font-bold"
+        >
+          Was gibt's zu essen?
+        </button>
+        <button
+          [routerLink]="['menu', 'food']"
+          type="button"
+          class="btn btn-outline uppercase text-stone-500 font-bold"
+        >
+          Zeig mir das team
+        </button>
+      </div>
+    </div>
+    <!-- IMAGE -->
+    <div class="imagery hidden sm:landscape:block relative overflow-hidden">
+      <!-- Slider main container -->
+      <div #swiper class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div
+            class="swiper-slide relative"
+            *ngFor="let item of dishes; let index = index"
+          >
+            <div class="relative w-full h-full pl-2 pt-16">
+              <picture class="relative w-full sm:w-[72%] aspect-square block">
+                <img
+                  [src]="item.image"
+                  alt="breakfast-croissant"
+                  class="drop-shadow-xl absolute w-full h-full object-contain inset-0"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

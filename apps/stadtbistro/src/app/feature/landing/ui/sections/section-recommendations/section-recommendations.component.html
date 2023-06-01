@@ -1,0 +1,37 @@
+<section class="py-20 px-4">
+  <div class="mx-auto max-w-5xl w-full flex flex-col gap-16">
+    <h2 class="font-bold text-4xl sm:text-6xl max-w-4xl">
+      Jitter enables creators and teams to easily design stunning animated
+      content and interfaces.
+    </h2>
+
+    <div class="quotes grid portrait:grid-rows-2 landscape:grid-cols-2 gap-8 items-center">
+      <!-- avatars -->
+      <div class="avatars grid grid-cols-4 gap-4">
+        <div
+          class="aspect-square bg-rose-400 flex items-center justify-center relative"
+          *ngFor="let item of [0, 1, 2, 3]"
+        >
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div
+              class="w-[100px] aspect-square rounded-full border-[1px] border-solid border-purple-400"
+            ></div>
+          </div>
+          <mat-progress-spinner
+            [strokeWidth]="1"
+            [value]="73"
+          ></mat-progress-spinner>
+        </div>
+      </div>
+      <!-- Current Quote -->
+      <div class="quote flex flex-col gap-8 text-xl">
+        <p class="">
+          "Jitter enables us to focus more on content rather than editing and
+          motion. And it definitely makes our workflow smoother thanks to the
+          Figma plugin.”
+        </p>
+        <p class="font-bold">Tommaso Cesano, XP Designer @ OSMO agency</p>
+      </div>
+    </div>
+  </div>
+</section>

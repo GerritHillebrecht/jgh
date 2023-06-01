@@ -1,0 +1,47 @@
+<header
+  class="fixed inset-x-0 top-0 px-4 xl:px-0 flex items-center h-14 sm:h-16 z-50 text-stone-50 transition"
+  [ngClass]="{ 'backdrop-blur-lg sm:backdrop-blur-xl backdrop-opacity-100 border-b-stone-700/30 border-solid border-b-[1px]': scrollService.scrollDistance() > 10 }"
+>
+  <nav class="w-full max-w-7xl mx-auto flex flex-row justify-between">
+    <div class="logo flex items-center gap-3 cursor-pointer" routerLink="/">
+      <img
+        src="assets/images/logo/stadtbistro-logo.png"
+        class="h-[40px]"
+        alt="Stadtbistro Logo"
+      />
+      <sb-logo [lineBreak]="true" class="text-lg text-stone-700"></sb-logo>
+    </div>
+    <div class="navigational-elements flex flex-row items-center gap-2">
+      <div class="flex-row items-center gap-2 hidden sm:flex">
+        <button
+          *ngFor="let route of routes"
+          class="uppercase font-bold"
+          style="color: inherit"
+          [routerLink]="route.path"
+          mat-button
+        >
+          {{ route.label }}
+        </button>
+        <button
+          class="uppercase font-bold"
+          style="color: inherit"
+          mat-button
+          [matMenuTriggerFor]="menu"
+        >
+          Speisekarte
+        </button>
+      </div>
+      <sb-shopping-cart></sb-shopping-cart>
+    </div>
+  </nav>
+</header>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item [routerLink]="['menu', 'food']">
+    <mat-icon class="material-icons-outlined">local_pizza</mat-icon>
+    <span>Speisekarte</span>
+  </button>
+  <button mat-menu-item [routerLink]="['menu', 'drinks']">
+    <mat-icon class="material-icons-outlined">local_drink</mat-icon>
+    <span>Getränkekarte</span>
+  </button>
+</mat-menu>
