@@ -1,6 +1,12 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import Swiper, { Autoplay, EffectCoverflow, EffectCube, Keyboard } from 'swiper';
+import Swiper, {
+  Autoplay,
+  EffectCoverflow,
+  EffectCube,
+  Keyboard,
+  Pagination,
+} from 'swiper';
 
 @Component({
   selector: 'sb-hero-slider',
@@ -8,6 +14,7 @@ import Swiper, { Autoplay, EffectCoverflow, EffectCube, Keyboard } from 'swiper'
   imports: [CommonModule],
   templateUrl: './hero-slider.component.html',
   styleUrls: ['./hero-slider.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class HeroSliderComponent implements AfterViewInit {
   @ViewChild('heroswiper') swiperRef?: ElementRef<HTMLDivElement>;
@@ -18,12 +25,16 @@ export class HeroSliderComponent implements AfterViewInit {
       delay: 15000,
     },
     speed: 1000,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
     keyboard: {
       enabled: true,
       onlyInViewport: true,
     },
     effect: 'coverflow',
-    modules: [Keyboard, Autoplay, EffectCube, EffectCoverflow],
+    modules: [Keyboard, Autoplay, EffectCube, EffectCoverflow, Pagination],
   });
 
   ngAfterViewInit(): void {

@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@jgh/ui-angular": ["libs/ui-angular/src/index.ts"],
+      "@jgh/ui-angular/*": ["libs/ui-angular/src/lib/*"],
       "@jgh/ui-next": ["libs/ui-next/src/index.ts"],
       "@jgh/ui-next/server": ["libs/ui-next/src/server.ts"]
     }

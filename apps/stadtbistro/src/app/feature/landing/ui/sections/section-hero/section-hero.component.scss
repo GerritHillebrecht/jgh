@@ -13,14 +13,18 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
 
-    mix-blend-mode: difference;
-    opacity: 0.05125;
+    // mix-blend-mode: difference;
+    opacity: 0.075;
     transform: scaleX(-1);
 
     z-index: -1;
 
     animation: hue-rotate 20s infinite linear;
   }
+}
+
+.rotate {
+  animation: hue-rotate 10s infinite ease-in-out;
 }
 
 .plate-bg {

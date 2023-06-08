@@ -1,6 +1,4 @@
-<div
-  class="h-[100svh] bg-[#0f0504] grid grid-rows-1 grid-cols-1 relative"
->
+<div class="h-[100svh] bg-[#0f0504] grid grid-rows-1 grid-cols-1 relative">
   <sb-hero-slider></sb-hero-slider>
 
   <div
@@ -10,7 +8,10 @@
       class="headline-container sm:max-w-[40%] relative px-8 py-20 sm:before:hidden before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-t before:from-[rgb(23_18_18)]"
     >
       <div class="relative z-10 flex flex-col gap-6">
-        <sb-logo [lineBreak]="true" class="text-5xl portrait:sm:text-4xl lg:text-6xl xl:text-7xl text-stone-50"></sb-logo>
+        <sb-logo
+          [lineBreak]="true"
+          class="text-5xl portrait:sm:text-4xl lg:text-6xl xl:text-7xl text-stone-50"
+        ></sb-logo>
         <p class="hidden sm:block text-lg">
           Entdecke die wahre Leidenschaft für Pizza! Unsere Pizzeria verwöhnt
           dich mit unwiderstehlichen Kreationen und liefert Genuss direkt zu dir
@@ -32,46 +33,52 @@
   </div>
 </div>
 
-<div class="py-20">
-  <div class="mx-auto max-w-5xl w-full px-4 flex flex-col gap-12">
-    <!-- Headline -->
-    <div class="flex flex-col text-center gap-2 my-4 sm:my-10">
-      <p class="text-sm uppercase tracking-[0.2em] font-bold">
-        das stadtbistro
+<!-- Headline -->
+<div class="flex flex-col text-center gap-2 my-4 sm:my-10 mx-auto max-w-7xl w-full">
+  <p class="text-sm uppercase tracking-[0.2em] font-bold">das stadtbistro</p>
+  <h2 class="font-extrabold text-7xl uppercase mb-8">Unsere Speisen</h2>
+</div>
+
+<sb-food-scroll-progress-bar></sb-food-scroll-progress-bar>
+
+<!-- <div
+  #foodBar
+  class="z-40 sticky top-14 sm:top-16"
+  [ngClass]="{
+    'border-b-[1px] border-solid border-stone-700 bg-stone-900': overScrolled()
+  }"
+>
+  <div
+    class="grid sm:grid-cols-3 gap-y-16 sm:gap-y-12 max-w-7xl gap-x-12 sm:gap-x-8 mx-auto w-full"
+  >
+    <div class="flex flex-col gap-8 items-center">
+      <img
+        src="assets/images/menu/items/breakfast-croissant_600.png"
+        class="relative aspect-square object-contain object-bottom"
+        [ngClass]="{ 'w-full': !overScrolled(), 'w-12': overScrolled() }"
+      />
+      <p class="text-4xl sm:text-3xl font-bold uppercase text-center">
+        Breakfast
       </p>
-      <h2 class="font-extrabold text-7xl uppercase mb-8">Unsere Speisen</h2>
     </div>
-    <div class="grid sm:grid-cols-3 gap-y-16 sm:gap-y-12 gap-x-12 sm:gap-x-8">
-      <div class="flex flex-col gap-8">
-        <img
-          src="assets/images/menu/items/breakfast-croissant_600.png"
-          class="relative w-full aspect-square object-contain object-bottom"
-        />
-        <p class="text-4xl sm:text-3xl font-bold uppercase text-center">
-          Breakfast
-        </p>
-      </div>
-      <div class="flex flex-col gap-8">
-        <img
-          src="assets/images/menu/items/pizza-slices.png"
-          class="relative w-full aspect-square object-contain object-bottom"
-        />
-        <p class="text-4xl sm:text-3xl font-bold uppercase text-center">
-          Pizza
-        </p>
-      </div>
-      <div class="flex flex-col gap-8">
-        <img
-          src="assets/images/menu/items/bowl-default.png"
-          class="relative w-full aspect-square object-contain object-bottom"
-        />
-        <p class="text-4xl sm:text-3xl font-bold uppercase text-center">
-          Bowls
-        </p>
-      </div>
+    <div class="flex flex-col gap-8 items-center">
+      <img
+        src="assets/images/menu/items/pizza-slices.png"
+        class="relative w-full aspect-square object-contain object-bottom"
+        [ngClass]="{ 'w-full': !overScrolled(), 'w-12': overScrolled() }"
+      />
+      <p class="text-4xl sm:text-3xl font-bold uppercase text-center">Pizza</p>
+    </div>
+    <div class="flex flex-col gap-8 items-center">
+      <img
+        src="assets/images/menu/items/bowl-default.png"
+        class="relative w-full aspect-square object-contain object-bottom"
+        [ngClass]="{ 'w-full': !overScrolled(), 'w-12': overScrolled() }"
+      />
+      <p class="text-4xl sm:text-3xl font-bold uppercase text-center">Bowls</p>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="px-6 sm:px-4 py-8">
   <!-- Headline -->
@@ -82,7 +89,7 @@
   <div
     class="grid sm:grid-cols-3 lg:grid-cols-4 gap-y-16 sm:gap-y-12 gap-x-12 sm:gap-x-8"
   >
-    <sb-food-card *ngFor="let bowl of bowls" [food]="bowl"></sb-food-card>
+    <sb-food-card *ngFor="let bowl of bowls()" [food]="bowl"></sb-food-card>
   </div>
 
   <!-- Headline -->
@@ -93,6 +100,6 @@
   <div
     class="grid sm:grid-cols-3 lg:grid-cols-4 gap-y-16 sm:gap-y-12 gap-x-12 sm:gap-x-8"
   >
-    <sb-food-card *ngFor="let pizza of pizzas" [food]="pizza"></sb-food-card>
+    <sb-food-card *ngFor="let pizza of pizzas()" [food]="pizza"></sb-food-card>
   </div>
 </div>

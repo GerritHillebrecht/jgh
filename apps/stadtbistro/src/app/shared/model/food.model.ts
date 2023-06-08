@@ -1,10 +1,18 @@
+import { toppings } from '../../feature/menu/constants';
+
+export type FoodCategory = 'Pizza' | 'Bowl';
+
 export interface Food {
   name: string;
+  category: FoodCategory;
   description: string;
   price: number;
   image: string;
   contains: Partial<Contains>;
   tags: Partial<Tags>;
+  order: number;
+  toppings: Name<typeof toppings>[];
+  show_frontend?: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -18,7 +26,8 @@ interface Contains {
   gluten: boolean;
   fish: boolean;
   shrimp: boolean;
-  meat: boolean;
+  beef: boolean;
+  pork: boolean;
   heat: boolean;
   egg: boolean;
   hot: boolean;
@@ -30,3 +39,5 @@ interface Tags {
   recommendation: boolean;
   deal: boolean;
 }
+
+type Name<T extends { name: string }[]> = T[number]['name'];

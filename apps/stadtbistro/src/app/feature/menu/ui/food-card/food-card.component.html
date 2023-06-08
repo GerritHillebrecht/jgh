@@ -8,7 +8,7 @@
       <fa-icon [icon]="newIcon"></fa-icon>
       <span>neu</span>
     </div>
-    
+
     <div
       *ngIf="food.tags.recommendation"
       class="rounded-2xl bg-lime-300 py-1 px-3 text-sm text-stone-950 flex flex-row gap-2 uppercase font-bold"
@@ -58,10 +58,16 @@
       [icon]="shrimIcon"
     ></fa-icon>
     <fa-icon
-      *ngIf="food.contains.meat"
+      *ngIf="food.contains.beef"
       class="text-yellow-700"
-      matTooltip="Enthält Fleisch"
+      matTooltip="Enthält Rindfleisch"
       [icon]="meatIcon"
+    ></fa-icon>
+    <fa-icon
+      *ngIf="food.contains.pork"
+      class="text-rose-400"
+      matTooltip="Enthält Schweinefleisch"
+      [icon]="porkIcon"
     ></fa-icon>
     <fa-icon
       *ngIf="food.contains.egg"
@@ -89,8 +95,15 @@
   </div>
   <!-- name -->
   <h2 class="uppercase font-extrabold text-2xl">{{ food.name }}</h2>
+  <!-- tags -->
+  <div class="flex flex-row gap-1 gap-y-1 flex-wrap">
+    <sb-topping-item
+      *ngFor="let topping of food.toppings"
+      [topping]="topping"
+    ></sb-topping-item>
+  </div>
   <!-- desc -->
-  <p class="opacity-75 leading-snug text-justify flex-grow">
+  <p class="opacity-75 leading-snug flex-grow">
     {{ food.description }}
   </p>
   <!-- price & cta -->

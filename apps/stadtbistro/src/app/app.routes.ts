@@ -10,6 +10,24 @@ export const appRoutes: Route[] = [
     loadComponent: () => import('./feature/cart/cart.component'),
   },
   {
+    path: 'team',
+    loadComponent: () => import('./feature/team/team.component'),
+  },
+  {
+    path: 'dashboard',
+    loadComponent: () =>
+      import('./feature/dashboard/template/dashboard-template.component'),
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import(
+            './feature/dashboard/pages/dashboard-landing/dashboard-landing.component'
+          ),
+      },
+    ],
+  },
+  {
     path: 'menu',
     children: [
       {

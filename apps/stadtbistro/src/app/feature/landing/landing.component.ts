@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SectionHeroComponent } from './ui/sections/section-hero/section-hero.component';
-import { SectionRecommendationsComponent } from './ui/sections/section-recommendations/section-recommendations.component';
-import { SectionGalleryComponent } from './ui/sections/section-gallery/section-gallery.component';
+import {
+  SectionHeroComponent,
+  SectionGalleryComponent,
+  SectionLocationComponent,
+  SectionRecommendationsComponent,
+  SectionVideoComponent,
+  SectionInformationComponent,
+} from './ui/sections';
 
 @Component({
   selector: 'sb-landing',
@@ -12,6 +17,9 @@ import { SectionGalleryComponent } from './ui/sections/section-gallery/section-g
     SectionHeroComponent,
     SectionRecommendationsComponent,
     SectionGalleryComponent,
+    SectionVideoComponent,
+    SectionLocationComponent,
+    SectionInformationComponent,
   ],
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss'],

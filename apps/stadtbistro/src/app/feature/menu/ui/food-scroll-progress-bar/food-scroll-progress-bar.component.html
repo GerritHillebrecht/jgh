@@ -1,0 +1,26 @@
+<nav
+  #foodbar
+  class="z-40 sticky top-14 sm:top-16 bg-[rgb(23,18,18)]/40 backdrop-blur-md backdrop-saturate-[1.8] h-14 sm:h-16 flex items-center"
+  [ngClass]="{
+    'border-b-[1px] border-solid border-stone-700': overScrolled()
+  }"
+>
+  <div class="mx-auto max-w-7xl w-full flex flex-row gap-4">
+    <div class="flex flex-col gap-1 items-center">
+      <img
+        src="assets/images/menu/items/bowl-default.png"
+        alt="Bowl"
+        class="h-8 aspect-square object-contain object-bottom"
+      />
+      <p class="text-xs uppercase tracking-[0.2em] font-bold">Bowls</p>
+    </div>
+    <div class="flex flex-col gap-1 items-center">
+      <img
+        src="assets/images/menu/items/pizza-default.png"
+        alt="Bowl"
+        class="h-8 aspect-square object-contain object-bottom"
+      />
+      <p class="text-xs uppercase tracking-[0.2em] font-bold">Pizza</p>
+    </div>
+  </div>
+</nav>

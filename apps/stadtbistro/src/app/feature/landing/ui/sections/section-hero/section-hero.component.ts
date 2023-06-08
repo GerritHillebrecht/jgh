@@ -10,11 +10,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { dishes, icons } from '../../../constants';
 import { RouterLink } from '@angular/router';
 import Swiper, { Autoplay, EffectCreative, Keyboard, Navigation } from 'swiper';
+import { AvatarComponent } from '@jgh/ui-angular/avatar';
 
 @Component({
   selector: 'sb-section-hero',
   standalone: true,
-  imports: [CommonModule, MatTooltipModule, RouterLink],
+  imports: [CommonModule, MatTooltipModule, RouterLink, AvatarComponent],
   templateUrl: './section-hero.component.html',
   styleUrls: ['./section-hero.component.scss'],
 })
@@ -34,7 +35,7 @@ export class SectionHeroComponent implements AfterViewInit {
     loop: true,
     speed: 1000,
     autoplay: {
-      delay: 15000,
+      delay: 5000,
     },
     effect: 'creative',
     creativeEffect: {

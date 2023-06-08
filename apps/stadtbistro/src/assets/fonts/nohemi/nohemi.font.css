@@ -1,0 +1,63 @@
+@font-face {
+  font-family: Nohemi;
+  src: url('Nohemi-ExtraLight.ttf') format('truetype'),
+    url('Nohemi-ExtraLight.woff') format('woff'),
+    url('Nohemi-ExtraLight.otf') format('opentype');
+  font-weight: 100;
+}
+@font-face {
+  font-family: Nohemi;
+  src: url('Nohemi-Light.ttf') format('truetype'),
+    url('Nohemi-Light.woff') format('woff'),
+    url('Nohemi-Light.otf') format('opentype');
+  font-weight: 200;
+}
+@font-face {
+  font-family: Nohemi;
+  src: url('Nohemi-Thin.ttf') format('truetype'),
+    url('Nohemi-Thin.woff') format('woff'),
+    url('Nohemi-Thin.otf') format('opentype');
+  font-weight: 300;
+}
+@font-face {
+  font-family: Nohemi;
+  src: url('Nohemi-Regular.ttf') format('truetype'),
+    url('Nohemi-Regular.woff') format('woff'),
+    url('Nohemi-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: Nohemi;
+  src: url('Nohemi-Medium.ttf') format('truetype'),
+    url('Nohemi-Medium.woff') format('woff'),
+    url('Nohemi-Medium.otf') format('opentype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: Nohemi;
+  src: url('Nohemi-SemiBold.ttf') format('truetype'),
+    url('Nohemi-SemiBold.woff') format('woff'),
+    url('Nohemi-SemiBold.otf') format('opentype');
+  font-weight: 600;
+}
+@font-face {
+  font-family: Nohemi;
+  src: url('Nohemi-Bold.ttf') format('truetype'),
+    url('Nohemi-Bold.woff') format('woff'),
+    url('Nohemi-Bold.otf') format('opentype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: Nohemi;
+  src: url('Nohemi-ExtraBold.ttf') format('truetype'),
+    url('Nohemi-ExtraBold.woff') format('woff'),
+    url('Nohemi-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+}
+@font-face {
+  font-family: Nohemi;
+  src: url('Nohemi-Black.ttf') format('truetype'),
+    url('Nohemi-Black.woff') format('woff'),
+    url('Nohemi-Black.otf') format('opentype');
+  font-weight: 900;
+}

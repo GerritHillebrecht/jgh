@@ -1,15 +1,26 @@
 <header
-  class="fixed inset-x-0 top-0 px-4 xl:px-0 flex items-center h-14 sm:h-16 z-50 text-stone-50 transition"
-  [ngClass]="{ 'backdrop-blur-lg sm:backdrop-blur-xl backdrop-opacity-100 border-b-stone-700/30 border-solid border-b-[1px]': scrollService.scrollDistance() > 10 }"
+  class="fixed inset-x-0 top-0 px-4 xl:px-0 flex items-center h-14 sm:h-16 z-50 text-stone-100 transition"
+  [ngClass]="{
+    'backdrop-blur-[5px] shadow-lg sm:backdrop-blur-lg backdrop-saturate-[1.8] bg-[#888]/20 border-b-stone-400/60 border-solid border-b-[1px]':
+      scrollService.scrollDistance() > 10
+  }"
 >
   <nav class="w-full max-w-7xl mx-auto flex flex-row justify-between">
+    <div class="flex items-center sm:hidden">
+      <button mat-icon-button>
+        <fa-icon [icon]="menuIcon"></fa-icon>
+      </button>
+    </div>
     <div class="logo flex items-center gap-3 cursor-pointer" routerLink="/">
       <img
         src="assets/images/logo/stadtbistro-logo.png"
-        class="h-[40px]"
+        class="h-[40px] hidden sm:block"
         alt="Stadtbistro Logo"
       />
-      <sb-logo [lineBreak]="true" class="text-lg text-stone-700"></sb-logo>
+      <sb-logo
+        [lineBreak]="true"
+        class="text-lg text-center sm:text-left"
+      ></sb-logo>
     </div>
     <div class="navigational-elements flex flex-row items-center gap-2">
       <div class="flex-row items-center gap-2 hidden sm:flex">
@@ -37,11 +48,11 @@
 </header>
 <mat-menu #menu="matMenu">
   <button mat-menu-item [routerLink]="['menu', 'food']">
-    <mat-icon class="material-icons-outlined">local_pizza</mat-icon>
+    <fa-icon [icon]="foodIcon" class="mr-3"></fa-icon>
     <span>Speisekarte</span>
   </button>
   <button mat-menu-item [routerLink]="['menu', 'drinks']">
-    <mat-icon class="material-icons-outlined">local_drink</mat-icon>
+    <fa-icon [icon]="drinksIcon" class="mr-3"></fa-icon>
     <span>Getränkekarte</span>
   </button>
 </mat-menu>

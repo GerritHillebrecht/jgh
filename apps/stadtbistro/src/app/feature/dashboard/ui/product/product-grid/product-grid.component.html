@@ -1,0 +1,20 @@
+<h2 class="text-4xl font-bold uppercase mt-6">Bowl</h2>
+<div
+  class="grid sm:grid-cols-2 xl:grid-cols-3 mt-4 gap-4"
+  *ngIf="bowls() as bowls"
+>
+  <div class="relative" *ngFor="let bowl of bowls">
+    <sb-product-card [foodItem]="bowl"></sb-product-card>
+  </div>
+</div>
+
+<h2 class="text-4xl font-bold uppercase mt-6">Pizza</h2>
+<div
+  class="grid sm:grid-cols-2 xl:grid-cols-3 mt-4 gap-4"
+  *ngIf="pizzas() as pizzas"
+>
+  <sb-product-card
+    *ngFor="let pizza of pizzas; trackBy: trackBy"
+    [foodItem]="pizza"
+  ></sb-product-card>
+</div>

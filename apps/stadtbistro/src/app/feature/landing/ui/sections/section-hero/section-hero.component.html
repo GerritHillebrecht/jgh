@@ -1,28 +1,44 @@
-<section
-  class="blend-bg h-[100svh] sm:h-screen bg-stone-50 plate-bg overflow-hidden"
->
+<section class="h-[100svh] sm:h-screen bg-stone-50 plate-bg overflow-hidden">
   <div
     class="grid px-4 sm:px-8 xl:px-0 landscape:grid-cols-[4fr,5fr] max-w-7xl mx-auto w-full h-full relative gap-4"
   >
     <!-- TEXT -->
-    <div class="text flex flex-col justify-center gap-6 text-stone-700 portrait:h-full">
+    <div
+      class="text flex flex-col justify-center gap-6 text-stone-700 portrait:h-full"
+    >
       <p class="uppercase tracking-widest font-extrabold text-md -mb-4">
         <span class="text-emerald-700">stadtbistro</span> presents
       </p>
       <h2 class="uppercase font-extrabold text-6xl xl:text-7xl">
-        The new guys in town
+        The
+        <span
+          class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-purple-500 rotate"
+          >new guys</span
+        >
+        in town
       </h2>
       <div class="icons flex flex-row gap-6 sm:gap-8 items-center">
         <div
-          class="relative flex flex-col gap-1 items-center justify-center"
+          class="relative flex flex-col gap-2 items-center justify-center"
           *ngFor="let icon of icons"
           matTooltip="{{ icon.tooltip }}"
         >
-          <img
+          <jgh-avatar
+            [options]="{
+              image: icon.icon,
+              size: '3.5rem',
+              borderWidth: '5px',
+              gradientClass: icon.gradientClass || 'conic-gradient'
+            }"
+            [ngStyle]="{
+              filter: 'hue-rotate(' + icon.hueRotate || '0deg' + ')'
+            }"
+          ></jgh-avatar>
+          <!-- <img
             [src]="icon.icon"
             class="w-10 sm:w-12 aspect-square object-contain"
             [alt]="icon.title"
-          />
+          /> -->
           <p
             class="uppercase text-center w-full block text-[0.5rem] sm:text-xs tracking-[0.2em] font-bold whitespace-nowrap"
           >
@@ -44,7 +60,7 @@
           Was gibt's zu essen?
         </button>
         <button
-          [routerLink]="['menu', 'food']"
+          [routerLink]="['team']"
           type="button"
           class="btn btn-outline uppercase text-stone-500 font-bold"
         >
@@ -63,10 +79,15 @@
             class="swiper-slide relative"
             *ngFor="let item of dishes; let index = index"
           >
-            <div class="relative w-full h-full pl-2 pt-16">
+            <div class="relative w-full h-full pl-2 pt-16 flex justify-center items-start">
               <picture class="relative w-full sm:w-[72%] aspect-square block">
+                <source
+                  *ngFor="let format of item.image.formats"
+                  [type]="'image/' + format.type"
+                  [srcset]="format.src"
+                />
                 <img
-                  [src]="item.image"
+                  [src]="item.image.default"
                   alt="breakfast-croissant"
                   class="drop-shadow-xl absolute w-full h-full object-contain inset-0"
                 />

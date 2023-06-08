@@ -1,0 +1,146 @@
+<form
+  class="rounded-xl relative flex flex-col gap-3 h-full"
+  [formGroup]="productItemForm"
+>
+  <!-- border-[1px] border-solid border-stone-200 -->
+
+  <picture>
+    <img [src]="_foodItem.image" class="w-full aspect-square object-contain" />
+  </picture>
+  <mat-slide-toggle formControlName="show_frontend">
+    <span class="text-stone-50">Auf Webseite anzeigen</span>
+  </mat-slide-toggle>
+  <div class="icons flex gap-4">
+    <fa-icon
+      matTooltip="Vegan"
+      (click)="_foodItem.contains.vegan = !_foodItem.contains.vegan"
+      [icon]="veganIcon"
+      class="cursor-pointer"
+      [ngClass]="{
+        'text-green-400': _foodItem.contains.vegan,
+        'opacity-30': !_foodItem.contains.vegan
+      }"
+    ></fa-icon>
+    <fa-icon
+      matTooltip="Enthält Gluten"
+      (click)="_foodItem.contains.gluten = !_foodItem.contains.gluten"
+      class="cursor-pointer"
+      [icon]="glutenIcon"
+      [ngClass]="{
+        'text-yellow-400': _foodItem.contains.gluten,
+        'opacity-30': !_foodItem.contains.gluten
+      }"
+    ></fa-icon>
+    <fa-icon
+      matTooltip="Enthält Fisch"
+      (click)="_foodItem.contains.fish = !_foodItem.contains.fish"
+      class="cursor-pointer"
+      [icon]="fishIcon"
+      [ngClass]="{
+        'text-cyan-300': _foodItem.contains.fish,
+        'opacity-30': !_foodItem.contains.fish
+      }"
+    ></fa-icon>
+    <fa-icon
+      matTooltip="Enthält Shrimp"
+      (click)="_foodItem.contains.shrimp = !_foodItem.contains.shrimp"
+      class="cursor-pointer"
+      [icon]="shrimIcon"
+      [ngClass]="{
+        'text-red-300': _foodItem.contains.shrimp,
+        'opacity-30': !_foodItem.contains.shrimp
+      }"
+    ></fa-icon>
+    <fa-icon
+      matTooltip="Enthält Rindfleisch"
+      (click)="_foodItem.contains.beef = !_foodItem.contains.beef"
+      class="cursor-pointer"
+      [icon]="meatIcon"
+      [ngClass]="{
+        'text-yellow-700': _foodItem.contains.beef,
+        'opacity-30': !_foodItem.contains.beef
+      }"
+    ></fa-icon>
+    <fa-icon
+      matTooltip="Enthält Schweinefleisch"
+      (click)="_foodItem.contains.pork = !_foodItem.contains.pork"
+      class="cursor-pointer"
+      [icon]="porkIcon"
+      [ngClass]="{
+        'text-rose-400': _foodItem.contains.pork,
+        'opacity-30': !_foodItem.contains.pork
+      }"
+    ></fa-icon>
+    <fa-icon
+      matTooltip="Enthält Ei"
+      (click)="_foodItem.contains.egg = !_foodItem.contains.egg"
+      class="cursor-pointer"
+      [icon]="eggIcon"
+      [ngClass]="{ 'opacity-50': !_foodItem.contains.egg }"
+    ></fa-icon>
+    <fa-icon
+      matTooltip="Enthält Käse"
+      (click)="_foodItem.contains.cheese = !_foodItem.contains.cheese"
+      class="cursor-pointer"
+      [icon]="cheeseIcon"
+      [ngClass]="{
+        'text-yellow-600': _foodItem.contains.cheese,
+        'opacity-30': !_foodItem.contains.cheese
+      }"
+    ></fa-icon>
+    <fa-icon
+      matTooltip="Vorsicht, scharf"
+      (click)="_foodItem.contains.hot = !_foodItem.contains.hot"
+      class="cursor-pointer"
+      [icon]="hotIcon"
+      [ngClass]="{
+        'text-red-500': _foodItem.contains.hot,
+        'opacity-30': !_foodItem.contains.hot
+      }"
+    ></fa-icon>
+    <fa-icon
+      matTooltip="Wird heiß geliefert"
+      (click)="_foodItem.contains.heat = !_foodItem.contains.heat"
+      class="cursor-pointer"
+      [icon]="heatIcon"
+      [ngClass]="{
+        'text-red-300': _foodItem.contains.heat,
+        'opacity-30': !_foodItem.contains.heat
+      }"
+    ></fa-icon>
+  </div>
+  <input
+    type="text"
+    formControlName="name"
+    class="text-3xl uppercase font-extrabold"
+  />
+  <div class="flex flex-row gap-1 flex-wrap">
+    <sb-topping-item
+      *ngFor="let topping of toppings | toppingOfCategory : _foodItem.category"
+      class="cursor-pointer"
+      [topping]="topping.name"
+      [active]="_foodItem.toppings.includes(topping.name)"
+      (click)="toggleTopping(topping.name)"
+    ></sb-topping-item>
+  </div>
+  <textarea
+    type="text"
+    formControlName="description"
+    rows="4"
+    class="resize-none"
+  ></textarea>
+  <div class="flex flex-row justify-between items-center">
+    <input
+      type="number"
+      formControlName="price"
+      class="text-2xl font-bold w-[6ch]"
+    />
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="updateFoodItem(_foodItem)"
+    >
+      Update
+    </button>
+  </div>
+</form>

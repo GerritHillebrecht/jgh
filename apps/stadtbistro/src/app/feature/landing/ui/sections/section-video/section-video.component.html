@@ -1,0 +1,32 @@
+<section class="py-20">
+  <sb-headline-section>
+    Das Stadtbistro
+    <ng-container headline>In motion</ng-container>
+  </sb-headline-section>
+  <div class="mx-auto max-w-5xl px-4 sm:px-0">
+    <div class="aspect-video relative overflow-hidden rounded-3xl shadow-xl border-[1px] border-solid border-stone-800">
+      <div
+        *ngIf="video.paused"
+        (click)="video.play()"
+        class="absolute z-10 inset-0 flex items-center justify-center mix-blend-plus-lighter opacity-[0.15]"
+      >
+        <img
+          src="assets/images/landing/play.png"
+          class="cursor-pointer h-1/3 invert"
+        />
+      </div>
+      <video
+        #video
+        class="absolute inset-0 object-cover"
+        controls
+        loop
+        poster="assets/images/landing/poster.jpg"
+      >
+        <source
+          src="https://firebasestorage.googleapis.com/v0/b/dasstadtbistro.appspot.com/o/video%2Fstadtbistro.mp4?alt=media&token=c6d818c4-759e-4954-9dd4-e2bea550bad3&_gl=1*5gmmb9*_ga*OTI3OTUxOTk4LjE2NjU5MzI1ODc.*_ga_CW55HF8NVT*MTY4NTYzODEzOS4yMC4xLjE2ODU2NDQxNTkuMC4wLjA."
+          type="video/mp4"
+        />
+      </video>
+    </div>
+  </div>
+</section>

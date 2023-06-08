@@ -1,0 +1,12 @@
+<div
+  class="rounded-2xl px-[0.5rem] py-[0.125rem] text-[0.5rem] uppercase font-bold hover:opacity-100 tracking-widest"
+  [ngClass]="{
+    'opacity-60': !active,
+  }"
+  [ngStyle]="{
+    'background-color': active ? activeColor : backgroundColor,
+    color: active ? activeTextColor : textColor
+  }"
+>
+  {{ topping }}
+</div>
