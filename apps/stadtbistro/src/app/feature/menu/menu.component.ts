@@ -2,7 +2,9 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  QueryList,
   ViewChild,
+  ViewChildren,
   inject,
   signal,
 } from '@angular/core';
@@ -13,9 +15,13 @@ import { faAnglesDown } from '@fortawesome/free-solid-svg-icons';
 import { LogoComponent } from '../../shared/ui/logo/logo.component';
 import { HeroSliderComponent } from './ui/hero-slider/hero-slider.component';
 import { FoodFetchService } from '../../shared/data-access';
-import { ScrollService } from '../../core/services/scroll.service';
-import { fromEvent } from 'rxjs';
 import { FoodScrollProgressBarComponent } from './ui/food-scroll-progress-bar/food-scroll-progress-bar.component';
+import { foodCategories } from '../../shared/constants/constants';
+import { FoodItemOfCategoryPipe } from '../../shared/pipes/food-item-of-category.pipe';
+import { Food } from '../../shared/model/food.model';
+import { FirestoreItem } from '../../shared/model/firestoreItem.model';
+import { toppings } from '../../shared/constants';
+import { FilterToppingsPipe } from './pipes/filter-toppings.pipe';
 
 @Component({
   selector: 'sb-menu',
@@ -27,45 +33,43 @@ import { FoodScrollProgressBarComponent } from './ui/food-scroll-progress-bar/fo
     FontAwesomeModule,
     HeroSliderComponent,
     FoodScrollProgressBarComponent,
+    FoodItemOfCategoryPipe,
+    FilterToppingsPipe,
   ],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export default class MenuComponent implements AfterViewInit {
-  @ViewChild('foodBar')
-  foodbarRef?: ElementRef<HTMLDivElement>;
-
-  // private readonly scrollEffect = effect(
-  //   () => {
-  //     const scrollDistance = this.scrollService.scrollDistance();
-
-  //     if (!this.foodbarRef) return;
-
-  //     const scrollTop =
-  //       this.foodbarRef.nativeElement.getBoundingClientRect().top;
-  //     console.log('scrollTop', scrollTop);
-
-  //     this.overScrolled.set(scrollDistance > scrollTop);
-  //   },
-  //   { allowSignalWrites: true }
-  // );
-
-  protected overScrolled = signal(false);
+export default class MenuComponent {
+  @ViewChildren('foodItemHeadline')
+  foodItemHeadlines?: QueryList<ElementRef<Element>>;
 
   private readonly foodService = inject(FoodFetchService);
-  private readonly scrollService = inject(ScrollService);
+  protected readonly foodItems = this.foodService.foodItems;
+  protected readonly foodCategories = signal(foodCategories);
+  protected readonly toppings = signal(
+    toppings.filter((topping) => topping.availableAsExtra)
+  );
 
-  protected readonly pizzas = this.foodService.pizzas;
-  protected readonly bowls = this.foodService.bowls;
+  protected readonly activeIndex = signal(0);
 
   protected readonly expandCircleIcon = faAnglesDown;
 
-  ngAfterViewInit(): void {
-    fromEvent(window, 'scroll').subscribe(() => {
-      if (!this.foodbarRef) return;
-      this.overScrolled.set(
-        this.foodbarRef.nativeElement.getBoundingClientRect().top <= 64
-      );
+  protected handleSelectIndex(index: number) {
+    this.activeIndex.set(index);
+    this.foodItemHeadlines?.toArray()[index].nativeElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
     });
+  }
+
+  protected handleIntersects(food: FirestoreItem<Food>) {
+    const categories = this.foodCategories();
+    if (!categories) return;
+
+    const index = categories.findIndex(
+      (category) => category.name === food.category
+    );
+
+    this.activeIndex.set(index);
   }
 }

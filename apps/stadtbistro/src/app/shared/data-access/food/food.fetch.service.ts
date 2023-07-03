@@ -10,64 +10,40 @@ import {
   query,
   where,
 } from '@angular/fire/firestore';
-import { Observable as Obs } from 'rxjs';
-import { Bowl, Pizza } from '../../model/food.model';
+import { Observable, map } from 'rxjs';
+import { Bowl, Food, Pizza } from '../../model/food.model';
 import { FirestoreItem } from '../../model/firestoreItem.model';
+import { Topping } from '../../model/topping.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FoodFetchService {
   private readonly firestore = inject(Firestore);
+  private readonly foodRef: CollectionReference<DocumentData>;
 
-  private readonly pizzaRef: CollectionReference<DocumentData>;
-  private readonly bowlRef: CollectionReference<DocumentData>;
-
-  readonly pizzas: Signal<FirestoreItem<Pizza>[] | undefined>;
-  readonly bowls: Signal<FirestoreItem<Bowl>[] | undefined>;
-
-  readonly pizzasAdmin: Signal<FirestoreItem<Pizza>[] | undefined>;
-  readonly bowlsAdmin: Signal<FirestoreItem<Bowl>[] | undefined>;
+  readonly foodItems: Signal<FirestoreItem<Food>[] | undefined>;
+  readonly foodItemsAdmin: Signal<FirestoreItem<Food>[] | undefined>;
 
   constructor() {
-    this.pizzaRef = collection(this.firestore, 'pizza');
-    this.pizzas = toSignal(
+    this.foodRef = collection(this.firestore, 'food');
+    this.foodItems = toSignal(
       collectionData(
         query(
-          this.pizzaRef,
+          this.foodRef,
           orderBy('order', 'asc'),
           where('show_frontend', '==', true)
         ),
         {
           idField: 'id',
         }
-      ) as Obs<FirestoreItem<Pizza>[]>
+      ) as Observable<FirestoreItem<Food>[]>
     );
 
-    this.bowlRef = collection(this.firestore, 'bowl');
-    this.bowls = toSignal(
-      collectionData(
-        query(
-          this.bowlRef,
-          orderBy('order', 'asc'),
-          where('show_frontend', '==', true)
-        ),
-        {
-          idField: 'id',
-        }
-      ) as Obs<FirestoreItem<Bowl>[]>
-    );
-
-    this.pizzasAdmin = toSignal(
-      collectionData(query(this.pizzaRef, orderBy('order', 'asc')), {
+    this.foodItemsAdmin = toSignal(
+      collectionData(query(this.foodRef, orderBy('order', 'asc')), {
         idField: 'id',
-      }) as Obs<FirestoreItem<Pizza>[]>
-    );
-
-    this.bowlsAdmin = toSignal(
-      collectionData(query(this.bowlRef, orderBy('order', 'asc')), {
-        idField: 'id',
-      }) as Obs<FirestoreItem<Bowl>[]>
+      }) as Observable<FirestoreItem<Food>[]>
     );
   }
 }

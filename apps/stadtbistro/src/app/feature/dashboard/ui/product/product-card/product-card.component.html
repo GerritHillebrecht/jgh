@@ -4,12 +4,33 @@
 >
   <!-- border-[1px] border-solid border-stone-200 -->
 
-  <picture>
-    <img [src]="_foodItem.image" class="w-full aspect-square object-contain" />
-  </picture>
+  <div class="relative">
+    <sb-food-image [productImage]="_foodItem.image"> </sb-food-image>
+    <sb-product-image-upload
+      (uploadComplete)="imageUploadComplete($event)"
+    ></sb-product-image-upload>
+  </div>
   <mat-slide-toggle formControlName="show_frontend">
     <span class="text-stone-50">Auf Webseite anzeigen</span>
   </mat-slide-toggle>
+  <div class="flex flex-row items-center gap-2">
+    <button mat-icon-button class="text-red-500" (click)="deleteItem()">
+      <fa-icon [icon]="deleteIcon"></fa-icon>
+    </button>
+    <p class="text-red-600 font-bold uppercase text-sm">Löschen</p>
+  </div>
+  <div class="tags flex gap-4">
+    <div
+      (click)="toggleTag('vegan')"
+      class="cursor-pointer rounded-2xl bg-green-400 py-1 px-3 text-sm text-stone-950 flex flex-row gap-2 uppercase font-bold"
+      [ngClass]="{
+        'opacity-30': !_foodItem.tags.vegan
+      }"
+    >
+      <fa-icon [icon]="veganIcon"></fa-icon>
+      <span>vegan</span>
+    </div>
+  </div>
   <div class="icons flex gap-4">
     <fa-icon
       matTooltip="Vegan"
@@ -62,6 +83,16 @@
       }"
     ></fa-icon>
     <fa-icon
+      matTooltip="Enthält Hühnerfleisch"
+      (click)="_foodItem.contains.chicken = !_foodItem.contains.chicken"
+      class="cursor-pointer"
+      [icon]="chickenIcon"
+      [ngClass]="{
+        'text-yellow-700': _foodItem.contains.chicken,
+        'opacity-30': !_foodItem.contains.chicken
+      }"
+    ></fa-icon>
+    <fa-icon
       matTooltip="Enthält Schweinefleisch"
       (click)="_foodItem.contains.pork = !_foodItem.contains.pork"
       class="cursor-pointer"
@@ -86,6 +117,16 @@
       [ngClass]="{
         'text-yellow-600': _foodItem.contains.cheese,
         'opacity-30': !_foodItem.contains.cheese
+      }"
+    ></fa-icon>
+    <fa-icon
+      matTooltip="Enthält Nüsse"
+      (click)="_foodItem.contains.nuts = !_foodItem.contains.nuts"
+      class="cursor-pointer"
+      [icon]="nutsIcon"
+      [ngClass]="{
+        'text-yellow-700': _foodItem.contains.nuts,
+        'opacity-30': !_foodItem.contains.nuts
       }"
     ></fa-icon>
     <fa-icon
@@ -114,15 +155,40 @@
     formControlName="name"
     class="text-3xl uppercase font-extrabold"
   />
-  <div class="flex flex-row gap-1 flex-wrap">
-    <sb-topping-item
-      *ngFor="let topping of toppings | toppingOfCategory : _foodItem.category"
-      class="cursor-pointer"
-      [topping]="topping.name"
-      [active]="_foodItem.toppings.includes(topping.name)"
-      (click)="toggleTopping(topping.name)"
-    ></sb-topping-item>
-  </div>
+  <sb-topping-item
+    topping="Neus Topping"
+    class="cursor-pointer w-max"
+  ></sb-topping-item>
+  <ng-container *ngFor="let toppingCategory of toppingCategories">
+    <ng-container
+      *ngIf="
+        toppings
+          | toppingOfCategory : _foodItem.category
+          | toppingCategory : toppingCategory as toppings
+      "
+    >
+      <ng-container *ngIf="toppings.length > 0">
+        <div
+          class="divider text-[0.5rem] uppercase font-bold tracking-[0.2em] my-[2px]"
+        >
+          {{ toppingCategory }}
+        </div>
+        <div class="flex flex-row gap-1 flex-wrap">
+          <sb-topping-item
+            *ngFor="
+              let topping of toppings
+                | toppingOfCategory : _foodItem.category
+                | toppingCategory : toppingCategory
+            "
+            class="cursor-pointer"
+            [topping]="topping.name"
+            [active]="_foodItem.toppings.includes(topping.name)"
+            (click)="toggleTopping(topping.name)"
+          ></sb-topping-item>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
   <textarea
     type="text"
     formControlName="description"

@@ -1,16 +1,21 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faEnvelope, faInfoCircle, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'sb-section-location',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, FontAwesomeModule],
   templateUrl: './section-location.component.html',
   styleUrls: ['./section-location.component.scss'],
 })
 export class SectionLocationComponent implements OnInit {
-  activeHeadline = signal(0);
+  protected readonly activeHeadline = signal(0);
+  protected readonly phoneIcon = faPhone;
+  protected readonly mailIcon = faEnvelope;
+  protected readonly infoIcon = faInfoCircle;
 
   ngOnInit(): void {
     setInterval(() => {

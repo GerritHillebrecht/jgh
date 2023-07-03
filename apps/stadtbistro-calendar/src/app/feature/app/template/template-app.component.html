@@ -1,0 +1,14 @@
+<mat-sidenav-container>
+  <mat-sidenav
+    [opened]="navigationService.sidenavOpened()"
+    mode="side"
+    class="min-w-[300px] bg-rose-400"
+  >
+  </mat-sidenav>
+  <mat-sidenav-content class="relative">
+    <main class="h-screen grid grid-rows-[max-content,0,auto] w-full">
+      <sbc-navbar></sbc-navbar>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

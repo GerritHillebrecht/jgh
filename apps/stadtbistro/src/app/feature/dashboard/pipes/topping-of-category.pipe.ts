@@ -8,7 +8,9 @@ import { Topping } from '../../../shared/model/topping.model';
   standalone: true,
 })
 export class ToppingOfCategoryPipe implements PipeTransform {
-  transform(toppings: Topping[], category: FoodCategory): Topping[] {
-    return toppings.filter((item) => item.category === category);
+  transform(toppings: Topping[], category: FoodCategory['name']): Topping[] {
+    return toppings
+      .filter((topping) => topping.category.includes(category))
+      .sort((a, b) => a.name.localeCompare(b.name));
   }
 }

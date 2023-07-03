@@ -1,4 +1,4 @@
-<div class="h-[100svh] bg-[#0f0504] grid grid-rows-1 grid-cols-1 relative">
+<div class="h-[100svh] grid grid-rows-1 grid-cols-1 relative">
   <sb-hero-slider></sb-hero-slider>
 
   <div
@@ -34,12 +34,17 @@
 </div>
 
 <!-- Headline -->
-<div class="flex flex-col text-center gap-2 my-4 sm:my-10 mx-auto max-w-7xl w-full">
+<div
+  class="flex flex-col text-center gap-2 my-4 sm:my-10 mx-auto max-w-7xl w-full"
+>
   <p class="text-sm uppercase tracking-[0.2em] font-bold">das stadtbistro</p>
   <h2 class="font-extrabold text-7xl uppercase mb-8">Unsere Speisen</h2>
 </div>
 
-<sb-food-scroll-progress-bar></sb-food-scroll-progress-bar>
+<sb-food-scroll-progress-bar
+  [activeIndex]="activeIndex()"
+  (selectIndex)="handleSelectIndex($event)"
+></sb-food-scroll-progress-bar>
 
 <!-- <div
   #foodBar
@@ -80,26 +85,67 @@
   </div>
 </div> -->
 
-<div class="px-6 sm:px-4 py-8">
-  <!-- Headline -->
-  <div class="flex flex-col text-center gap-2 my-10">
-    <p class="text-sm uppercase tracking-[0.2em] font-bold">Cold & creamy</p>
-    <h2 class="font-extrabold text-7xl uppercase mb-8">Bowls</h2>
-  </div>
-  <div
-    class="grid sm:grid-cols-3 lg:grid-cols-4 gap-y-16 sm:gap-y-12 gap-x-12 sm:gap-x-8"
+<div class="px-6 sm:px-4 py-8 mx-auto max-w-[2000px]">
+  <ng-container
+    *ngFor="let foodCategory of foodCategories(); let index = index"
   >
-    <sb-food-card *ngFor="let bowl of bowls()" [food]="bowl"></sb-food-card>
-  </div>
-
-  <!-- Headline -->
-  <div class="flex flex-col text-center gap-2 mt-20 mb-10">
-    <p class="text-sm uppercase tracking-[0.2em] font-bold">Hot & steamy</p>
-    <h2 class="font-extrabold text-7xl uppercase mb-8">Pizza</h2>
-  </div>
-  <div
-    class="grid sm:grid-cols-3 lg:grid-cols-4 gap-y-16 sm:gap-y-12 gap-x-12 sm:gap-x-8"
-  >
-    <sb-food-card *ngFor="let pizza of pizzas()" [food]="pizza"></sb-food-card>
-  </div>
+    <ng-container
+      *ngIf="foodItems() | foodItemOfCategory : foodCategory.name as foodItems"
+    >
+      <div *ngIf="foodItems.length > 0">
+        <div class="flex flex-col text-center gap-2 my-10">
+          <p class="text-sm uppercase tracking-[0.2em] font-bold">
+            {{ foodCategory.headline }}
+          </p>
+          <h2
+            #foodItemHeadline
+            class="font-extrabold text-6xl sm:text-7xl uppercase mb-8"
+            (click)="activeIndex.set(index)"
+          >
+            {{ foodCategory.name }}
+          </h2>
+        </div>
+        <ng-container
+          *ngIf="toppings() | filterToppings : foodCategory.name as toppings"
+        >
+          <p
+            class="inter text-center px-8 mb-8 w-full"
+            *ngIf="toppings.length > 0"
+          >
+            Diese Extras können dazu bestellt werden
+          </p>
+          <div
+            class="mx-auto max-w-5xl mb-8 grid grid-cols-2 sm:grid-cols-4 gap-4"
+          >
+            <div
+              class="rounded-lg border hover:bg-stone-600/70 border-stone-600/70 p-3 grid grid-cols-[max-content,1fr] gap-3 items-center"
+              *ngFor="let topping of toppings"
+            >
+              <img
+                [src]="topping.image"
+                class="w-10 sm:w-12 aspect-square object-contain"
+              />
+              <div class="flex flex-col">
+                <p class="uppercase font-bold text-sm">
+                  {{ topping.name }}
+                </p>
+                <p class="text-xs opacity-70 font-bold">
+                  {{ topping.price | currency : 'EUR' }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <div
+          class="grid sm:grid-cols-3 lg:grid-cols-4 gap-y-16 sm:gap-y-12 gap-x-12 sm:gap-x-8"
+        >
+          <sb-food-card
+            *ngFor="let foodItem of foodItems"
+            [food]="foodItem"
+            (intersects)="handleIntersects($event)"
+          ></sb-food-card>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
 </div>

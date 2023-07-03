@@ -3,8 +3,25 @@
     Das Stadtbistro
     <ng-container headline>In motion</ng-container>
   </sb-headline-section>
+
   <div class="mx-auto max-w-5xl px-4 sm:px-0">
-    <div class="aspect-video relative overflow-hidden rounded-3xl shadow-xl border-[1px] border-solid border-stone-800">
+    <div
+      class="aspect-[1.766666666666667] relative overflow-hidden rounded-3xl shadow-xl border-[1px] border-solid border-stone-800"
+    >
+      <iframe
+        src="https://www.youtube.com/embed/FNKepUbo_Mg?controls=0&showinfo=0&rel=0&playsinline=1"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        class="w-full h-full absolute inset-0 border-0 block"
+      ></iframe>
+    </div>
+  </div>
+  <!-- <div class="mx-auto max-w-5xl px-4 sm:px-0">
+    <div
+      class="aspect-video relative overflow-hidden rounded-3xl shadow-xl border-[1px] border-solid border-stone-800"
+    >
       <div
         *ngIf="video.paused"
         (click)="video.play()"
@@ -28,5 +45,5 @@
         />
       </video>
     </div>
-  </div>
+  </div> -->
 </section>

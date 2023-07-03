@@ -1,16 +1,23 @@
 <header
-  class="fixed inset-x-0 top-0 px-4 xl:px-0 flex items-center h-14 sm:h-16 z-50 text-stone-100 transition"
+  class="fixed inset-x-0 top-0 px-4 xl:px-0 flex items-center h-14 sm:h-16 z-50 transition border-solid"
   [ngClass]="{
-    'backdrop-blur-[5px] shadow-lg sm:backdrop-blur-lg backdrop-saturate-[1.8] bg-[#888]/20 border-b-stone-400/60 border-solid border-b-[1px]':
-      scrollService.scrollDistance() > 10
+    'backdrop-blur-[5px] shadow-lg sm:backdrop-blur-lg backdrop-saturate-[1.8]  border-b-[1px]':
+      scrollService.scrollDistance() > 10,
+    'bg-[rgb(23,18,18)]/80 border-stone-600/60 text-stone-100':
+      navigationService.theme() === 'dark',
+    
+    'bg-stone-50/90 text-stone-600':
+      navigationService.theme() === 'light',
+    'border-stone-400/60':
+      navigationService.theme() === 'light' && scrollService.scrollDistance() > 10,
   }"
 >
-  <nav class="w-full max-w-7xl mx-auto flex flex-row justify-between">
-    <div class="flex items-center sm:hidden">
+  <nav class="w-full max-w-7xl mx-auto flex flex-row justify-around sm:justify-between">
+    <!-- <div class="flex items-center sm:hidden">
       <button mat-icon-button>
         <fa-icon [icon]="menuIcon"></fa-icon>
       </button>
-    </div>
+    </div> -->
     <div class="logo flex items-center gap-3 cursor-pointer" routerLink="/">
       <img
         src="assets/images/logo/stadtbistro-logo.png"
@@ -22,7 +29,7 @@
         class="text-lg text-center sm:text-left"
       ></sb-logo>
     </div>
-    <div class="navigational-elements flex flex-row items-center gap-2">
+    <div class="navigational-elements hidden sm:flex flex-row items-center gap-2">
       <div class="flex-row items-center gap-2 hidden sm:flex">
         <button
           *ngFor="let route of routes"
@@ -33,20 +40,20 @@
         >
           {{ route.label }}
         </button>
-        <button
+        <!-- <button
           class="uppercase font-bold"
           style="color: inherit"
           mat-button
           [matMenuTriggerFor]="menu"
         >
           Speisekarte
-        </button>
+        </button> -->
       </div>
-      <sb-shopping-cart></sb-shopping-cart>
+      <!-- <sb-shopping-cart></sb-shopping-cart> -->
     </div>
   </nav>
 </header>
-<mat-menu #menu="matMenu">
+<!-- <mat-menu #menu="matMenu">
   <button mat-menu-item [routerLink]="['menu', 'food']">
     <fa-icon [icon]="foodIcon" class="mr-3"></fa-icon>
     <span>Speisekarte</span>
@@ -55,4 +62,4 @@
     <fa-icon [icon]="drinksIcon" class="mr-3"></fa-icon>
     <span>Getränkekarte</span>
   </button>
-</mat-menu>
+</mat-menu> -->

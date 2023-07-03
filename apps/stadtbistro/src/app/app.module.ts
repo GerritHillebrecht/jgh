@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { LOCALE_ID, NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -27,6 +27,14 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { ShoppingCartState } from './core/store/shopping-cart';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { FooterComponent } from './shared/ui/footer/footer.component';
+import { registerLocaleData } from '@angular/common';
+
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import localeDe from '@angular/common/locales/de';
+import { provideFunctions, getFunctions } from '@angular/fire/functions';
+registerLocaleData(localeDe, 'de-DE');
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,7 +44,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     RouterModule.forRoot(appRoutes, {
       initialNavigation: 'enabledBlocking',
     }),
+    MatSnackBarModule,
     NavbarComponent,
+    FooterComponent,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
@@ -60,8 +70,16 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000',
     }),
+    provideFunctions(() => getFunctions()),
   ],
-  providers: [ScreenTrackingService, UserTrackingService],
+  providers: [
+    ScreenTrackingService,
+    UserTrackingService,
+    {
+      provide: LOCALE_ID,
+      useValue: 'de-DE',
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

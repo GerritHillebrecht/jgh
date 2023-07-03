@@ -1,0 +1,27 @@
+<picture class="relative aspect-square w-full block" *ngIf="_productImage">
+  <source
+    [srcset]="
+      'https://storage.googleapis.com/dasstadtbistro.appspot.com/images/menu/' +
+      _productImage.filename +
+      '_1200x1200.avif'
+    "
+    type="image/avif"
+  />
+  <source
+    [srcset]="
+      'https://storage.googleapis.com/dasstadtbistro.appspot.com/images/menu/' +
+      _productImage.filename +
+      '_400x400.webp'
+    "
+    type="image/webp"
+  />
+  <img
+    class="absolute inset-0 w-full h-full object-contain"
+    [src]="
+      'https://storage.googleapis.com/dasstadtbistro.appspot.com/images/menu/' +
+      _productImage.filename +
+      '_400x400.' +
+      _productImage.extension
+    "
+  />
+</picture>

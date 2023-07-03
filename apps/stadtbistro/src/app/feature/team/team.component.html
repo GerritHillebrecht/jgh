@@ -1,17 +1,25 @@
-<section class="min-h-screen py-20 flex items-center">
-  <div class="mx-auto max-w-6xl w-full">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div
-        class="rounded-xl border-2 border-solid border-stone-200 bg-stone-200 mask mask-hexagon"
-        *ngFor="let item of [0, 1, 2, 3, 4]"
-      >
-        <picture>
+<section class="min-h-screen py-20 flex">
+  <div class="mx-auto max-w-4xl w-full">
+    <h1></h1>
+    <div class="grid sm:grid-cols-2 gap-20 px-6 sm:px-0">
+      <div *ngFor="let teammember of teammembers()" class="flex flex-col gap-4 text-center">
+        <div
+          class="rounded-full overflow-hidden bg-emerald-700 grid grid-cols-[1fr,1px,1fr] gap-0 relative aspect-square border-4 border-stone-100"
+        >
           <img
-            src="assets/images/team/marlon.png"
-            class="scale-110 translate-y-[1.1]"
-            alt=""
+            [src]="teammember.image"
+            class="absolute inset-0 w-full h-full object-contain object-bottom"
           />
-        </picture>
+        </div>
+        <p class="border mt-2 border-stone-100 py-1 px-3 inline-block w-max mx-auto uppercase tracking-[0.2em] text-xs font-bold">
+          {{ teammember.role }}
+        </p>
+        <p class="text-5xl font-bold uppercase">
+          {{ teammember.name }}
+        </p>
+        <p class="text-sm font-semibold">
+          {{ teammember.description }}
+        </p>
       </div>
     </div>
   </div>

@@ -1,26 +1,41 @@
 <nav
   #foodbar
-  class="z-40 sticky top-14 sm:top-16 bg-[rgb(23,18,18)]/40 backdrop-blur-md backdrop-saturate-[1.8] h-14 sm:h-16 flex items-center"
+  class="z-40 sticky top-14 sm:top-16 bg-[rgb(23,18,18)]/40 backdrop-blur-md h-14 sm:h-16 flex items-center justify-center"
   [ngClass]="{
     'border-b-[1px] border-solid border-stone-700': overScrolled()
   }"
 >
-  <div class="mx-auto max-w-7xl w-full flex flex-row gap-4">
-    <div class="flex flex-col gap-1 items-center">
+  <div
+    class="relative mx-auto max-w-7xl flex flex-row gap-8 h-full items-center flex-nowrap overflow-x-auto px-4"
+  >
+    <div
+      class="indicator absolute h-[2px] bg-rose-400 bottom-0 rounded-t-lg"
+      [ngStyle]="{
+        width: width() + 'px',
+        left: distance() + 'px'
+      }"
+    ></div>
+
+    <div
+      #foodbarItem
+      *ngFor="let category of foodCategories(); let index = index"
+      (click)="indexSelectHandler(index)"
+      class="relative flex flex-col gap-1 items-center cursor-pointer"
+    >
       <img
-        src="assets/images/menu/items/bowl-default.png"
-        alt="Bowl"
+        [src]="category.image"
+        [alt]="category.name"
         class="h-8 aspect-square object-contain object-bottom"
       />
-      <p class="text-xs uppercase tracking-[0.2em] font-bold">Bowls</p>
-    </div>
-    <div class="flex flex-col gap-1 items-center">
-      <img
-        src="assets/images/menu/items/pizza-default.png"
-        alt="Bowl"
-        class="h-8 aspect-square object-contain object-bottom"
-      />
-      <p class="text-xs uppercase tracking-[0.2em] font-bold">Pizza</p>
+      <p
+        class="text-xs uppercase tracking-[0.2em] font-bold w-max"
+        [ngClass]="{
+          'opacity-100': _activeIndex() === index,
+          'opacity-50': _activeIndex() !== index
+        }"
+      >
+        {{ category.navDescription }}
+      </p>
     </div>
   </div>
 </nav>

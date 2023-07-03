@@ -1,6 +1,13 @@
-<div class="flex flex-col gap-4 h-full relative pt-6">
+<div class="flex flex-col gap-4 h-full relative pt-6" #foodCard>
   <!-- tags -->
   <div class="absolute inset-x-0 top-0 z-10 flex flex-row justify-end gap-2">
+    <div
+      *ngIf="food.tags.vegan"
+      class="rounded-2xl bg-green-400 py-1 px-3 text-sm text-stone-950 flex flex-row gap-2 uppercase font-bold"
+    >
+      <fa-icon [icon]="veganIcon"></fa-icon>
+      <span>vegan</span>
+    </div>
     <div
       *ngIf="food.tags.new"
       class="rounded-2xl bg-cyan-300 py-1 px-3 text-sm text-stone-950 flex flex-row gap-2 uppercase font-bold"
@@ -8,7 +15,6 @@
       <fa-icon [icon]="newIcon"></fa-icon>
       <span>neu</span>
     </div>
-
     <div
       *ngIf="food.tags.recommendation"
       class="rounded-2xl bg-lime-300 py-1 px-3 text-sm text-stone-950 flex flex-row gap-2 uppercase font-bold"
@@ -25,10 +31,31 @@
     </div>
   </div>
   <!-- main image -->
-  <picture class="relative aspect-square">
+  <picture class="relative aspect-square" *ngIf="productImage">
+    <source
+      [srcset]="
+        'https://storage.googleapis.com/dasstadtbistro.appspot.com/images/menu/' +
+        productImage.filename +
+        '_1200x1200.avif'
+      "
+      type="image/avif"
+    />
+    <source
+      [srcset]="
+        'https://storage.googleapis.com/dasstadtbistro.appspot.com/images/menu/' +
+        productImage.filename +
+        '_400x400.webp'
+      "
+      type="image/webp"
+    />
     <img
       class="absolute inset-0 w-full h-full object-contain"
-      [src]="food.image"
+      [src]="
+        'https://storage.googleapis.com/dasstadtbistro.appspot.com/images/menu/' +
+        productImage.filename +
+        '_400x400.' +
+        productImage.extension
+      "
     />
   </picture>
   <!-- icons -->
@@ -64,6 +91,12 @@
       [icon]="meatIcon"
     ></fa-icon>
     <fa-icon
+      *ngIf="food.contains.chicken"
+      class="text-yellow-700"
+      matTooltip="Enthält Hühnerfleisch"
+      [icon]="chickenIcon"
+    ></fa-icon>
+    <fa-icon
       *ngIf="food.contains.pork"
       class="text-rose-400"
       matTooltip="Enthält Schweinefleisch"
@@ -73,6 +106,12 @@
       *ngIf="food.contains.egg"
       matTooltip="Enthält Ei"
       [icon]="eggIcon"
+    ></fa-icon>
+    <fa-icon
+      *ngIf="food.contains.nuts"
+      class="text-yellow-700"
+      matTooltip="Enthält Nüsse"
+      [icon]="nutsIcon"
     ></fa-icon>
     <fa-icon
       *ngIf="food.contains.cheese"
@@ -98,7 +137,7 @@
   <!-- tags -->
   <div class="flex flex-row gap-1 gap-y-1 flex-wrap">
     <sb-topping-item
-      *ngFor="let topping of food.toppings"
+      *ngFor="let topping of food.toppings | sortTopping"
       [topping]="topping"
     ></sb-topping-item>
   </div>
@@ -109,11 +148,11 @@
   <!-- price & cta -->
   <div class="flex justify-between items-center pt-1">
     <p class="font-bold text-xl">{{ food.price | currency : 'EUR' }}</p>
-    <button
+    <!-- <button
       (click)="handleButtonclick()"
       class="btn btn-primary uppercase font-bold py-2"
     >
       Auswählen
-    </button>
+    </button> -->
   </div>
 </div>

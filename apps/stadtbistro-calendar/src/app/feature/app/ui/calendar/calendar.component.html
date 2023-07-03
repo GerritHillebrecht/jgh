@@ -1,0 +1,10 @@
+<full-calendar #calendar [options]="calendarOptions">
+  <ng-template #eventContent let-arg>
+    <b>{{ arg.event.title }}</b>
+  </ng-template>
+</full-calendar>
+<div class="absolute bottom-4 right-4 z-20">
+  <button mat-mini-fab color="primary">
+    <fa-icon [icon]="plus"></fa-icon>
+  </button>
+</div>

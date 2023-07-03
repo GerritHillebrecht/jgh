@@ -13,6 +13,13 @@
           "dasstadtbistro"
         ]
       }
+    },
+    "stadtbistro-calendar": {
+      "hosting": {
+        "stadtbistro-calendar": [
+          "stadtbistro-calendar"
+        ]
+      }
     }
   },
   "projects": {

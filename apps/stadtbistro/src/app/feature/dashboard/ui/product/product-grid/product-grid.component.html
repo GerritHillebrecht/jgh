@@ -1,20 +1,25 @@
-<h2 class="text-4xl font-bold uppercase mt-6">Bowl</h2>
-<div
-  class="grid sm:grid-cols-2 xl:grid-cols-3 mt-4 gap-4"
-  *ngIf="bowls() as bowls"
->
-  <div class="relative" *ngFor="let bowl of bowls">
-    <sb-product-card [foodItem]="bowl"></sb-product-card>
+<ng-container *ngFor="let foodCategory of foodCategories()">
+  <h2 class="text-4xl font-bold uppercase mt-6 mx-auto max-w-[2000px]">{{ foodCategory.name }}</h2>
+  <div class="grid sm:grid-cols-2 xl:grid-cols-3 mt-4 gap-4">
+    <div>
+      <div
+        (click)="addNewFoodItem(foodCategory.name)"
+        class="rounded-xl border border-stone-600 p-10 aspect-square flex items-center justify-center hover:bg-stone-600 cursor-pointer"
+      >
+        <div class="flex flex-col gap-2 items-center">
+          <fa-icon [icon]="addIcon" size="2xl"></fa-icon>
+          <p>{{ foodCategory.name }} hinzufügen</p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="relative"
+      *ngFor="
+        let foodItem of foodItems() | foodItemOfCategory : foodCategory.name;
+        trackBy: trackBy
+      "
+    >
+      <sb-product-card [foodItem]="foodItem"></sb-product-card>
+    </div>
   </div>
-</div>
-
-<h2 class="text-4xl font-bold uppercase mt-6">Pizza</h2>
-<div
-  class="grid sm:grid-cols-2 xl:grid-cols-3 mt-4 gap-4"
-  *ngIf="pizzas() as pizzas"
->
-  <sb-product-card
-    *ngFor="let pizza of pizzas; trackBy: trackBy"
-    [foodItem]="pizza"
-  ></sb-product-card>
-</div>
+</ng-container>

@@ -9,17 +9,19 @@
     Das <span>Stadt</span>bistro
   </sb-headline-section>
 </div>
-<section class="grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-col-4 gap-4 p-4">
+<section class="grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-col-4 gap-4 p-4 mx-auto max-w-[2000px]">
   <div
     class="relative rounded-xl group aspect-[9/6] border-[1px] border-solid border-stone-700 overflow-hidden first-of-type:row-span-2 first-of-type:sm:aspect-auto shadow-highlight"
-    *ngFor="let image of images"
+    *ngFor="let image of storageImages; let i = index"
   >
     <picture
       class="absolute brightness-90 block inset-0 w-full h-full group-hover:brightness-110 transition"
     >
+      <source [srcset]="image[0]" type="image/avif" />
+      <source [srcset]="image[1]" type="image/webp" />
       <img
         class="absolute block inset-0 w-full h-full object-cover"
-        [src]="image"
+        [src]="image[2]"
       />
     </picture>
   </div>

@@ -6,7 +6,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import { ScrollService } from 'apps/stadtbistro/src/app/core/services/scroll.service';
+import {
+  NavigationService,
+  ScrollService,
+} from 'apps/stadtbistro/src/app/core/services';
 import {
   faBars,
   faMugHot,
@@ -34,6 +37,8 @@ export class NavbarComponent {
   protected readonly foodIcon = faPizzaSlice;
   protected readonly drinksIcon = faMugHot;
 
+  protected readonly navigationService = inject(NavigationService);
+
   protected readonly scrollService = inject(ScrollService);
   protected readonly routes: Array<{ path: string; label: string }> = [
     {
@@ -44,5 +49,9 @@ export class NavbarComponent {
       path: '/team',
       label: 'Unser Team',
     },
+    {
+      path: '/menu/food',
+      label: 'Speisekarte',
+    }
   ];
 }

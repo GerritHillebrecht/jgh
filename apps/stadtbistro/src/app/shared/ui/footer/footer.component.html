@@ -1,0 +1,62 @@
+<section class="pt-10 pb-4">
+  <div class="divider border-neutral-700 my-2"></div>
+  <footer class="footer p-10 text-base-content mx-auto max-w-7xl w-full">
+    <div>
+      <span class="footer-title">Services</span>
+      <a class="link link-hover">Branding</a>
+      <a class="link link-hover">Design</a>
+      <a class="link link-hover">Marketing</a>
+      <a class="link link-hover">Advertisement</a>
+    </div>
+    <div>
+      <span class="footer-title">Company</span>
+      <a [routerLink]="['team']" class="link link-hover">About us</a>
+      <a class="link link-hover">Contact</a>
+      <a class="link link-hover">Jobs</a>
+      <a class="link link-hover">Press kit</a>
+    </div>
+    <div>
+      <span class="footer-title">Legal</span>
+      <a [routerLink]="['impressum']" class="link link-hover">Impressum</a>
+      <a class="link link-hover">Privacy policy</a>
+      <a class="link link-hover">Cookie policy</a>
+    </div>
+    <div>
+      <span class="footer-title">Newsletter</span>
+      <div class="form-control w-80">
+        <label class="label">
+          <span class="label-text">Enter your email address</span>
+        </label>
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="username@site.com"
+            class="input input-bordered w-full pr-16"
+          />
+          <button class="btn btn-primary absolute top-0 right-0 rounded-l-none">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="divider border-neutral-700 my-2"></div>
+  <footer
+    class="footer px-10 py-4 text-base-content mx-auto max-w-7xl w-full"
+  >
+    <div class="items-center grid-flow-col">
+      <img
+        src="assets/images/logo/stadtbistro-logo.png"
+        class="w-12 aspect-square"
+      />
+      <p>Stadtbistro<br />Letting you enjoy the taste since 2023</p>
+    </div>
+    <div class="md:place-self-center md:justify-self-end">
+      <div class="grid grid-flow-col gap-4 items-center">
+        <a [href]="social.link" target="_blank" *ngFor="let social of socialMediaLinks">
+          <fa-icon size="xl" [icon]="social.icon"></fa-icon>
+        </a>
+      </div>
+    </div>
+  </footer>
+</section>

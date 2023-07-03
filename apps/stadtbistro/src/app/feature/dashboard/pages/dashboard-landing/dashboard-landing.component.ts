@@ -10,8 +10,7 @@ import {
   updateDoc,
   doc,
 } from '@angular/fire/firestore';
-import { bowls, pizzas } from '../../../menu/constants';
-import { Observable, take } from 'rxjs';
+import { Observable, combineLatest, take } from 'rxjs';
 import { Food } from 'apps/stadtbistro/src/app/shared/model/food.model';
 import { FirestoreItem } from 'apps/stadtbistro/src/app/shared/model/firestoreItem.model';
 
@@ -25,14 +24,30 @@ import { FirestoreItem } from 'apps/stadtbistro/src/app/shared/model/firestoreIt
 export default class DashboardLandingComponent implements OnInit {
   private readonly firestore: Firestore = inject(Firestore);
 
-  private readonly pizzas = pizzas;
-  private readonly bowls = bowls;
-
   ngOnInit(): void {
     console.log('initted');
 
     // const pizzaCollection = collection(this.firestore, 'pizza');
     // const bowlCollection = collection(this.firestore, 'bowl');
+
+    // const foodCollection = collection(this.firestore, 'food');
+
+    // combineLatest([
+    //   collectionData(pizzaCollection, { idField: 'id' }) as Observable<
+    //     FirestoreItem<Food>[]
+    //   >,
+    //   collectionData(bowlCollection, { idField: 'id' }) as Observable<
+    //     FirestoreItem<Food>[]
+    //   >,
+    // ])
+    //   .pipe(take(1))
+    //   .subscribe(([pizzaData, bowlData]) => {
+    //     const foodData = [...pizzaData, ...bowlData];
+    //     foodData.forEach((food) => {
+    //       addDoc(foodCollection, food);
+    //     });
+    //     console.log('food data', foodData);
+    //   });
 
     // START OF UPDATE FOOD DOCUMENTS
     // const pizzaData = (

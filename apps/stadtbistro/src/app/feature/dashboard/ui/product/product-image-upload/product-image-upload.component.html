@@ -1,0 +1,17 @@
+<div
+  dropzone
+  (hovered)="toggleHovering($event)"
+  (dropped)="onDrop($event)"
+  class="absolute inset-0 flex items-center justify-center flex-col z-20 rounded-xl hover:bg-stone-950/80 gap-2"
+  [ngClass]="{ 'border-4 border-dashed border-stone-600': isHovering }"
+>
+  <fa-icon [icon]="addItem" size="2xl"></fa-icon>
+  <p class="text-xs uppercase font-bold tracking-[0.2em]">
+    Bild hierher ziehen.
+  </p>
+  <sb-file-uploader
+    *ngFor="let file of files"
+    [file]="file"
+    (uploadComplete)="uploadComplete.emit($event)"
+  ></sb-file-uploader>
+</div>

@@ -1,0 +1,11 @@
+<div
+  class="absolute inset-0 flex items-center justify-center"
+  *ngIf="progress > 0 && progress < 100"
+>
+  <mat-progress-spinner
+    class="example-margin"
+    mode="determinate"
+    [value]="progress"
+  >
+  </mat-progress-spinner>
+</div>
