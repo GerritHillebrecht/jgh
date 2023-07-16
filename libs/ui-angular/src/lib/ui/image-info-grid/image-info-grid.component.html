@@ -1,0 +1,26 @@
+<section class="pb-36 pt-24 px-4 sm:px-24">
+  <ng-content></ng-content>
+  <div
+    class="mx-auto max-w-[1300px] sm:px-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-[60px]"
+  >
+    <a
+      class="group info-box flex flex-col gap-4 cursor-pointer"
+      *ngFor="let infobox of infoBoxes"
+    >
+      <picture>
+        <img [src]="infobox.image" class="w-100" />
+      </picture>
+      <div class="info-body">
+        <p class="text-[40px] leading-tight">{{ infobox.title }}</p>
+        <p class="text-base leading-normal mt-1 mb-2">
+          {{ infobox.description }}
+        </p>
+        <button
+          class="px-4 py-2 rounded-3xl border border-stone-700 text-sm group-hover:bg-stone-700 group-hover:text-stone-50 transition-all duration-300"
+        >
+          {{ infobox.action ?? 'Entdecke' }}
+        </button>
+      </div>
+    </a>
+  </div>
+</section>

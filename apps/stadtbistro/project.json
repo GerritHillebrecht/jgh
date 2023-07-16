@@ -22,7 +22,9 @@
         "assets": [
           "apps/stadtbistro/src/favicon.ico",
           "apps/stadtbistro/src/assets",
-          "apps/stadtbistro/src/manifest.webmanifest"
+          "apps/stadtbistro/src/manifest.webmanifest",
+          "apps/stadtbistro/src/robots.txt",
+          "apps/stadtbistro/src/sitemap.xml"
         ],
         "styles": [
           "@angular/material/prebuilt-themes/indigo-pink.css",

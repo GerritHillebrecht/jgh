@@ -1,0 +1,24 @@
+<div
+  class="avatar_outer rounded-full relative inline-block"
+  [ngStyle]="{
+    width: _options.size,
+    height: _options.size,
+    backgroundColor: _options.backgroundColor,
+    padding: _options.borderWidth,
+    boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.1), 0 15px 40px rgba(0, 0, 0, 0.12)'
+  }"
+>
+  <div
+    #avatarInner
+    class="avatar_inner inner-shadow w-full aspect-square overflow-hidden relative rounded-full flex items-center justify-center"
+  >
+    <img
+      *ngIf="_options.image"
+      [src]="_options.image"
+      class="aspect-square object-contain opacity-70"
+      [ngStyle]="{ width: _options.imageSize }"
+      alt="avatar"
+    />
+    <fa-icon *ngIf="_options.fontAwesomeIcon" [icon]="_options.fontAwesomeIcon"></fa-icon>
+  </div>
+</div>

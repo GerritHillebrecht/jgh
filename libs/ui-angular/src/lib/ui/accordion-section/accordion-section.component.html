@@ -1,0 +1,59 @@
+<section class="px-4 sm:px-16 py-8">
+  <div
+    class="accordion max-w-7xl mx-auto rounded-t-[2rem] rounded-b-[1rem] sm:rounded-b-[2rem] grid sm:grid-cols-2 overflow-hidden"
+    [ngStyle]="{
+      backgroundColor: small() ? 'transparent' : translucentBackgroundColor(),
+      color: accordionOptions().textColor
+    }"
+  >
+    <div class="accordion__column1 sm:px-20 sm:pb-12">
+      <header
+        class="flex flex-col gap-6 text-center sm:text-left pt-12"
+        [ngStyle]="{
+          backgroundColor: small()
+            ? translucentBackgroundColor()
+            : 'transparent'
+        }"
+      >
+        <div class="content flex flex-col gap-4 px-4 sm:px-0">
+          <p class="text-xs font-bold uppercase tracking-[0.2em]">
+            {{ subtitle }}
+          </p>
+          <h2 class="font-bold text-[1.6rem] leading-[1.2] sm:text-4xl">
+            {{ title }}
+          </h2>
+        </div>
+        <picture class="relative aspect-[16/12] sm:hidden">
+          <img
+            class="absolute inset-0 h-full w-full object-cover"
+            [src]="accordionOptions().smallImage ?? accordionOptions().image"
+          />
+        </picture>
+      </header>
+      <div class="mt-1 sm:mt-8">
+        <div class="sm:rounded-[1.5rem] flex flex-col gap-1 overflow-hidden">
+          <ng-container
+            *ngFor="let element of accordionElements; let index = index"
+          >
+            <jgh-accordion-element
+              [accordionElement]="element"
+              [bgColors]="[
+                accordionOptions().backgroundColor,
+                translucentBackgroundColor()
+              ]"
+              (elementOpened)="handleElementOpened(index)"
+            ></jgh-accordion-element>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="accordion__column2 relative bg-purple-400 hidden sm:block">
+      <picture class="absolute hidden sm:block inset-0 h-full w-full">
+        <img
+          class="absolute inset-0 h-full w-full object-cover"
+          [src]="accordionOptions().image"
+        />
+      </picture>
+    </div>
+  </div>
+</section>

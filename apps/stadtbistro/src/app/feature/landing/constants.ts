@@ -1,3 +1,5 @@
+import { faBowlRice, faBreadSlice, faCoffee, faPizzaSlice } from "@fortawesome/free-solid-svg-icons";
+
 export const dishes = [
   {
     title: 'Bowls',
@@ -55,6 +57,37 @@ export const icons = [
     title: ' Schön',
     icon: 'assets/images/landing/icons/beautiful.png',
     tooltip: 'Extrem schöne Mitarbeiter.',
+    gradientClass: 'conic-gradient-2',
+  },
+];
+
+export const new_icons = [
+  {
+    title: 'Pizza',
+    icon: 'assets/images/landing/icons/vegan-inner.png',
+    fontAwesomeIcon: faPizzaSlice,
+    tooltip: 'Leckere Pizza',
+    hueRotate: '240deg',
+  },
+  {
+    title: 'Bowls',
+    fontAwesomeIcon: faBowlRice,
+    icon: 'assets/images/landing/icons/delivery-inner.png',
+    tooltip: 'Gesunde Bowls',
+    // hueRotate: '75deg',
+  },
+  {
+    title: 'Frühstück',
+    fontAwesomeIcon: faBreadSlice,
+    icon: 'assets/images/landing/icons/nature.png',
+    tooltip: 'Tolles Frühstück',
+    hueRotate: '280deg',
+  },
+  {
+    title: 'Kaffee',
+    fontAwesomeIcon: faCoffee,
+    icon: 'assets/images/landing/icons/beautiful.png',
+    tooltip: 'Aromatischer Kafee',
     gradientClass: 'conic-gradient-2',
   },
 ];

@@ -1,4 +1,4 @@
-<section class="py-20 sm:py-40 bg-stone-50">
+<section #section class="py-20 sm:py-40 bg-stone-50">
   <div class="mx-auto max-w-5xl w-full grid sm:grid-cols-2 gap-8 items-center">
     <div class="flex flex-col gap-6 px-4 sm:px-0">
       <div
@@ -31,7 +31,9 @@
         Das Stadtbistro im Herzen von Hamburg - der perfekte Ort, um sich mit
         köstlichen Speisen und Getränken verwöhnen zu lassen.<br />
       </p>
-      <div class="flex flex-row items-center gap-2 text-stone-600 italic opacity-70 text-sm">
+      <div
+        class="flex flex-row items-center gap-2 text-stone-600 italic opacity-70 text-sm"
+      >
         <fa-icon [icon]="infoIcon"></fa-icon>
         <span>Online Bestellungen demnächst möglich.</span>
       </div>
@@ -51,8 +53,9 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-col justify-center items-center gap-4">
+    <div class="flex flex-col justify-center items-center gap-4 px-4 sm:px-0">
       <iframe
+        *ngIf="showMaps()"
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2370.308114456266!2d9.983473676465364!3d53.55226705929616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b18f1a0da81f35%3A0x93052dd164b7d678!2sGro%C3%9Fe%20Bleichen%2068%2C%2020354%20Hamburg!5e0!3m2!1sde!2sde!4v1686235300132!5m2!1sde!2sde"
         class="w-full aspect-video shadow-xl rounded-xl border border-solid border-stone-200"
         style="border: 0"
@@ -60,17 +63,6 @@
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
-      <!-- <div class="max-w-[300px] w-full flex flex-col justify-center gap-4">
-        <button
-          [routerLink]="['menu', 'food']"
-          class="btn btn-primary rounded-lg"
-        >
-          Was gibts zu essen?
-        </button>
-        <button class="btn btn-outline rounded-lg text-stone-600">
-          Wer kocht für mich?
-        </button>
-      </div> -->
     </div>
   </div>
 </section>

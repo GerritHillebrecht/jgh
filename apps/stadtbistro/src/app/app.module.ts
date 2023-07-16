@@ -43,6 +43,7 @@ registerLocaleData(localeDe, 'de-DE');
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, {
       initialNavigation: 'enabledBlocking',
+      scrollPositionRestoration: 'enabled',
     }),
     MatSnackBarModule,
     NavbarComponent,

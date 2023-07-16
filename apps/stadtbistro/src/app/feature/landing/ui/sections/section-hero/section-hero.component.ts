@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { dishes, icons } from '../../../constants';
+import { dishes, icons, new_icons } from '../../../constants';
 import { RouterLink } from '@angular/router';
 import Swiper, { Autoplay, EffectCreative, Keyboard, Navigation } from 'swiper';
 import { AvatarComponent } from '@jgh/ui-angular/avatar';
@@ -25,7 +25,7 @@ export class SectionHeroComponent implements AfterViewInit {
 
   protected readonly currentDish = signal(0);
   protected readonly dishes = dishes;
-  protected readonly icons = icons;
+  protected readonly icons = new_icons;
 
   private readonly swiper = new Swiper('.swiper', {
     keyboard: {

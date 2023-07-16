@@ -13,7 +13,7 @@ import { Storage, listAll, ref } from '@angular/fire/storage';
 })
 export class SectionGalleryComponent {
   private readonly firebaseStorage = inject(Storage);
-  protected readonly storageImages: any[] = [];
+  protected readonly storageImages: string[][] = [];
 
   protected readonly images = Array.from({ length: 8 }, (_, i) =>
     i === 2

@@ -1,5 +1,6 @@
 import { Component, WritableSignal, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HeadlineSectionComponent } from '../../shared/ui/typographie';
 
 interface Teammember {
   name: string;
@@ -11,7 +12,7 @@ interface Teammember {
 @Component({
   selector: 'sb-team',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HeadlineSectionComponent],
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.scss'],
 })

@@ -54,17 +54,17 @@ export class SectionRecommendationsComponent implements AfterViewInit {
   protected readonly selectedRecommendation = signal(0);
 
   private readonly names = [
-    'Tommaso Cesano',
-    'Maureen Herben',
-    'Malo Chaperon',
-    'Frederico Pascual',
+    'Yusuf Kabiri',
+    'Hasan Sarioglu',
+    'Baran',
+    'Gerrit H.',
   ];
 
   private readonly occupation = [
-    'XP Designer @ OSMO agency',
-    'Product Designer @ Zalando',
-    'Content Designer @ BackMarket',
-    'Marketing Lead @ Hugging Face',
+    'Schüler @ MSH',
+    'Inhaber @ Arnkielkiosk',
+    'Content Designer @ Goldberg',
+    'Webdesign @ Stadtbistro.de',
   ];
 
   private readonly texts = [

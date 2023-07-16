@@ -9,14 +9,15 @@
       <p class="uppercase tracking-widest font-extrabold text-md -mb-4">
         <span class="text-emerald-700">stadtbistro</span> presents
       </p>
-      <h2 class="uppercase font-extrabold text-6xl xl:text-7xl">
+      <h1 class="uppercase font-extrabold text-6xl xl:text-7xl">
         The
         <span
           class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-purple-500 rotate"
-          >new guys</span
         >
+          new guys
+        </span>
         in town
-      </h2>
+      </h1>
       <div class="icons flex flex-row gap-6 sm:gap-8 items-center">
         <div
           class="relative flex flex-col gap-2 items-center justify-center"
@@ -25,7 +26,7 @@
         >
           <jgh-avatar
             [options]="{
-              image: icon.icon,
+              fontAwesomeIcon: icon.fontAwesomeIcon,
               size: '3.5rem',
               borderWidth: '5px',
               gradientClass: icon.gradientClass || 'conic-gradient'
@@ -46,10 +47,12 @@
           </p>
         </div>
       </div>
-      <p class="text-xs sm:text-base">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit
-        libero optio mollitia voluptatibus vel exercitationem impedit explicabo
-        officiis velit repellendus?
+      <p class="text-base opacity-90">
+        <strong class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-purple-500">Das Stadtbistro</strong> - Ihr neues Lieblingsbistro in der
+        Hamburger Innenstadt! Genießen Sie <strong>exzellente Pizza</strong>,
+        <strong>köstliche Bowls</strong>, ein
+        <strong>leckeres Frühstück</strong> und
+        <strong>aromatischen Kaffee</strong>. Willkommen im Geschmacksparadies!
       </p>
       <div class="flex gap-2">
         <button
@@ -79,7 +82,9 @@
             class="swiper-slide relative"
             *ngFor="let item of dishes; let index = index"
           >
-            <div class="relative w-full h-full pl-2 pt-16 flex justify-center items-start">
+            <div
+              class="relative w-full h-full pl-2 pt-16 flex justify-center items-start"
+            >
               <picture class="relative w-full sm:w-[72%] aspect-square block">
                 <source
                   *ngFor="let format of item.image.formats"

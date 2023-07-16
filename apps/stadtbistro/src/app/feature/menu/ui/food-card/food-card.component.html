@@ -31,7 +31,14 @@
     </div>
   </div>
   <!-- main image -->
-  <picture class="relative aspect-square" *ngIf="productImage">
+  <picture
+    class="relative"
+    [ngClass]="{
+      'aspect-video': food.image_rect,
+      'aspect-square': !food.image_rect
+    }"
+    *ngIf="productImage"
+  >
     <source
       [srcset]="
         'https://storage.googleapis.com/dasstadtbistro.appspot.com/images/menu/' +
@@ -135,12 +142,17 @@
   <!-- name -->
   <h2 class="uppercase font-extrabold text-2xl">{{ food.name }}</h2>
   <!-- tags -->
-  <div class="flex flex-row gap-1 gap-y-1 flex-wrap">
-    <sb-topping-item
-      *ngFor="let topping of food.toppings | sortTopping"
-      [topping]="topping"
-    ></sb-topping-item>
-  </div>
+  <ng-container *ngIf="food.toppings | sortTopping as toppings">
+    <div
+      *ngIf="toppings.length > 0"
+      class="flex flex-row gap-1 gap-y-1 flex-wrap"
+    >
+      <sb-topping-item
+        *ngFor="let topping of toppings"
+        [topping]="topping"
+      ></sb-topping-item>
+    </div>
+  </ng-container>
   <!-- desc -->
   <p class="opacity-75 leading-snug flex-grow">
     {{ food.description }}

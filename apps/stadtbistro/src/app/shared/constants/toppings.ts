@@ -1,4 +1,4 @@
-import { Topping } from "../model/topping.model";
+import { Topping } from '../model/topping.model';
 
 export const toppings: Topping[] = [
   {
@@ -44,7 +44,7 @@ export const toppings: Topping[] = [
   {
     name: 'Parmesan Flakes',
     description: 'Tomatensauce, Mozzarella, Basilikum',
-    price: 1.,
+    price: 1,
     image: 'assets/images/menu/items/pizza-salami.png',
     category: ['Pizza', 'Pinsa'],
     toppingCategory: 'Cheese',
@@ -152,9 +152,17 @@ export const toppings: Topping[] = [
     description: 'Tomatensauce, Mozzarella, Basilikum',
     price: 1,
     image: 'assets/images/toppings/rucola.png',
-    category: ['Pizza', 'Vegan', 'Pinsa', 'Bowl'],
+    category: ['Pizza', 'Vegan', 'Pinsa'],
     toppingCategory: 'Vegetable',
     availableAsExtra: true,
+  },
+  {
+    name: 'Rucola',
+    description: 'Tomatensauce, Mozzarella, Basilikum',
+    price: 1,
+    image: 'assets/images/toppings/rucola.png',
+    category: ['Bowl'],
+    toppingCategory: 'Vegetable',
   },
   {
     name: 'gehackter Knoblauch',

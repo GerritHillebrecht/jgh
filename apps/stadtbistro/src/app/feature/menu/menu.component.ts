@@ -1,9 +1,7 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   QueryList,
-  ViewChild,
   ViewChildren,
   inject,
   signal,
@@ -13,7 +11,6 @@ import { FoodCardComponent } from './ui/food-card/food-card.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faAnglesDown } from '@fortawesome/free-solid-svg-icons';
 import { LogoComponent } from '../../shared/ui/logo/logo.component';
-import { HeroSliderComponent } from './ui/hero-slider/hero-slider.component';
 import { FoodFetchService } from '../../shared/data-access';
 import { FoodScrollProgressBarComponent } from './ui/food-scroll-progress-bar/food-scroll-progress-bar.component';
 import { foodCategories } from '../../shared/constants/constants';
@@ -31,7 +28,6 @@ import { FilterToppingsPipe } from './pipes/filter-toppings.pipe';
     LogoComponent,
     FoodCardComponent,
     FontAwesomeModule,
-    HeroSliderComponent,
     FoodScrollProgressBarComponent,
     FoodItemOfCategoryPipe,
     FilterToppingsPipe,

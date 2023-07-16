@@ -46,12 +46,12 @@ export class NavbarComponent {
       label: 'Das Stadtbistro',
     },
     {
+      path: '/menu',
+      label: 'Speisekarte',
+    },
+    {
       path: '/team',
       label: 'Unser Team',
     },
-    {
-      path: '/menu/food',
-      label: 'Speisekarte',
-    }
   ];
 }

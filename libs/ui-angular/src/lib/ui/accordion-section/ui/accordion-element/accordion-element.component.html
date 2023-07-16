@@ -1,0 +1,41 @@
+<div
+  (click)="toggleOpen()"
+  class="accordion__panel cursor-pointer text-inherit flex flex-col p-4 sm:p-5 bg-[rgb(243,210,197,0.7)] sm:bg-[rgb(243_210_197)]"
+  [ngStyle]="{
+    backgroundColor: small() ? bgColors[1] : bgColors[0]
+  }"
+>
+  <header
+    class="accordion__header grid grid-cols-[auto,_max-content] items-center gap-12"
+  >
+    <p
+      class="font-bold transition-all duration-300 ease-in-out"
+      [ngClass]="{
+        'text-3xl': show()
+      }"
+    >
+      {{ accordionElement.title }}
+    </p>
+    <div
+      class="rounded-full bg-white flex items-center justify-center p-1 aspect-square w-8"
+    >
+      <fa-icon
+        [icon]="iconDown"
+        class="opacity-90 transition-all text-inherit"
+        [ngClass]="{ 'rotate-180': show() }"
+        size="xs"
+      ></fa-icon>
+    </div>
+  </header>
+  <article
+    class="accordion__content overflow-hidden grid transition-all duration-300 ease-in-out"
+    [ngClass]="{
+      'grid-rows-[0fr]': !show(),
+      'grid-rows-[1fr]': show()
+    }"
+  >
+    <div class="accordion__body overflow-hidden" [ngClass]="{ 'pt-4': show() }">
+      <p class="text opacity-90" [innerHTML]="accordionElement.body"></p>
+    </div>
+  </article>
+</div>

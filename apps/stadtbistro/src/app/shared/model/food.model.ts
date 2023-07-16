@@ -1,4 +1,4 @@
-import { toppings } from "../constants";
+import { toppings } from '../constants';
 
 export interface FoodCategory {
   name: 'Breakfast' | 'Pizza' | 'Bowl' | 'Vegan' | 'Pinsa';
@@ -14,6 +14,7 @@ export interface Food {
   description: string;
   price: number;
   image: string;
+  image_rect?: boolean;
   contains: Partial<Contains>;
   tags: Partial<Tags>;
   order: number;

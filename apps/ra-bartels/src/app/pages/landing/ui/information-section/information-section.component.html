@@ -1,0 +1,14 @@
+<section class="pt-14 pb-10 sm:py-10 text-stone-700 flex sm:block">
+  <div class="mx-auto max-w-4xl grid sm:grid-cols-4 gap-8 sm:gap-4 sm:w-full px-4 sm:px-0">
+    <div
+      *ngFor="let info of information"
+      class="flex sm:flex-col items-center sm:justify-end gap-4"
+    >
+      <fa-icon [icon]="info.icon" size="2xl"></fa-icon>
+      <p class="sm:text-center">
+        <span>{{ info.title }} <br /></span>
+        <span class="font-bold">{{ info.information }}</span>
+      </p>
+    </div>
+  </div>
+</section>
