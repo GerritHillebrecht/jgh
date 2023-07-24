@@ -1,0 +1,77 @@
+<section
+  class="h-screen relative mt-[60px] text-stone-50"
+  *ngIf="slides() as slides"
+>
+  <div class="px-14 py-36 relative z-20 pointer-events-none">
+    <div class="flex flex-col gap-10 max-w-lg relative z-20 pointer-events-auto">
+      <h2 class="sm:text-6xl">
+        <span class="text-sm uppercase tracking-[0.2em] font-bold block mb-2">
+          Chatera Gross imagens
+        </span>
+        {{ slides[currentSlide()].title }}
+      </h2>
+      <div class="flex flex-row flex-wrap justify-start gap-x-4 sm:gap-x-12 gap-y-6">
+        <div
+          class="flex flex-col gap-2 items-center cursor-pointer"
+          *ngFor="let slide of slides; let index = index"
+          (click)="selectIndex(index)"
+        >
+          <div
+            class="rounded-full w-12 sm:w-20 aspect-square border-stone-50 bg-cover transition-all"
+            [ngClass]="{
+              'border-4 shadow-lg scale-[1.05] -translate-y-1 saturate-200':
+                currentSlide() === index,
+              'border-2 shadow-md saturate-50': currentSlide() !== index
+            }"
+            [ngStyle]="{
+              'background-image': 'url(' + slide.image + ')'
+            }"
+          ></div>
+          <p
+            class="transition-all text-[0.5rem] sm:text-xs"
+            [ngClass]="{
+              'opacity-70': currentSlide() !== index,
+              'opacity-100': currentSlide() === index
+            }"
+          >
+            {{ slide.title }}
+          </p>
+        </div>
+      </div>
+      <div class="swiper swiper-text mx-0">
+        <div class="swiper-wrapper text-stone-50 text-sm sm:text-lg leading-relaxed">
+          <div class="swiper-slide" *ngFor="let slide of slides">
+            <p class="">
+              {{ slide.text }}
+            </p>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="swiper swiper-image absolute inset-0">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div
+        *ngFor="let slide of slides"
+        class="swiper-slide bg-cover bg-center"
+        [ngStyle]="{
+          'background-image': 'url(' + slide.image + ')'
+        }"
+      ></div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+  </div>
+
+  <!-- <div class="swiper-button-prev btn-prev-text z-30"></div>
+  <div class="swiper-button-next btn-next-text z-30"></div> -->
+  <div
+    class="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-black/60 sm:from-black/40 sm:via-transparent to-transparent z-10 pointer-events-none"
+  ></div>
+</section>

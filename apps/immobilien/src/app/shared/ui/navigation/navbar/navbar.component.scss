@@ -1,0 +1,10 @@
+.uncolored {
+  .mat-mdc-tab-link.mdc-tab--active {
+    .mdc-tab__text-label {
+      color: inherit !important;
+    }
+  }
+  .mdc-tab-indicator__content--underline {
+    border-color: inherit !important;
+  }
+}

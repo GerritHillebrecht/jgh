@@ -1,11 +1,12 @@
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input, inject } from '@angular/core';
+import { CommonModule, ViewportScroller } from '@angular/common';
 
 export interface InfoBox {
   title: string;
   description: string;
   image: string;
   action?: string;
+  anchor?: string;
 }
 
 @Component({
@@ -37,4 +38,12 @@ export class ImageInfoGridComponent {
         'https://byonoy.com/site/assets/files/1574/a96a_90_thumbnail_b.1000x700.jpg',
     },
   ];
+
+  private viewportScroller = inject(ViewportScroller);
+
+  protected scrollTo(infoBox: InfoBox) {
+    if (infoBox.anchor) {
+      this.viewportScroller.scrollToAnchor(infoBox.anchor);
+    }
+  }
 }

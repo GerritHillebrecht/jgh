@@ -1,0 +1,22 @@
+<div class="flex flex-col gap-12 max-w-2xl">
+  <h2
+    class="text-4xl sm:text-5xl md:text-6xl font-Merriweather"
+  >
+    {{ list.title }}
+  </h2>
+  <ul class="flex flex-col gap-10">
+    <li
+      *ngFor="let item of list.items"
+      class="grid grid-cols-[max-content,auto] gap-4 before:bg-stone-700 before:dark:bg-stone-50 before:text-stone-50 before:dark:text-stone-700 before:w-10 before:sm:w-11 before:text-base before:sm:text-lg"
+    >
+      <div>
+        <p class="mb-2 uppercase text-xs tracking-[0.2em] font-bold opacity-50">
+          {{ item.title }}
+        </p>
+        <span class="text-base leading-relaxed">
+          {{ item.text }}
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,27 @@
+<section
+  class="grid lg:grid-cols-2 gap-y-20 lg:gap-8 justify-items-center px-4 sm:px-6 md:px-[30px] py-10 sm:py-[60px]"
+>
+  <div
+    class="image_container flex justify-center items-center"
+    [ngClass]="{
+      'lg:col-start-2 lg:row-start-1': reverseOrder()
+    }"
+  >
+    <figure>
+      <picture>
+        <img
+          class="max-h-[calc(100vh_-_10rem)] object-cover object-center max-w-full"
+          [src]="image"
+        />
+      </picture>
+    </figure>
+  </div>
+  <div
+    class="content_container max-w-[920px] px-4 lg:px-10 md:px-[60px] flex flex-col gap-8 justify-center"
+    [ngClass]="{
+      'lg:col-start-1  lg:row-start-1': reverseOrder()
+    }"
+  >
+    <ng-content></ng-content>
+  </div>
+</section>

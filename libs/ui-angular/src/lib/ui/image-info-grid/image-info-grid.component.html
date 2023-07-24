@@ -6,13 +6,14 @@
     <a
       class="group info-box flex flex-col gap-4 cursor-pointer"
       *ngFor="let infobox of infoBoxes"
+      (click)="scrollTo(infobox)"
     >
       <picture>
         <img [src]="infobox.image" class="w-100" />
       </picture>
       <div class="info-body">
         <p class="text-[40px] leading-tight">{{ infobox.title }}</p>
-        <p class="text-base leading-normal mt-1 mb-2">
+        <p class="text-base leading-normal mt-1 mb-3">
           {{ infobox.description }}
         </p>
         <button

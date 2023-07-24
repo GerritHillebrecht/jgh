@@ -27,8 +27,8 @@
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumWarning": "1mb",
+              "maximumError": "2mb"
             },
             {
               "type": "anyComponentStyle",
@@ -44,7 +44,13 @@
           "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
-          "namedChunks": true
+          "namedChunks": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/immobilien/src/environments/environment.ts",
+              "with": "apps/immobilien/src/environments/environment.development.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
@@ -89,6 +95,13 @@
           "ci": true,
           "codeCoverage": true
         }
+      }
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {
+        "version": 2,
+        "browserTarget": "immobilien:build:production"
       }
     }
   }

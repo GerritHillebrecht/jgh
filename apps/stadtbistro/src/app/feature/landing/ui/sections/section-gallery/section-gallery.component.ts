@@ -38,7 +38,7 @@ export class SectionGalleryComponent {
       console.log('imagenames', imagenames);
 
       this.storageImages.push(
-        ...Array.from(imagenames).map((filename, index) => {
+        ...Array.from(imagenames).map((filename) => {
           return [
             `https://storage.googleapis.com/dasstadtbistro.appspot.com/images/bistro/${filename}_1200x1200.avif`,
             `https://storage.googleapis.com/dasstadtbistro.appspot.com/images/bistro/${filename}_400x400.webp`,

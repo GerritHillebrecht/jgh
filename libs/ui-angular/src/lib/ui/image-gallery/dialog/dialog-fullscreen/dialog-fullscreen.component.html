@@ -1,0 +1,33 @@
+<!-- Slider main container -->
+<div #swiper class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper items-center">
+    <!-- Slides -->
+    <div
+      #swiperSlide
+      class="swiper-slide flex justify-center items-center"
+      *ngFor="let images of images()"
+    >
+      <picture>
+        <ng-container *ngFor="let image of images">
+          <source
+            *ngIf="!image.default"
+            [srcset]="image.src"
+            [type]="'image/' + image.type"
+          />
+          <img
+            *ngIf="image.default"
+            class="max-w-screen max-h-screen object-contain"
+            [src]="image.src"
+          />
+        </ng-container>
+      </picture>
+    </div>
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>

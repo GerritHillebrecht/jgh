@@ -5,7 +5,52 @@
       <p>hello</p>
     </div>
   </jgh-canvas> -->
-  <jgh-image-info-grid>
-    <h2 class="text-6xl mb-36 max-w-2xl">Drei Reader, ein einzigartiges Erlebnis!</h2>
+  <jgh-section-spline-canvas
+    [splineURL]="splineURL"
+    [render]="true"
+  ></jgh-section-spline-canvas>
+
+  <jgh-image-info-grid [infoBoxes]="infoBoxes">
+    <h2 class="text-5xl sm:text-6xl mb-36 max-w-2xl">
+      In drei Schritten zur perfekten Immobilie
+    </h2>
   </jgh-image-info-grid>
+
+  <im-section-areas-of-work></im-section-areas-of-work>
+
+  <jgh-section-split-image-content
+    [reverse]="true"
+    image="assets/images/landing/quotes/cecelia_ahern.jpg"
+  >
+    <jgh-blockquote [blockquote]="quotes()[0]"></jgh-blockquote>
+  </jgh-section-split-image-content>
+  <jgh-section-split-image-content
+    image="assets/images/landing/quotes/barbara_corcoran.jpg"
+  >
+    <jgh-blockquote [blockquote]="quotes()[1]"></jgh-blockquote>
+  </jgh-section-split-image-content>
+
+  <im-section-recommendations></im-section-recommendations>
+
+  <jgh-section-split-image-content
+    image="https://byonoy.com/site/assets/files/1346/byonoy_headquarter-1625.jpg"
+    id="analysis"
+  >
+    <im-list [list]="lists()[0]"></im-list>
+  </jgh-section-split-image-content>
+
+  <jgh-section-split-image-content
+    id="decoration"
+    image="https://byonoy.com/site/assets/files/1347/byonoy_headquarter-1885.jpg"
+    [reverse]="true"
+  >
+    <im-list [list]="lists()[1]"></im-list>
+  </jgh-section-split-image-content>
+
+  <jgh-section-split-image-content
+    id="presentation"
+    image="https://byonoy.com/site/assets/files/1346/byonoy_headquarter-1625.jpg"
+  >
+    <im-list [list]="lists()[2]"></im-list>
+  </jgh-section-split-image-content>
 </main>

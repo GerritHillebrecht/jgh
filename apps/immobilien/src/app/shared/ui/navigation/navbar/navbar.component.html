@@ -1,11 +1,101 @@
-<div
-  class="h-14 sm:h-16 flex items-center px-4 justify-between border-b-[1px] border-stone-50 sticky top-0"
+<header
+  class="h-14 sm:h-16 flex items-center px-4 justify-between border-b-[1px] fixed w-full top-0 z-50"
+  [ngClass]="{
+    'bg-white/50 dark:bg-black/50 dark:text-stone-50 backdrop-blur-[5px] backdrop-saturate-200 text-stone-700 border-stone-50/70':
+      scrolled(),
+    'text-stone-50 border-stone-50': !scrolled()
+  }"
 >
-  <p>logo</p>
-  <div class="flex items-center gap-4">
-    <button>Ich</button>
-    <a href="https://www.linkedin.com/in/chatera-khaty-gross-09b294276" target="_blank">
+  <div class="sm:hidden">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon class="material-icons-outlined relative -top-[2px]">
+        dark_mode
+      </mat-icon>
+    </button>
+  </div>
+  <!-- <img src="assets/images/logo/logo-chatera-gross-v2-transparent.png" class="h-8 sm:h-9"> -->
+  <figure [routerLink]="['/']">
+    <picture>
+      <img
+        src="assets/images/logo/logo.svg"
+        class="h-11"
+        [ngClass]="{
+          invert: !scrolled(),
+          'dark:invert': scrolled()
+        }"
+      />
+    </picture>
+  </figure>
+
+  <nav class="items-center hidden sm:flex">
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel" class="hidden sm:flex uncolored">
+      <a
+        mat-tab-link
+        routerLinkActive
+        [routerLinkActiveOptions]="{ exact: true }"
+        *ngFor="let link of links"
+        [routerLink]="link.path"
+        [active]="rla.isActive"
+        #rla="routerLinkActive"
+      >
+        <span
+          [ngClass]="{
+            'text-stone-50': !scrolled() && !rla.isActive,
+            'text-stone-700 dark:text-stone-50': scrolled() && !rla.isActive
+          }"
+          >{{ link.label }}
+        </span>
+      </a>
+    </nav>
+    <mat-tab-nav-panel #tabPanel class="uncolored"></mat-tab-nav-panel>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon class="material-icons-outlined relative -top-[2px]">
+        dark_mode
+      </mat-icon>
+    </button>
+    <a
+      href="https://www.linkedin.com/in/chatera-khaty-gross-09b294276"
+      target="_blank"
+      class="ml-4"
+    >
       <fa-icon [icon]="linkedIn" size="xl"></fa-icon>
     </a>
+  </nav>
+  <div class="sm:hidden">
+    <button mat-icon-button>
+      <mat-icon class="material-icons-outlined relative -top-[2px]"
+        >menu</mat-icon
+      >
+    </button>
   </div>
-</div>
+</header>
+
+<mat-menu #menu="matMenu">
+  <div class="flex flex-col -my-2">
+    <div mat-menu-item>
+      <p class="text-xs font-black uppercase tracking-[0.2em]">Select Theme</p>
+    </div>
+    <mat-divider></mat-divider>
+    <div
+      mat-menu-item
+      class="flex flex-row items-center gap-2"
+      (click)="setTheme('dark')"
+    >
+      <mat-icon class="material-icons-outlined">dark_mode</mat-icon>
+      <span class="">Dark Theme</span>
+    </div>
+    <div
+      mat-menu-item
+      class="flex flex-row items-center gap-2"
+      (click)="setTheme('light')"
+    >
+      <mat-icon class="material-icons-outlined">light_mode</mat-icon>
+      <span class="">Light Theme</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div mat-menu-item class="flex flex-row items-center gap-2">
+      <mat-icon class="material-icons-outlined">sensors</mat-icon>
+      <span class="">Automatisch</span>
+    </div>
+  </div>
+</mat-menu>

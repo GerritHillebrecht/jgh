@@ -1,0 +1,55 @@
+<section class="py-52 sm:py-20 px-4 sm:px-10">
+  <div class="mx-auto max-w-6xl w-full flex flex-col gap-16">
+    <h2 class="font-bold text-4xl sm:text-6xl max-w-4xl">
+      <span class="block mb-4 uppercase tracking-[0.2em] text-xs opacity-70">Feedback</span>
+      "Professionelle Home Stagerin, beeindruckende Transformationen, höchste
+      Zufriedenheit, empfehlenswert!"
+    </h2>
+    <div
+      class="quotes grid grid-cols-1 grid-rows-1 portrait:grid-rows-2 landscape:grid-cols-2 gap-8 items-center w-full max-w-full overflow-hidden"
+    >
+      <!-- avatars -->
+      <div class="avatars grid grid-cols-4 gap-4 w-full max-w-full">
+        <div
+          *ngFor="let recommendation of recommendations; let index = index"
+          [matTooltip]="recommendation.name"
+          class="relative cursor-pointer p-2 aspect-square rounded-full border-[2px] border-solid border-green-400 transition"
+          (click)="swiper.slideTo(index)"
+          [ngStyle]="{ 'border-color': recommendation.color }"
+          [ngClass]="{
+            'scale-75 hover:scale-90': selectedRecommendation() !== index
+          }"
+        >
+          <div
+            [ngStyle]="{ 'background-color': recommendation.color }"
+            class="relative aspect-square rounded-full bg-green-400 grid place-content-center overflow-hidden"
+          >
+            <img
+              class="w-full aspect-square absolute inset-0 object-contain"
+              [src]="recommendation.image"
+              [alt]="recommendation.name"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Current Quote -->
+      <div class="quote flex flex-col gap-8 text-xl">
+        <div #swiperContainer class="swiper swiper-recomm">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper flex items-center">
+            <!-- Slides -->
+            <div
+              class="swiper-slide"
+              *ngFor="let recommendation of recommendations; let index = index"
+            >
+              <p class="text-base">"{{ recommendation.body }}.”</p>
+              <p class="font-bold text-sm sm:text-base mt-2">
+                {{ recommendation.name }}, {{ recommendation.occupation }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

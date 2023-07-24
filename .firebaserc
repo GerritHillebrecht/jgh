@@ -20,9 +20,16 @@
           "stadtbistro-calendar"
         ]
       }
+    },
+    "chatera-gross": {
+      "hosting": {
+        "immobilien": [
+          "chatera-gross"
+        ]
+      }
     }
   },
   "projects": {
-    "default": "dasstadtbistro"
+    "default": "chatera-gross"
   }
 }
