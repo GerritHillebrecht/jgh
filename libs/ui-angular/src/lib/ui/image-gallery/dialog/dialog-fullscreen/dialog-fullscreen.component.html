@@ -1,5 +1,13 @@
 <!-- Slider main container -->
 <div #swiper class="swiper">
+  <div
+    class="absolute inset-x-0 h-14 top-0 w-full flex items-center px-4 z-10 bg-white/60 backdrop-blur backdrop-saturate-200"
+  >
+    <p class="text-stone-700">
+      Bild <span class="font-bold">{{ index() + 1 }}</span> von
+      <span class="font-bold">{{ images().length }}</span>
+    </p>
+  </div>
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper items-center">
     <!-- Slides -->
@@ -17,7 +25,7 @@
           />
           <img
             *ngIf="image.default"
-            class="max-w-screen max-h-screen object-contain"
+            class="max-w-screen max-h-[calc(100vh_-_2rem)] object-contain"
             [src]="image.src"
           />
         </ng-container>

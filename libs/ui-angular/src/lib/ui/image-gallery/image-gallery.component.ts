@@ -66,7 +66,7 @@ export class ImageGalleryComponent {
   protected fullsize(index: number): void {
     this.dialog.open(DialogFullscreenComponent, {
       data: { images: this.galleryImages(), index },
-      panelClass: 'fullscreen-dialog',
+      panelClass: 'max-h-[calc(100vh-2rem)]',
     });
   }
 }

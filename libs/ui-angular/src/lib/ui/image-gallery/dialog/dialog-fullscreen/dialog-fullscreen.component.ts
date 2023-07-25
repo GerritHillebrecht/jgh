@@ -11,10 +11,9 @@ import {
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
-  GalleryImage,
   GalleryImageComputed,
 } from '../../image-gallery.component';
-import Swiper, { EffectCards, EffectCube, Keyboard, Navigation, Pagination } from 'swiper';
+import Swiper, { Keyboard, Navigation, Pagination } from 'swiper';
 
 @Component({
   selector: 'jgh-dialog-fullscreen',
@@ -52,6 +51,11 @@ export class DialogFullscreenComponent implements AfterViewInit {
 
     this.swiper = new Swiper('.swiper', {
       initialSlide: this.index(),
+      on: {
+        slideChange: () => {
+          this.index.set(this.swiper.activeIndex);
+        },
+      },
       keyboard: {
         enabled: true,
         onlyInViewport: true,

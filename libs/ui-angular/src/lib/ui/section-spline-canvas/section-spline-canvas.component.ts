@@ -35,9 +35,6 @@ export class SectionSplineCanvasComponent implements AfterViewInit {
   @Input()
   render = true;
 
-  protected readonly phoneIcon = faPhone;
-  protected readonly mailIcon = faEnvelope;
-
   protected readonly canvasLoading = signal(true);
   private readonly zone = inject(NgZone);
 

@@ -1,40 +1,13 @@
-<section class="relative bg-[rgb(218,218,218)] h-screen sm:h-auto flex flex-col justify-end">
+<section
+  class="relative bg-[rgb(218,218,218)] h-screen sm:h-auto flex flex-col justify-end"
+>
   <div
-    class="absolute inset-0 top-24 sm:top-0 flex flex-col justify-start sm:justify-center z-10 pointer-events-none"
+    class="absolute inset-0 top-24 sm:top-0 flex flex-col justify-start sm:justify-center z-20"
   >
     <div
       class="mx-auto max-w-[2200px] w-full px-4 md:px-20 text-stone-800 flex flex-col gap-6"
     >
-      <p class="uppercase font-bold text-xs xl:text-sm tracking-[0.2em]">
-        Home staging
-      </p>
-      <h1
-        class="text-5xl sm:text-6xl lg:text-7xl 2xl:text-8xl font-black inline-block pointer-events-auto w-max"
-      >
-        Chatera Gross
-      </h1>
-      <p class="xl:w-5/12 xl:text-lg font-Merriweather">
-        Mit kreativen Rauminszenierungen und strategischer Platzierung von
-        Möbeln und Accessoires verleihen wir Ihrem Zuhause eine unwiderstehliche
-        Anziehungskraft, um potenzielle Käufer zu begeistern und den
-        Verkaufsprozess zu optimieren.
-      </p>
-      <div class="flex flex-row gap-2 items-center">
-        <button
-          class="pointer-events-auto rounded-full px-6 py-3 border border-current bg-stone-700 hover:bg-stone-50 text-stone-50 hover:text-stone-700 hover:border-stone-50 hover:shadow-lg w-max transition active:translate-y-1 active:scale-95 flex items-center gap-4"
-        >
-          <fa-icon [icon]="phoneIcon"></fa-icon>
-          <span class="text-sm sm:text-base"
-            >Termin <span class="hidden sm:inline">vereinbaren</span></span
-          >
-        </button>
-        <button
-          class="pointer-events-auto rounded-full px-6 py-3 border border-current hover:bg-stone-700 hover:text-stone-50 w-max transition active:translate-y-1 active:scale-95 flex items-center gap-4"
-        >
-          <fa-icon [icon]="mailIcon"></fa-icon>
-          <span class="text-sm sm:text-base">Schreiben</span>
-        </button>
-      </div>
+      <ng-content></ng-content>
     </div>
   </div>
   <div class="max-w-[2200px] mx-auto w-full">

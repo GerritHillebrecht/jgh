@@ -7,7 +7,7 @@ export const appRoutes: Route[] = [
     title: 'Chatera Gross - Home staging',
   },
   {
-    path: 'reference',
+    path: 'projects',
     loadComponent: () => import('./pages/reference/reference.component'),
     title: 'Chatera Gross - Referenzen'
   },
@@ -15,5 +15,9 @@ export const appRoutes: Route[] = [
     path: 'contact',
     loadComponent: () => import('./pages/contact/contact.component'),
     title: 'Chatera Gross - Kontakt'
+  },
+  {
+    path: 'me',
+    loadComponent: () => import('./pages/about/about.component'),
   }
 ];

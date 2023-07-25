@@ -11,6 +11,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ScrollingService } from '@jgh/ui-angular/service/scrolling/scrolling.service';
 import { Theme, ThemeService } from '../../../services/theme';
 import { RouterModule } from '@angular/router';
+import { ButtonComponent } from '../../button/button.component';
 
 export interface NavLink {
   path: string;
@@ -29,6 +30,7 @@ export interface NavLink {
     MatTabsModule,
     MatDividerModule,
     RouterModule,
+    ButtonComponent
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
@@ -42,7 +44,7 @@ export class NavbarComponent {
       label: 'Home',
     },
     {
-      path: 'reference',
+      path: 'projects',
       label: 'Referenzen',
     },
     {

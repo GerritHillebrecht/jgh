@@ -17,7 +17,9 @@
         "tsConfig": "apps/immobilien/tsconfig.app.json",
         "assets": [
           "apps/immobilien/src/favicon.ico",
-          "apps/immobilien/src/assets"
+          "apps/immobilien/src/assets",
+          "apps/immobilien/src/sitemap.xml",
+          "apps/immobilien/src/robots.txt"
         ],
         "styles": ["apps/immobilien/src/styles.scss"],
         "scripts": []

@@ -1,16 +1,28 @@
 <main>
-  <!-- <jgh-canvas [options]="canvasOptions">
-    <div class="absolute flex flex-col justify-between h-screen w-full max-w-[2000px] mx-auto px-4 sm:px-0 text-stone-50 bg-green-400">
-      <h2 class="text-7xl">Jendrik Wichels</h2>
-      <p>hello</p>
+  <jgh-section-spline-canvas [splineURL]="splineURL" [render]="production()">
+    <p class="uppercase font-bold text-xs xl:text-sm tracking-[0.2em]">
+      Home staging
+    </p>
+    <h1
+      class="text-5xl sm:text-6xl lg:text-7xl 2xl:text-8xl font-black inline-block pointer-events-auto w-max"
+    >
+      Chatera Gross
+    </h1>
+    <p class="xl:w-5/12 xl:text-lg font-Merriweather">
+      Mit kreativen Rauminszenierungen und strategischer Platzierung von Möbeln
+      und Accessoires verleihen wir Ihrem Zuhause eine unwiderstehliche
+      Anziehungskraft, um potenzielle Käufer zu begeistern und den
+      Verkaufsprozess zu optimieren.
+    </p>
+    <div class="flex flex-row gap-2 items-center">
+      <im-button [icon]="phoneIcon" size="large" [cta]="true">
+        Termin <span class="hidden sm:inline">vereinbaren</span>
+      </im-button>
     </div>
-  </jgh-canvas> -->
-  <jgh-section-spline-canvas
-    [splineURL]="splineURL"
-    [render]="true"
-  ></jgh-section-spline-canvas>
+  </jgh-section-spline-canvas>
+  <im-section-stats></im-section-stats>
 
-  <jgh-image-info-grid [infoBoxes]="infoBoxes">
+  <jgh-image-info-grid [infoBoxes]="infoBoxes()">
     <h2 class="text-5xl sm:text-6xl mb-36 max-w-2xl">
       In drei Schritten zur perfekten Immobilie
     </h2>
