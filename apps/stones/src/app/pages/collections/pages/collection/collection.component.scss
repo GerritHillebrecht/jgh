@@ -1,0 +1,35 @@
+.hide {
+    opacity: 0;
+    transform: translateY(10%);
+  
+    img {
+      transform: scale(140%);
+    }
+  }
+  
+  .glow {
+    animation: glow 5s ease-in-out infinite both;
+  }
+  
+  @keyframes glow {
+    from {
+      filter: saturate(1) brightness(1);
+    }
+  
+    15% {
+      filter: saturate(1.9) brightness(1.2);
+    }
+  
+    30% {
+      filter: saturate(1) brightness(1);
+    }
+  
+    45% {
+      filter: saturate(1.9) brightness(1.2);
+    }
+  
+    60% {
+      filter: saturate(1) brightness(1);
+    }
+  }
+  

@@ -1,0 +1,36 @@
+<section class="py-36 px-4 sm:px-24">
+  <div
+    class="w-full max-w-[2200px] mx-auto grid sm:grid-cols-[max-content,auto] gap-4 gap-y-10 sm:gap-10"
+  >
+    <div>
+      <h2 class="text-4xl font-PlayfairDisplay">Get Inspired.</h2>
+      <p class="max-w-xs my-4">
+        From design to lifestyle, everything you need to make life beautiful.
+      </p>
+      <im-button [routerLink]="['/', 'preview', 'blog']"> Zum Blog </im-button>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-5">
+      <a
+        #post
+        [routerLink]="['/', 'preview', 'blog', post.attributes.slug]"
+        *ngFor="let post of blogPosts(); let index = index"
+        class="transition-all duration-500 ease-out"
+        [ngStyle]="{ 'transition-delay': index * 0.15 + 's' }"
+      >
+        <figure class="aspect-[9/12] relative">
+          <picture>
+            <img
+              [src]="
+                post.attributes.Vorschaubild.data.attributes.formats.small.url
+              "
+              class="w-full h-full object-cover absolute inset-0 image-hover-effect"
+            />
+          </picture>
+        </figure>
+        <p class="text-center text-sm mt-4 line-clamp-2 align-middle">
+          {{ post.attributes.Titel }}
+        </p>
+      </a>
+    </div>
+  </div>
+</section>

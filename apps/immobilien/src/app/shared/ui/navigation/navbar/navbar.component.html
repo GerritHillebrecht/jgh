@@ -9,6 +9,7 @@
   <div class="hidden sm:flex absolute top-full inset-x-0 justify-end px-4 py-4">
     <im-button
       [cta]="true"
+      [routerLink]="['/preview/contact']"
       class="transition"
       [ngClass]="{
         'opacity-0 -translate-y-full': !scrolled(),
@@ -26,13 +27,12 @@
     </button>
   </div>
   <!-- <img src="assets/images/logo/logo-chatera-gross-v2-transparent.png" class="h-8 sm:h-9"> -->
+  <!-- <div>
+    <h2 [routerLink]="['/']" class="text-3xl font-Comforter">Khatera Gross</h2>
+  </div> -->
   <figure [routerLink]="['/']" class="cursor-pointer">
     <picture>
-      <img
-        src="assets/images/logo/logo.svg"
-        class="h-11 dark:invert"
-        
-      />
+      <img src="assets/images/logo/logo 3.svg" class="h-6 dark:invert" />
     </picture>
   </figure>
 
@@ -47,7 +47,10 @@
         [active]="rla.isActive"
         #rla="routerLinkActive"
       >
-        <span class="text-stone-700 dark:text-stone-50">{{ link.label }} </span>
+        <span class="text-stone-700 dark:text-stone-50">{{ link.label }}</span>
+      </a>
+      <a mat-tab-link [matMenuTriggerFor]="dropdown" routerLinkActive>
+        <span class="text-stone-700 dark:text-stone-50">Services</span>
       </a>
     </nav>
     <mat-tab-nav-panel #tabPanel class="uncolored"></mat-tab-nav-panel>
@@ -100,5 +103,16 @@
       <mat-icon class="material-icons-outlined">sensors</mat-icon>
       <span class="">Automatisch</span>
     </div>
+  </div>
+</mat-menu>
+
+<mat-menu #dropdown="matMenu">
+  <div mat-menu-item class="flex flex-row items-center gap-2">
+    <mat-icon class="material-icons-outlined">real_estate_agent</mat-icon>
+    <span>Home Staging</span>
+  </div>
+  <div mat-menu-item class="flex flex-row items-center gap-2">
+    <mat-icon class="material-icons-outlined">cottage</mat-icon>
+    <span>Home Preparation</span>
   </div>
 </mat-menu>

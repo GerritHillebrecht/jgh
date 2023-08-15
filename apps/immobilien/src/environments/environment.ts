@@ -1,4 +1,5 @@
 export const environment = {
+  backend_server: 'https://admin.chatera-gross.de/api',
   production: true,
   firebase: {
     projectId: 'chatera-gross',
@@ -8,4 +9,5 @@ export const environment = {
     authDomain: 'chatera-gross.firebaseapp.com',
     messagingSenderId: '629224315478',
     measurementId: 'G-QDKH73HBT3',
-  },};
+  },
+};

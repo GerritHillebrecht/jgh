@@ -1,28 +1,119 @@
-<section class="py-36">
-  <div class="max-w-7xl mx-auto w-full">
-    <div class="flex flex-col items-center gap-4">
-      <figure>
-        <picture>
-          <img src="assets/images/logo/logo.svg" class="dark:invert h-11" />
-        </picture>
-      </figure>
-      <h2 class="text-5xl">Contact out friendly team</h2>
-      <p class="text-sm opacity-100">Let us know how we can help.</p>
+<section class="pt-16">
+  <div class="mx-auto max-w-7xl">
+    <div class="grid grid-cols-2">
+      <div class="flex flex-col justify-center">
+        <h1 class="text-4xl xl:text-5xl 3xl:text-6xl font-Americana">
+          Khatera Gross
+        </h1>
+        <p class="my-4 max-w-xl opacity-70 text-sm">
+          Ich bin Khatera, eine leidenschaftliche Home Stagerin mit einem
+          scharfen Auge für Design. Mein Ziel ist es, Räume zum Leben zu
+          erwecken und Immobilien optimal zu präsentieren, um potenzielle Käufer
+          und Bewohner zu begeistern.
+        </p>
+        <im-button [routerLink]="['/', 'preview', 'contact']">Kontaktiere mich</im-button>
+      </div>
+      <div class="flex justify-center items-center relative">
+        <figure>
+          <picture>
+            <img
+              src="assets/images/about/me.jpg"
+              alt="Khatera Gross"
+              class="h-[calc(100vh_-_4rem)] mask mask-hexagon"
+            />
+          </picture>
+        </figure>
+      </div>
     </div>
-
-    <div class="grid grid-cols-4 gap-4 mt-16">
-      <div
-        class="rounded-2xl border border-stone-50 dark:border-stone-700 aspect-square shadow-md"
-      ></div>
-      <div
-        class="rounded-2xl border border-stone-50 dark:border-stone-700 aspect-square shadow-md"
-      ></div>
-      <div
-        class="rounded-2xl border border-stone-50 dark:border-stone-700 aspect-square shadow-md"
-      ></div>
-      <div
-        class="rounded-2xl border border-stone-50 dark:border-stone-700 aspect-square shadow-md"
-      ></div>
+    <div class="flex items-center text-center flex-col my-16">
+      <p class="specific-headline-addon">Über</p>
+      <h2 class="text-4xl font-Americana my-4">Kathera Gross Home Staging</h2>
+      <span class="max-w-2xl text-sm opacity-70">
+        Von der Auswahl der perfekten Farbpalette bis zur kunstvollen Anordnung
+        von Möbeln schaffe ich Räume, die Emotionen wecken und bleibende
+        Eindrücke hinterlassen. Wenn Sie Ihr Zuhause für den Verkauf oder die
+        persönliche Erneuerung inszenieren möchten, stehe ich Ihnen mit meiner
+        Kreativität und Expertise zur Seite.
+      </span>
     </div>
+    <jgh-section-split-image-content image="assets/images/about/about_001.jpg">
+      <div>
+        <span class="specific-headline-addon">Wer bin ich</span>
+        <p class="mt-2">
+          Ich bin eine leidenschaftliche Home Stagerin mit einem Auge für Design
+          und eine Hingabe für die Schaffung atemberaubender Wohnräume. Mit
+          jahrelanger Erfahrung in der Immobilienbranche und einer tiefen Liebe
+          zum Gestalten, helfe ich Ihnen dabei, das volle Potenzial Ihrer
+          Immobilie auszuschöpfen.
+        </p>
+      </div>
+    </jgh-section-split-image-content>
+    <jgh-section-split-image-content
+      [reverse]="true"
+      image="assets/images/about/about_003.jpg"
+    >
+      <div>
+        <span class="specific-headline-addon">Wo komme ich her</span>
+        <p class="mt-2">
+          Meine Reise im Bereich Home Staging begann mit der Erkenntnis, dass
+          die Präsentation einer Immobilie einen entscheidenden Einfluss auf den
+          Verkaufserfolg hat. Ich glaube fest daran, dass ein gut inszeniertes
+          Zuhause nicht nur die Vorstellungskraft der potenziellen Käufer
+          beflügelt, sondern auch eine Verbindung schafft, die Emotionen weckt
+          und einen bleibenden Eindruck hinterlässt.
+        </p>
+      </div>
+    </jgh-section-split-image-content>
+    <jgh-section-split-image-content image="assets/images/about/about_002.jpg">
+      <div>
+        <span class="specific-headline-addon">Wie ich arbeite</span>
+        <p class="mt-2">
+          Meine Herangehensweise an jedes Projekt ist geprägt von Kreativität,
+          Detailgenauigkeit und der Fähigkeit, die individuelle Persönlichkeit
+          jedes Hauses zu erfassen. Ich arbeite eng mit meinen Kunden zusammen,
+          um ihre Visionen zu verstehen und gleichzeitig professionelle
+          Einblicke anzubieten, wie man Räume optimal präsentiert. Von der
+          Auswahl der richtigen Farbpalette bis hin zur geschmackvollen
+          Anordnung von Möbeln und Dekorationen - ich sorge dafür, dass jeder
+          Raum seine beste Version zeigt.
+        </p>
+      </div>
+    </jgh-section-split-image-content>
+    <jgh-section-split-image-content
+      [reverse]="true"
+      image="assets/images/about/about_004.jpg"
+    >
+      <div>
+        <span class="specific-headline-addon">Personality</span>
+        <p class="mt-2">
+          Was mich von anderen Home Stagern unterscheidet, ist meine Hingabe,
+          nicht nur schöne Räume zu schaffen, sondern auch eine angenehme
+          Zusammenarbeit zu bieten. Ich glaube an offene Kommunikation,
+          Transparenz und das Eingehen auf individuelle Bedürfnisse. Ihre
+          Zufriedenheit ist mein oberstes Ziel, und ich arbeite hart daran,
+          Ergebnisse zu liefern, die Ihre Erwartungen übertreffen.
+        </p>
+      </div>
+    </jgh-section-split-image-content>
+    <jgh-section-split-image-content image="assets/images/about/about_005.jpg">
+      <div>
+        <span class="specific-headline-addon">Willkommen</span>
+        <p class="mt-2">
+          Ich lade Sie herzlich dazu ein, sich einige meiner abgeschlossenen
+          Projekte anzusehen, um einen Einblick in meine Arbeit zu erhalten.
+          Wenn Sie bereit sind, Ihr Zuhause für den Verkauf oder einfach für
+          eine erfrischende Veränderung zu inszenieren, stehe ich Ihnen gerne
+          zur Seite. Kontaktieren Sie mich, um mehr über meine Dienstleistungen
+          zu erfahren und wie ich Ihnen helfen kann, das Beste aus Ihrer
+          Immobilie herauszuholen.
+        </p>
+      </div>
+    </jgh-section-split-image-content>
+    <jgh-section-split-image-content
+      [reverse]="true"
+      image="assets/images/about/about_006.jpg"
+    >
+      <jgh-blockquote [blockquote]="quote()"></jgh-blockquote>
+    </jgh-section-split-image-content>
   </div>
 </section>

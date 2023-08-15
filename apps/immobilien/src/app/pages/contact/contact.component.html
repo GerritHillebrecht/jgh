@@ -1,3 +1,180 @@
 <section class="py-36">
-    
+  <div class="max-w-7xl mx-auto w-full px-4">
+    <div class="flex flex-col items-center gap-6 text-center">
+      <figure>
+        <picture>
+          <img src="assets/images/logo/logo 3.svg" class="dark:invert h-42 mb-0" />
+        </picture>
+      </figure>
+      <h2 class="text-5xl">Contact our friendly team</h2>
+      <p class="text-sm opacity-100">Let us know how we can help.</p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 my-16">
+      <a
+        *ngFor="let item of contactBlockData(); let index = index"
+        [href]="item.path"
+        target="_blank"
+        class="rounded-2xl border hover:bg-stone-900 hover:text-stone-50 hover:dark:text-stone-700 transition hover:dark:bg-stone-50 cursor-pointer bg-stone-50 dark:bg-stone-900 border-stone-200 dark:border-stone-500 aspect-square shadow-md flex flex-col justify-between p-5"
+      >
+        <div
+          class="rounded-lg border border-stone-200 dark:border-stone-500 aspect-square w-10 flex items-center justify-center"
+        >
+          {{ index + 1 }}.
+        </div>
+        <div class="content">
+          <h3 class="text-lg">{{ item.title }}</h3>
+          <p class="text-sm mt-2 mb-4">{{ item.description }}</p>
+          <span class="text-xs font-bold underline">
+            {{ item.mail }}
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact-form" class="py-12 sm:py-36 bg-stone-50 text-stone-700">
+  <div class="mx-auto max-w-5xl w-full flex flex-col gap-8">
+    <p class="specific-headline-addon px-4">Für alle Arten von Anfragen</p>
+    <h2 class="text-4xl sm:text-5xl px-4">Wir freuen uns von dir zu hören</h2>
+    <mat-stepper
+      [linear]="false"
+      #stepper
+      class="bg-stone-50"
+      [orientation]="isLandscape() ? 'horizontal' : 'vertical'"
+      [selectedIndex]="0"
+    >
+      <mat-step label="Meine Daten" [stepControl]="personalData">
+        <form [formGroup]="personalData" class="grid sm:grid-cols-2 gap-8">
+          <p
+            class="sm:col-span-2 uppercase text-xs font-bold tracking-[0.2em] mt-8"
+          >
+            Persönliche Daten
+          </p>
+          <mat-form-field floatLabel="always">
+            <mat-label>Vorname</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="Max"
+              formControlName="firstname"
+              autocomplete="given-name"
+            />
+            <mat-hint>Dein Vorname</mat-hint>
+          </mat-form-field>
+          <mat-form-field floatLabel="always">
+            <mat-label>Nachname</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="Mustermann"
+              formControlName="lastname"
+              autocomplete="family-name"
+            />
+            <mat-hint>Dein Nachname</mat-hint>
+          </mat-form-field>
+          <p
+            class="sm:col-span-2 uppercase text-xs font-bold tracking-[0.2em] mt-8"
+          >
+            Kontaktdaten
+          </p>
+          <mat-form-field floatLabel="always">
+            <mat-label>E-Mail Adresse</mat-label>
+            <input
+              matInput
+              placeholder="max-mustermann@chatera-gross.de"
+              type="email"
+              formControlName="email"
+              autocomplete="email"
+              email="true"
+            />
+            <mat-icon matSuffix>mail</mat-icon>
+            <mat-hint>Deine E-Mail Adresse</mat-hint>
+          </mat-form-field>
+          <mat-form-field floatLabel="always">
+            <mat-label>Telefonnummer</mat-label>
+            <input
+              matInput
+              type="tel"
+              placeholder="Optional: (+49) 123 456 789"
+              formControlName="phone"
+              autocomplete="tel"
+            />
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-hint>Deine Telefonnummer</mat-hint>
+          </mat-form-field>
+        </form>
+        <div class="mt-4 flex justify-end">
+          <im-button
+            [cta]="true"
+            (click)="stepper.next()"
+            [disabled]="personalData.invalid"
+          >
+            Weiter
+          </im-button>
+        </div>
+      </mat-step>
+      <mat-step label="Anschreiben" [stepControl]="contactData">
+        <form
+          [formGroup]="contactData"
+          class="grid sm:grid-cols-[4fr,1fr] gap-8"
+        >
+          <p
+            class="sm:col-span-2 uppercase text-xs font-bold tracking-[0.2em] mt-8 sm:mb-4"
+          >
+            Deine Nachricht
+          </p>
+          <mat-form-field floatLabel="always">
+            <mat-label>Was möchtest du uns mitteilen?</mat-label>
+            <textarea
+              formControlName="message"
+              matInput
+              placeholder="Deine Nachricht"
+              rows="8"
+            ></textarea>
+          </mat-form-field>
+          <span class="italic text-sm hidden sm:block">
+            Schreibe uns eine Nachricht, wir werden uns schnellstmöglich bei dir
+            melden. Wir freuen uns auf deine Nachricht!
+          </span>
+          <div class="flex justify-end gap-1">
+            <im-button
+              [cta]="true"
+              (click)="stepper.previous()"
+              class="mr-4"
+              [showArrow]="false"
+              [icon]="backArrow"
+            >
+              Zurück
+            </im-button>
+            <im-button
+              [cta]="true"
+              (click)="stepper.next()"
+              class="mr-4"
+              [disabled]="contactData.invalid"
+            >
+              Weiter
+            </im-button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step label="Abschicken"></mat-step>
+    </mat-stepper>
+  </div>
+</section>
+<!-- <section class="pb-36 pt-48">
+  <div class="mx-auto max-w-5xl w-full">
+    <p class="text-4xl sm:text-5xl">Rufe uns gerne an unter</p>
+    <p class="mt-4 italic">(+49) 123 45 6789</p>
+  </div>
+</section> -->
+
+<section class="py-20">
+  <jgh-accordion-section
+    [options]="faqData"
+    [title]="title"
+    [subtitle]="subtitle"
+    [accordionElements]="accordionElements"
+  ></jgh-accordion-section>
 </section>

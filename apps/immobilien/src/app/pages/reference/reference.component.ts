@@ -1,76 +1,69 @@
-import { Component, OnInit, computed, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {
-  ImageGalleryComponent,
-  GalleryImage,
-} from '@jgh/ui-angular/ui/image-gallery';
+  Component,
+  ElementRef,
+  QueryList,
+  ViewChildren,
+  inject,
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ImageGalleryComponent } from '@jgh/ui-angular/ui/image-gallery';
 
-import { ref, listAll, Storage } from '@angular/fire/storage';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { toSignal } from '@angular/core/rxjs-interop';
-
-interface Project {
-  title: string;
-  description: string;
-  images: GalleryImage[];
-}
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { StrapiImage, StrapiService } from '@jgh/ui-angular/data-access';
+import { ObserverService } from '@jgh/ui-angular/service/observer';
+import { RouterModule } from '@angular/router';
+import { map, tap } from 'rxjs';
+import { ProjectsService } from '../../shared/data-access/projects';
 
 @Component({
   selector: 'im-reference',
   standalone: true,
-  imports: [CommonModule, ImageGalleryComponent],
+  imports: [
+    CommonModule,
+    ImageGalleryComponent,
+    MatProgressSpinnerModule,
+    RouterModule,
+  ],
   templateUrl: './reference.component.html',
   styleUrls: ['./reference.component.scss'],
 })
 export default class ReferenceComponent {
-  private readonly firebaseStorage = inject(Storage);
-  private readonly firestore = inject(Firestore);
-  protected images = signal<GalleryImage[]>([]);
+  @ViewChildren('project')
+  projectsRef?: QueryList<ElementRef<HTMLAnchorElement>>;
 
-  private readonly collectionRef = collection(this.firestore, 'projects');
-  protected readonly data = toSignal(collectionData(this.collectionRef));
-  protected readonly projects = computed(async () => {
-    const projects = this.data();
+  private readonly projectService = inject(ProjectsService);
 
-    // Guard Clause
-    if (!projects) return [];
+  private readonly observer = inject(ObserverService).observer;
+  private readonly strapi = inject(StrapiService);
 
-    return await Promise.all(
-      projects.map(async (project) => {
-        const listRef = ref(
-          this.firebaseStorage,
-          `images/projects/${project['storage']}`
-        );
-
-        const imagelist = await listAll(listRef);
-        const items = imagelist.items;
-        const imagenames = new Set(
-          items.map((item) => {
-            const name = item.name
-              .replace('_1200x1200', '')
-              .replace('_800x800', '')
-              .split('.');
-            name.pop();
-            return name.join('.');
-          })
-        );
-
-        const images = Array.from(imagenames).map(
-          (filename) =>
-            ({
-              filename,
-              path: `https://storage.googleapis.com/chatera-gross.appspot.com/images/projects/${project['storage']}`,
-              filetypes: ['webp', 'avif', 'jpg'],
-              defaulttype: 'jpg',
-            } as GalleryImage)
-        );
-
-        return {
-          title: project['title'],
-          images,
-          description: project['description'],
-        } as Project;
+  protected readonly references = toSignal(
+    this.projectService.projects().pipe(
+      tap(() => {
+        setTimeout(() => {
+          this.projectsRef?.forEach((project) => {
+            this.observer.observe(project.nativeElement);
+          });
+        }, 1);
       })
-    );
-  });
+    )
+  );
+
+  // protected readonly references = toSignal(
+  //   this.strapi
+  //     .fetchData<Reference>({
+  //       path: 'referenzens',
+  //       query: '?populate=images&sort[0]=publishedAt:desc',
+  //     })
+  //     .pipe(
+  //       map((references) => references.data),
+  //       tap(() => {
+  //         setTimeout(() => {
+  //           this.projectsRef?.forEach((project) => {
+  //             this.observer.observe(project.nativeElement);
+  //           });
+  //         }, 1);
+  //       })
+  //     )
+  // );
 }

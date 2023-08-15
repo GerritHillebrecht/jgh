@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  QueryList,
+  ViewChildren,
+  inject,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import Swiper, {
   Controller,
@@ -7,6 +15,7 @@ import Swiper, {
   Navigation,
   Pagination,
 } from 'swiper';
+import { ObserverService } from '@jgh/ui-angular/service/observer';
 
 @Component({
   selector: 'im-section-areas-of-work',
@@ -16,6 +25,10 @@ import Swiper, {
   styleUrls: ['./section-areas-of-work.component.scss'],
 })
 export class SectionAreasOfWorkComponent implements AfterViewInit {
+  @ViewChildren('avatar')
+  avatars?: QueryList<ElementRef<HTMLDivElement>>;
+  private readonly observer = inject(ObserverService).observer;
+
   protected currentSlide = signal(0);
 
   protected readonly slides = signal<
@@ -25,21 +38,6 @@ export class SectionAreasOfWorkComponent implements AfterViewInit {
       text: string;
     }[]
   >([
-    // {
-    //   image: 'assets/images/landing/hero/hero_living_room.jpg',
-    //   title: 'Wohnzimmer',
-    //   text: 'Mit raffiniertem Home Staging kreiere ich bezaubernde Wohnzimmerwelten, die Herzen höher schlagen lassen. Maßgeschneiderte Möbelanordnungen, harmonische Farbpaletten und exklusive Details versetzen Käufer in Begeisterung und steigern den Immobilienwert.',
-    // },
-    // {
-    //   image: 'assets/images/landing/hero/hero_living_room.jpg',
-    //   title: 'Wohnzimmer',
-    //   text: 'Mit raffiniertem Home Staging kreiere ich bezaubernde Wohnzimmerwelten, die Herzen höher schlagen lassen. Maßgeschneiderte Möbelanordnungen, harmonische Farbpaletten und exklusive Details versetzen Käufer in Begeisterung und steigern den Immobilienwert.',
-    // },
-    // {
-    //   image: 'assets/images/landing/hero/hero_living_room.jpg',
-    //   title: 'Wohnzimmer',
-    //   text: 'Mit raffiniertem Home Staging kreiere ich bezaubernde Wohnzimmerwelten, die Herzen höher schlagen lassen. Maßgeschneiderte Möbelanordnungen, harmonische Farbpaletten und exklusive Details versetzen Käufer in Begeisterung und steigern den Immobilienwert.',
-    // },
     {
       image: 'assets/images/landing/hero/hero_living_room.jpg',
       title: 'Wohnzimmer',
@@ -114,6 +112,12 @@ export class SectionAreasOfWorkComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.swiper.init();
     this.swiperText.init();
+
+    if (this.avatars) {
+      this.avatars.forEach((avatar) => {
+        this.observer.observe(avatar.nativeElement);
+      });
+    }
   }
 
   protected selectIndex(index: number): void {

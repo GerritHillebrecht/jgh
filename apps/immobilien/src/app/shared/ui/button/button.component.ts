@@ -25,4 +25,10 @@ export class ButtonComponent {
 
   @Input()
   cta = false;
+
+  @Input()
+  disabled = false;
+
+  @Input()
+  showArrow = true;
 }

@@ -1,18 +1,28 @@
 <section
-  class="h-screen relative mt-[60px] text-stone-50"
+  class="h-screen relative mt-[60px] text-stone-50 flex items-center"
   *ngIf="slides() as slides"
 >
-  <div class="px-14 py-36 relative z-20 pointer-events-none">
-    <div class="flex flex-col gap-10 max-w-lg relative z-20 pointer-events-auto">
+  <div
+    class="max-w-7xl mx-auto w-full px-14 xl:px-0 py-36 relative z-20 pointer-events-none"
+  >
+    <div
+      class="flex flex-col gap-10 max-w-lg relative z-20 pointer-events-auto"
+    >
       <h2 class="sm:text-6xl">
         <span class="text-sm uppercase tracking-[0.2em] font-bold block mb-2">
-          Chatera Gross imagens
+          Khatera Gross imagens
         </span>
         {{ slides[currentSlide()].title }}
       </h2>
-      <div class="flex flex-row flex-wrap justify-start gap-x-4 sm:gap-x-12 gap-y-6">
+      <div
+        class="flex flex-row flex-wrap justify-start gap-x-4 sm:gap-x-12 gap-y-6"
+      >
         <div
-          class="flex flex-col gap-2 items-center cursor-pointer"
+          #avatar
+          class="flex flex-col gap-2 items-center cursor-pointer transition-all duration-500 ease-out"
+          [ngStyle]="{
+            'transition-delay': index * 0.1 + 's'
+          }"
           *ngFor="let slide of slides; let index = index"
           (click)="selectIndex(index)"
         >
@@ -39,7 +49,9 @@
         </div>
       </div>
       <div class="swiper swiper-text mx-0">
-        <div class="swiper-wrapper text-stone-50 text-sm sm:text-lg leading-relaxed">
+        <div
+          class="swiper-wrapper text-stone-50 text-sm sm:text-lg leading-relaxed"
+        >
           <div class="swiper-slide" *ngFor="let slide of slides">
             <p class="">
               {{ slide.text }}

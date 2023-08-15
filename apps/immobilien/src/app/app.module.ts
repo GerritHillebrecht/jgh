@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -23,13 +23,21 @@ import {
 import { provideMessaging, getMessaging } from '@angular/fire/messaging';
 import { providePerformance, getPerformance } from '@angular/fire/performance';
 import { provideStorage, getStorage } from '@angular/fire/storage';
+import { AuthGuardModule } from '@angular/fire/auth-guard';
 import { FooterComponent } from './shared/ui/footer/footer.component';
+import { registerLocaleData } from '@angular/common';
+import de from '@angular/common/locales/de';
+import { MarkdownModule } from 'ngx-markdown';
+import { HttpClientModule } from '@angular/common/http';
+
+registerLocaleData(de);
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes, {
       initialNavigation: 'enabledBlocking',
       scrollPositionRestoration: 'enabled',
@@ -44,11 +52,20 @@ import { FooterComponent } from './shared/ui/footer/footer.component';
       enableIndexedDbPersistence(firestore);
       return firestore;
     }),
+    MarkdownModule.forRoot(),
     provideMessaging(() => getMessaging()),
     providePerformance(() => getPerformance()),
     provideStorage(() => getStorage()),
+    AuthGuardModule,
   ],
-  providers: [ScreenTrackingService, UserTrackingService],
+  providers: [
+    ScreenTrackingService,
+    UserTrackingService,
+    {
+      provide: LOCALE_ID,
+      useValue: 'de',
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

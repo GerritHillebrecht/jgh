@@ -10,9 +10,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        '3xl': '2000px',
+      },
       fontFamily: {
         ReaderPro: ['ReaderPro', 'sans-serif'],
+        Americana: ['Americana', 'sans-serif'],
         Merriweather: ['Merriweather', 'serif'],
+        PlayfairDisplay: ['Playfair Display', 'serif'],
+        Comforter: ['Comforter', 'cursive'],
       },
     },
   },

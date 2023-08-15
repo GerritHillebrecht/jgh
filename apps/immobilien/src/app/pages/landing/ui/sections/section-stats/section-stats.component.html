@@ -1,6 +1,6 @@
 <section class="py-12 sm:py-36">
   <div
-    class="mx-auto max-w-7xl w-full relative grid grid-cols-[3fr,5fr] gap-16 px-4 items-center"
+    class="mx-auto max-w-7xl w-full relative grid sm:grid-cols-[3fr,5fr] gap-16 px-4 sm:px-16 xl:px-0 items-center"
   >
     <div class="grid place-items-center">
       <figure>
@@ -13,7 +13,7 @@
       </figure>
     </div>
     <div class="text-content flex flex-col gap-12 items-end">
-      <h2 class="text-4xl text-right leading-[1.55]">
+      <h2 class="text-2xl sm:text-4xl text-center sm:text-right leading-[1.55]">
         <span class="opacity-50">
           The key difference between ordinary and special,
         </span>
@@ -23,19 +23,23 @@
       </h2>
       <div class="flex flex-row gap-12 text-right">
         <div class="flex flex-col gap-2">
-          <p class="text-5xl">300+</p>
-          <span class="text-sm opacity-40">Successfull projects</span>
+          <p class="text-3xl sm:text-5xl">300+</p>
+          <span class="text-xs sm:text-sm opacity-40"
+            >Successfull projects</span
+          >
         </div>
         <div class="flex flex-col gap-2">
-          <p class="text-5xl">200+</p>
-          <span class="text-sm opacity-40">Successfull sales</span>
+          <p class="text-3xl sm:text-5xl">200+</p>
+          <span class="text-xs sm:text-sm opacity-40">Successfull sales</span>
         </div>
         <div class="flex flex-col gap-2">
-          <p class="text-5xl">1k</p>
-          <span class="text-sm opacity-40">Happy customers</span>
+          <p class="text-3xl sm:text-5xl">1k</p>
+          <span class="text-xs sm:text-sm opacity-40">Happy customers</span>
         </div>
       </div>
-      <im-button>About us</im-button>
+      <im-button [routerLink]="['/', 'preview', 'projects']"
+        >My Projects</im-button
+      >
     </div>
   </div>
 </section>

@@ -1,0 +1,92 @@
+<section class="py-36">
+  <!-- <ng-container *ngIf="blogPosts() as blogPosts">
+    <code>
+      <pre>{{ blogPosts | json }}</pre>
+    </code>
+  </ng-container> -->
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-0">
+    <mat-divider></mat-divider>
+    <div class="py-16 flex flex-col gap-6">
+      <div
+        class="rounded-3xl px-2 py-1 border border-stone-700 dark:border-stone-50 w-fit text-sm italic text-stone-700"
+      >
+        Design Journal
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold">
+        Inside Design: Stories and Interviews
+      </h1>
+      <p>
+        Subscribe for the latest trends, design software and releases, and
+        exclusive interviews with design leaders.
+      </p>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="grid sm:grid-cols-2 gap-16 mt-16">
+      <ng-container *ngFor="let post of blogPosts(); let index = index">
+        <div
+          class="blog-entry grid-rows-[max-content,auto] first-of-type:grid-rows-none first-of-type:sm:col-span-2 grid first-of-type:sm:grid-cols-2 gap-8 justify-start"
+        >
+          <figure
+            class="flex items-center justify-center cursor-pointer"
+            [routerLink]="['/', 'preview', 'blog', post.attributes.slug]"
+          >
+            <picture>
+              <img
+                [src]="
+                  post.attributes.Vorschaubild.data.attributes
+                    ? post.attributes.Vorschaubild.data.attributes.formats
+                        .medium.url
+                    : 'assets/images/blog/blog_001.jpg'
+                "
+                class="max-w-full aspect-video rounded-xl shadow-md object-cover"
+              />
+            </picture>
+          </figure>
+
+          <div class="grid justify-center">
+            <div class="content flex flex-col gap-4 justify-between">
+              <div class="combined flex flex-col gap-4">
+                <h2 class="text-3xl sm:text-4xl">
+                  {{ post.attributes.Titel }}
+                </h2>
+                <markdown
+                  class="text-justify"
+                  [data]="post.attributes.Vorschautext"
+                ></markdown>
+              </div>
+              <div class="flex flex-row gap-4 items-center">
+                <jgh-avatar
+                  image="https://images.unsplash.com/photo-1508186225823-0963cf9ab0de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
+                  [options]="avatarOptions"
+                ></jgh-avatar>
+                <div class="flex flex-col gap-[2px] text-sm">
+                  <p class="font-bold">Khatera Gross</p>
+                  <span>
+                    {{ post.attributes.publishedAt | date : 'shortDate' }}
+                  </span>
+                </div>
+                <div class="flex-grow flex items-center justify-end">
+                  <im-button
+                    [routerLink]="[
+                      '/',
+                      'preview',
+                      'blog',
+                      post.attributes.slug
+                    ]"
+                    routerLinkActive="router-link-active"
+                    >Weiterlesen</im-button
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <mat-divider
+          *ngIf="index % 2 === 0"
+          class="sm:col-span-2"
+        ></mat-divider>
+      </ng-container>
+    </div>
+  </div>
+</section>

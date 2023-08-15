@@ -1,0 +1,14 @@
+<section class="h-screen relative">
+  <div
+    class="absolute inset-0 w-full h-full after:content-[''] after:absolute after:inset-0 after:bg-stone-50/40 after:dark:bg-stone-900/40 after:pointer-events-none"
+  >
+    <ngx-view360 class="h-screen" [options]="options" />
+  </div>
+  <div class="absolute inset-0 flex items-center z-10 pointer-events-none">
+    <div
+      class="mx-auto max-w-7xl pointer-events-auto flex flex-col items-center"
+    >
+      <ng-content></ng-content>
+    </div>
+  </div>
+</section>

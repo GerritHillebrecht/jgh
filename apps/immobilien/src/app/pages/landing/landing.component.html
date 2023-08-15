@@ -1,25 +1,34 @@
 <main>
-  <jgh-section-spline-canvas [splineURL]="splineURL" [render]="production()">
-    <p class="uppercase font-bold text-xs xl:text-sm tracking-[0.2em]">
-      Home staging
-    </p>
-    <h1
-      class="text-5xl sm:text-6xl lg:text-7xl 2xl:text-8xl font-black inline-block pointer-events-auto w-max"
+  <im-section-marzipano>
+    <figure>
+      <picture>
+        <img src="assets/images/logo/logo 4.svg" class="h-52" />
+      </picture>
+    </figure>
+    <!-- <h1
+      class="text-5xl sm:text-6xl lg:text-7xl 2xl:text-8xl font-black inline-block pointer-events-auto w-max font-Americana"
     >
-      Chatera Gross
-    </h1>
-    <p class="xl:w-5/12 xl:text-lg font-Merriweather">
-      Mit kreativen Rauminszenierungen und strategischer Platzierung von Möbeln
-      und Accessoires verleihen wir Ihrem Zuhause eine unwiderstehliche
-      Anziehungskraft, um potenzielle Käufer zu begeistern und den
-      Verkaufsprozess zu optimieren.
+      Khatera Gross
+    </h1> -->
+
+    <p class="uppercase font-bold text-xs xl:text-sm tracking-[0.2em] my-8">
+      Professional Home staging
     </p>
+
     <div class="flex flex-row gap-2 items-center">
-      <im-button [icon]="phoneIcon" size="large" [cta]="true">
-        Termin <span class="hidden sm:inline">vereinbaren</span>
+      <im-button
+        [icon]="phoneIcon"
+        size="large"
+        [cta]="true"
+        [routerLink]="['/', 'preview', 'contact']"
+      >
+        Termin vereinbaren
       </im-button>
     </div>
-  </jgh-section-spline-canvas>
+  </im-section-marzipano>
+
+  <im-section-blog-preview></im-section-blog-preview>
+
   <im-section-stats></im-section-stats>
 
   <jgh-image-info-grid [infoBoxes]="infoBoxes()">
@@ -42,7 +51,8 @@
     <jgh-blockquote [blockquote]="quotes()[1]"></jgh-blockquote>
   </jgh-section-split-image-content>
 
-  <im-section-recommendations></im-section-recommendations>
+  <im-section-projects-preview></im-section-projects-preview>
+  <!-- <im-section-recommendations></im-section-recommendations> -->
 
   <jgh-section-split-image-content
     image="https://byonoy.com/site/assets/files/1346/byonoy_headquarter-1625.jpg"

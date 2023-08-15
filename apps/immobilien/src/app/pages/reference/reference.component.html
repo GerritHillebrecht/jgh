@@ -1,29 +1,57 @@
-<section class="py-36 px-4 sm:px-8 md:px16 lg:px-36">
+<section class="py-36 px-4 sm:px-8">
   <!-- <h2 class="text-5xl">Projekte</h2> -->
+  <div class="md:px-16 lg:px-36">
+    <p class="uppercase text-xs font-bold tracking-[0.2em]">
+      Unsere Referenzen
+    </p>
+    <p class="max-w-5xl my-8 text-4xl sm:text-5xl">
+      <span class="opacity-50">
+        Entdecken Sie unsere beeindruckenden Home Staging-Meisterwerke:
+      </span>
+      Verwandlungskunst für jede Immobilie. Eleganz, Stil und maximale
+      Attraktivität vereint in jedem Projekt.
+      <span class="opacity-50">
+        Lassen Sie sich von unseren Referenzen inspirieren!
+      </span>
+    </p>
+  </div>
 
-  <ng-container *ngIf="projects() | async as projects; else loading">
-    <div class="flex flex-row gap-4 mt-6">
-      <div class="flex flex-col gap-2">
-        <p class="text-7xl">{{ projects.length }}</p>
-        <span class="text-sm opacity-40">Veröff. Projekte</span>
-      </div>
-    </div>
-    <div
-      *ngFor="let project of projects"
-      class="py-20 flex flex-col gap-10 max-w-7xl mx-auto"
+  <!-- <pre>
+    <code>
+      {{ references() | json }}
+    </code>
+  </pre> -->
+
+  <div class="mx-auto 3xl:max-w-[2200px] grid sm:grid-cols-3 gap-8 mt-20">
+    <a
+      #project
+      *ngFor="let referece of references(); let index = index"
+      class="flex flex-col gap-4 cursor-pointer transition-all duration-700 ease-in-out"
+      [routerLink]="['/', 'preview', 'projects', referece.attributes.slug]"
     >
-      <h2 class="text-4xl sm:text-5xl md:text-6xl">{{ project.title }}</h2>
-
-      <p class="max-w-2xl">{{ project.description }}</p>
-
-      <jgh-image-gallery
-        [size]="800"
-        [images]="project.images"
-      ></jgh-image-gallery>
-    </div>
-  </ng-container>
+      <figure>
+        <picture>
+          <img
+            class="aspect-[14/9] object-cover image-hover-effect"
+            [src]="
+              referece.attributes.Bilder.data[0].attributes.formats.medium.url
+            "
+          />
+        </picture>
+      </figure>
+      <p class="text-xs uppercase tracking-[0.2em]">
+        {{ referece.attributes.Datum | date : 'MMMM YYYY' }}
+      </p>
+      <h2 class="text-3xl font-PlayfairDisplay leading-none">
+        {{ referece.attributes.Titel }}
+      </h2>
+    </a>
+  </div>
 </section>
 
 <ng-template #loading>
-  <div class="fixed inset-0 flex items-center justify-center">LOADING</div>
+  <div class="fixed inset-0 flex flex-col gap-4 items-center justify-center">
+    <mat-spinner class="jgh-white-spinner"></mat-spinner>
+    LOADING
+  </div>
 </ng-template>

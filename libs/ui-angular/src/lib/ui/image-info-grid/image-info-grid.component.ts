@@ -1,5 +1,15 @@
-import { Component, Input, inject } from '@angular/core';
+/* eslint-disable @nx/enforce-module-boundaries */
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  QueryList,
+  ViewChildren,
+  inject,
+} from '@angular/core';
 import { CommonModule, ViewportScroller } from '@angular/common';
+import { ObserverService } from '@jgh/ui-angular/service/observer';
 
 export interface InfoBox {
   title: string;
@@ -16,8 +26,13 @@ export interface InfoBox {
   templateUrl: './image-info-grid.component.html',
   styleUrls: ['./image-info-grid.component.scss'],
 })
-export class ImageInfoGridComponent {
-  @Input()
+export class ImageInfoGridComponent implements AfterViewInit {
+  @ViewChildren('infobox')
+  infoBoxElements?: QueryList<ElementRef<HTMLAnchorElement>>;
+
+  private readonly observer = inject(ObserverService).observer;
+
+  @Input({ required: true })
   infoBoxes: InfoBox[] = [
     {
       title: 'Absorbance 96',
@@ -44,6 +59,14 @@ export class ImageInfoGridComponent {
   protected scrollTo(infoBox: InfoBox) {
     if (infoBox.anchor) {
       this.viewportScroller.scrollToAnchor(infoBox.anchor);
+    }
+  }
+
+  ngAfterViewInit() {
+    if (this.infoBoxElements) {
+      this.infoBoxElements.forEach((element) => {
+        this.observer.observe(element.nativeElement);
+      });
     }
   }
 }

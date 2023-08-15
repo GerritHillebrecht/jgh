@@ -1,1 +1,1 @@
-export { AvatarComponent, AvatarSettings } from './avatar.component';
+export { AvatarComponent, AvatarOptions } from './avatar.component';

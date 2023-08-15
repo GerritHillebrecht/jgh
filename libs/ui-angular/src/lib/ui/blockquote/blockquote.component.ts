@@ -1,6 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+/**
+ * Blockquote component
+ * @quote
+ * @author
+ * @position
+ */
 export interface BlockQuote {
   quote: string;
   author: string;

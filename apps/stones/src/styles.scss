@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* You can add global styles to this file, and also import other style files */
+@import './assets/fonts/Americana Font Regular/Americana.font.scss';
+
+.hover-effect-saturate {
+  @apply hover:saturate-200 hover:brightness-125 transition-[filter] duration-300 ease-in-out;
+}
+
+.specific-headline-addon {
+  @apply text-xs 3xl:text-sm font-bold tracking-[0.2em] uppercase;
+}

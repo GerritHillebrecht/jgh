@@ -1,0 +1,36 @@
+<!-- <code>
+  <pre>
+    {{ product() | json }}
+  </pre>
+</code> -->
+
+<section class="py-10" *ngIf="product() as product">
+  <div class="mx-auto max-w-7xl md:px-8 markdown">
+    <h1 class="text-4xl">{{ product.attributes.title }}</h1>
+    <div class="my-8">
+      <markdown [data]="product.attributes.description" class="my-8"></markdown>
+    </div>
+    <div
+      class="grid grid-cols-4 gap-8"
+      *ngIf="product.attributes.images as images"
+    >
+      <div *ngFor="let image of images.data">
+        <figure>
+          <picture>
+            <img
+              class="aspect-[0.75] object-cover"
+              [src]="
+                'http://localhost:1337' + image.attributes.formats.medium.url
+              "
+            />
+          </picture>
+        </figure>
+        <!-- <code>
+          <pre>
+            {{ image | json }}
+          </pre>
+        </code> -->
+      </div>
+    </div>
+  </div>
+</section>

@@ -4,8 +4,10 @@
     class="mx-auto max-w-[1300px] sm:px-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-[60px]"
   >
     <a
-      class="group info-box flex flex-col gap-4 cursor-pointer"
-      *ngFor="let infobox of infoBoxes"
+      #infobox
+      class="group info-box flex flex-col gap-4 cursor-pointer transition-all duration-700"
+      *ngFor="let infobox of infoBoxes; let index = index"
+      [ngStyle]="{ 'transition-delay': index * 0.25 + 's' }"
       (click)="scrollTo(infobox)"
     >
       <picture>

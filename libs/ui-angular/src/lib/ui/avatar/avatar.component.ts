@@ -12,7 +12,7 @@ import {
   IconDefinition,
   faPizzaSlice,
 } from '@fortawesome/free-solid-svg-icons';
-export interface AvatarSettings {
+interface AvatarSettings {
   size: string;
   borderColor: string;
   borderWidth: string;
@@ -20,9 +20,15 @@ export interface AvatarSettings {
   borderStyle: string;
   backgroundColor: string;
   image?: string;
-  fontAwesomeIcon?: IconDefinition;
   imageSize: string;
+  imagePosition?: 'cover' | 'contain';
+  imageOpacity: number;
+  fontAwesomeIcon?: IconDefinition;
   gradientClass: string;
+}
+
+export interface AvatarOptions extends Partial<Omit<AvatarSettings, 'image'>> {
+  asd?: string;
 }
 
 @Component({
@@ -45,13 +51,17 @@ export class AvatarComponent implements AfterViewInit {
     borderRadius: '50%',
     borderStyle: 'solid',
     backgroundColor: '#fff',
-    // image: 'assets/images/landing/icons/vegan-inner.png',
     imageSize: '50%',
+    imagePosition: 'cover',
+    imageOpacity: 1,
     gradientClass: 'conic-gradient',
   };
 
+  @Input()
+  image?: string;
+
   @Input() set options(options: Partial<AvatarSettings>) {
-    this._options = { ...this._options, ...options };
+    this._options = { ...this._options, ...options, image: this.image };
   }
 
   ngAfterViewInit(): void {

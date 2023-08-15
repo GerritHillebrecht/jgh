@@ -1,4 +1,10 @@
-import { Component, Input, ViewEncapsulation, computed, inject } from '@angular/core';
+import {
+  Component,
+  Input,
+  ViewEncapsulation,
+  computed,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -30,7 +36,7 @@ export interface NavLink {
     MatTabsModule,
     MatDividerModule,
     RouterModule,
-    ButtonComponent
+    ButtonComponent,
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
@@ -40,20 +46,24 @@ export class NavbarComponent {
   @Input()
   links: NavLink[] = [
     {
-      path: '',
+      path: 'preview',
       label: 'Home',
     },
     {
-      path: 'projects',
+      path: 'preview/blog',
+      label: 'Blog',
+    },
+    {
+      path: 'preview/projects',
       label: 'Referenzen',
     },
     {
-      path: 'contact',
-      label: 'Kontakt',
+      path: 'preview/me',
+      label: 'Über mich',
     },
     {
-      path: 'me',
-      label: 'Über mich',
+      path: 'preview/contact',
+      label: 'Kontakt',
     },
   ];
 

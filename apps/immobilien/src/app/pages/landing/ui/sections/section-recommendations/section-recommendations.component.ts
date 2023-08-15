@@ -37,10 +37,10 @@ export class SectionRecommendationsComponent implements AfterViewInit {
   ];
 
   private readonly texts = [
-    'Chatera Gross hat unsere Erwartungen übertroffen! Die Umgestaltung unseres Hauses war spektakulär und hat uns geholfen, es schnell und zu einem guten Preis zu verkaufen.',
-    'Chatera Gross hat ein unglaubliches Auge für Details. Jeder Raum wurde perfekt in Szene gesetzt und verlieh unserem Zuhause einen modernen und ansprechenden Look.',
-    'Wir waren beeindruckt von der Professionalität und dem Engagement von Chatera Gross. Sie ging auf unsere Wünsche ein und schuf eine warme und einladende Atmosphäre, die potenzielle Käufer begeisterte.',
-    'Dank Chatera Gross haben wir unser Haus in kürzester Zeit verkauft! Ihre kreative Gestaltung machte einen großen Unterschied, und sie war eine Freude, damit zusammenzuarbeiten.',
+    'Khatera Gross hat unsere Erwartungen übertroffen! Die Umgestaltung unseres Hauses war spektakulär und hat uns geholfen, es schnell und zu einem guten Preis zu verkaufen.',
+    'Khatera Gross hat ein unglaubliches Auge für Details. Jeder Raum wurde perfekt in Szene gesetzt und verlieh unserem Zuhause einen modernen und ansprechenden Look.',
+    'Wir waren beeindruckt von der Professionalität und dem Engagement von Khatera Gross. Sie ging auf unsere Wünsche ein und schuf eine warme und einladende Atmosphäre, die potenzielle Käufer begeisterte.',
+    'Dank Khatera Gross haben wir unser Haus in kürzester Zeit verkauft! Ihre kreative Gestaltung machte einen großen Unterschied, und sie war eine Freude, damit zusammenzuarbeiten.',
   ];
 
   private readonly colors = ['#facc15', '#f472b6', '#60a5fa', '#34d399'];

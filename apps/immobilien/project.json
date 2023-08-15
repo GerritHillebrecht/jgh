@@ -17,12 +17,13 @@
         "tsConfig": "apps/immobilien/tsconfig.app.json",
         "assets": [
           "apps/immobilien/src/favicon.ico",
+          "apps/immobilien/src/favicon.png",
           "apps/immobilien/src/assets",
           "apps/immobilien/src/sitemap.xml",
           "apps/immobilien/src/robots.txt"
         ],
         "styles": ["apps/immobilien/src/styles.scss"],
-        "scripts": []
+        "scripts": ["node_modules/marked/marked.min.js"]
       },
       "configurations": {
         "production": {

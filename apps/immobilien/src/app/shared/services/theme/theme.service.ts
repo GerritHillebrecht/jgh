@@ -9,7 +9,7 @@ export type Theme = 'dark' | 'light';
 })
 export class ThemeService {
   readonly theme = signal<Theme>('light');
-  readonly automaticTheme = signal<boolean>(true);
+  readonly automaticTheme = signal<boolean>(false);
 
   private readonly mediaQuery = window.matchMedia(
     '(prefers-color-scheme: dark)'
