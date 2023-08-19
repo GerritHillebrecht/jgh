@@ -7,6 +7,9 @@ export interface StrapiCollectionQuery<T> {
       [key: string]: unknown;
     };
   }[];
+  publishedAt: Date;
+  createdAt: Date;
+  updatedAt: Date;
   meta: {
     [key: string]: unknown;
   };
@@ -37,8 +40,8 @@ export interface StrapiImage {
       formats: {
         thumbnail: FormatDetail;
         small: FormatDetail;
-        medium: FormatDetail;
-        large: FormatDetail;
+        medium?: FormatDetail;
+        large?: FormatDetail;
       };
       hash: string;
       ext: string;
@@ -52,6 +55,15 @@ export interface StrapiImage {
       updated_at: Date;
     };
   }[];
+}
+
+export interface QueryParams {
+  slug: string;
+  populate: string[];
+  page: number;
+  pageSize: number;
+  sortBy: 'publishedAt' | 'updatedAt' | 'createdAt';
+  sortOrder: 'asc' | 'desc';
 }
 
 interface StrapiSingleQuery<T> {

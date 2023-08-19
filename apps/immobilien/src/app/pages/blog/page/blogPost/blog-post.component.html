@@ -1,14 +1,23 @@
 <section class="py-36" *ngIf="blogPost() as blogPost">
   <div class="max-w-4xl px-4 mx-auto flex flex-col gap-6">
-    <h1 class="text-4xl">{{ blogPost.attributes!.Titel }}</h1>
-    <div class="flex flex-row gap-5 items-center">
-      <jgh-avatar
-        image="https://images.unsplash.com/photo-1508186225823-0963cf9ab0de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
-        [options]="avatarOptions"
-      ></jgh-avatar>
-      <div class="flex flex-col">
-        <p>Khatera Gross</p>
-        <p>{{ blogPost.attributes.publishedAt | date : 'shortDate' }}</p>
+    <h1 class="text-4xl">{{ blogPost.attributes.Titel }}</h1>
+    <div class="flex justify-between items-center">
+      <im-avatar-block
+        [title]="
+          blogPost.attributes.createdBy
+            ? blogPost.attributes.createdBy.firstname +
+              ' ' +
+              blogPost.attributes.createdBy.lastname
+            : 'Khatera Gross'
+        "
+        [subtitle]="
+          (blogPost.attributes.publishedAt | date : 'shortDate') || ''
+        "
+      ></im-avatar-block>
+      <div class="flex gap-4">
+        <button mat-icon-button matTooltip="Teile diese Story">
+          <mat-icon>ios_share</mat-icon>
+        </button>
       </div>
     </div>
     <figure>

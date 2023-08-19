@@ -1,3 +1,9 @@
+<!-- <code>
+  <pre>
+    {{ slides() | json }}
+  </pre>
+</code> -->
+
 <section
   class="h-screen relative mt-[60px] text-stone-50 flex items-center"
   *ngIf="slides() as slides"
@@ -12,14 +18,14 @@
         <span class="text-sm uppercase tracking-[0.2em] font-bold block mb-2">
           Khatera Gross imagens
         </span>
-        {{ slides[currentSlide()].title }}
+        {{ slides[currentSlide()].attributes.Bereichsname }}
       </h2>
       <div
         class="flex flex-row flex-wrap justify-start gap-x-4 sm:gap-x-12 gap-y-6"
       >
         <div
           #avatar
-          class="flex flex-col gap-2 items-center cursor-pointer transition-all duration-500 ease-out"
+          class="observer-item flex flex-col gap-2 items-center cursor-pointer transition-all duration-500 ease-out"
           [ngStyle]="{
             'transition-delay': index * 0.1 + 's'
           }"
@@ -34,7 +40,11 @@
               'border-2 shadow-md saturate-50': currentSlide() !== index
             }"
             [ngStyle]="{
-              'background-image': 'url(' + slide.image + ')'
+              'background-image':
+                'url(' +
+                slide.attributes.Hintergrundbild.data[0].attributes.formats
+                  .thumbnail.url +
+                ')'
             }"
           ></div>
           <p
@@ -44,7 +54,7 @@
               'opacity-100': currentSlide() === index
             }"
           >
-            {{ slide.title }}
+            {{ slide.attributes.Bereichsname }}
           </p>
         </div>
       </div>
@@ -54,7 +64,7 @@
         >
           <div class="swiper-slide" *ngFor="let slide of slides">
             <p class="">
-              {{ slide.text }}
+              {{ slide.attributes.Beschreibung }}
             </p>
           </div>
         </div>
@@ -71,7 +81,10 @@
         *ngFor="let slide of slides"
         class="swiper-slide bg-cover bg-center"
         [ngStyle]="{
-          'background-image': 'url(' + slide.image + ')'
+          'background-image':
+            'url(' +
+            slide.attributes.Hintergrundbild.data[0].attributes.url +
+            ')'
         }"
       ></div>
     </div>

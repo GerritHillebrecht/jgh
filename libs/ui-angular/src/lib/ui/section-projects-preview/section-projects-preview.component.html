@@ -1,0 +1,49 @@
+<section class="py-36 flex flex-col gap-12">
+  <div
+    class="h2 py-4 border-t border-b border-stone-400/40 dark:border-stone-300/40 text-2xl text-center"
+  >
+    Referenzen
+  </div>
+  <div
+    class="mx-auto max-w-7xl 3xl:max-w-[2200px] grid sm:grid-cols-2 md:grid-cols-4 gap-8"
+  >
+    <ng-container *ngIf="projects() as projects; else loading">
+      <div
+        #project
+        class="observer-item flex flex-col gap-4 relative transition-all duration-700 ease-in-out cursor-pointer"
+        *ngFor="let project of projects; let index = index"
+        [ngStyle]="{ 'transition-delay': index * 0.15 + 's' }"
+        [routerLink]="['/', 'preview', 'projects', project.attributes.slug]"
+      >
+        <figure>
+          <picture>
+            <img
+              class="aspect-square w-full object-cover image-hover-effect"
+              [src]="
+                project.attributes.Bilder.data[0].attributes.formats.small.url
+              "
+            />
+          </picture>
+        </figure>
+        <p class="text-xs uppercase tracking-[0.2em]">
+          {{ project.attributes.Datum | date : 'MMMM YYYY' }}
+        </p>
+        <h3 class="text-3xl font-PlayfairDisplay leading-none">
+          {{ project.attributes.Titel }}
+        </h3>
+      </div>
+    </ng-container>
+  </div>
+  <div class="flex justify-center">
+    <im-button [routerLink]="['/', 'preview', 'projects']">
+      Alle Referenzen
+    </im-button>
+  </div>
+</section>
+<ng-template #loading>
+  <div
+    class="aspect-square relative bg-stone-100 skeleton"
+    *ngFor="let item of [0, 1, 2, 3]; let index = index"
+    [ngStyle]="{ 'animation-delay': index * 0.15 + 's' }"
+  ></div>
+</ng-template>

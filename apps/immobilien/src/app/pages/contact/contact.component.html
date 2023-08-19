@@ -3,7 +3,10 @@
     <div class="flex flex-col items-center gap-6 text-center">
       <figure>
         <picture>
-          <img src="assets/images/logo/logo 3.svg" class="dark:invert h-42 mb-0" />
+          <img
+            src="assets/images/logo/logo 3.svg"
+            class="dark:invert h-42 mb-0"
+          />
         </picture>
       </figure>
       <h2 class="text-5xl">Contact our friendly team</h2>
@@ -163,18 +166,13 @@
     </mat-stepper>
   </div>
 </section>
-<!-- <section class="pb-36 pt-48">
-  <div class="mx-auto max-w-5xl w-full">
-    <p class="text-4xl sm:text-5xl">Rufe uns gerne an unter</p>
-    <p class="mt-4 italic">(+49) 123 45 6789</p>
-  </div>
-</section> -->
 
 <section class="py-20">
   <jgh-accordion-section
+    *ngIf="faqAccordionElements() as faqElements"
     [options]="faqData"
     [title]="title"
     [subtitle]="subtitle"
-    [accordionElements]="accordionElements"
+    [accordionElements]="faqElements"
   ></jgh-accordion-section>
 </section>

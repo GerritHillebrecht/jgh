@@ -15,43 +15,49 @@
       </span>
     </p>
   </div>
-
-  <!-- <pre>
+  <!-- 
+  <pre>
     <code>
       {{ references() | json }}
     </code>
   </pre> -->
 
   <div class="mx-auto 3xl:max-w-[2200px] grid sm:grid-cols-3 gap-8 mt-20">
-    <a
-      #project
-      *ngFor="let referece of references(); let index = index"
-      class="flex flex-col gap-4 cursor-pointer transition-all duration-700 ease-in-out"
-      [routerLink]="['/', 'preview', 'projects', referece.attributes.slug]"
-    >
-      <figure>
-        <picture>
-          <img
-            class="aspect-[14/9] object-cover image-hover-effect"
-            [src]="
-              referece.attributes.Bilder.data[0].attributes.formats.medium.url
-            "
-          />
-        </picture>
-      </figure>
-      <p class="text-xs uppercase tracking-[0.2em]">
-        {{ referece.attributes.Datum | date : 'MMMM YYYY' }}
-      </p>
-      <h2 class="text-3xl font-PlayfairDisplay leading-none">
-        {{ referece.attributes.Titel }}
-      </h2>
-    </a>
+    <ng-container *ngIf="references() as references; else loading">
+      <a
+        #project
+        *ngFor="let referece of references; let index = index"
+        class="observer-item flex flex-col gap-4 cursor-pointer transition-all duration-700 ease-in-out"
+        [ngStyle]="{ 'transition-delay': index % (isSmall() ? 1 : 3 ) * 0.15 + 's' }"
+        [routerLink]="['/', 'preview', 'projects', referece.attributes.slug]"
+      >
+        <figure class="overflow-hidden aspect-[14/9] relative">
+          <picture>
+            <img
+              class="absolute w-full h-full inset-0 object-cover hover:saturate-[1.75] hover:brightness-105 hover:scale-105 transition-[filter,transform] duration-300 ease-in-out"
+              [src]="
+                referece.attributes.Bilder.data[0].attributes.formats.medium
+                  ?.url ||
+                referece.attributes.Bilder.data[0].attributes.formats.small.url
+              "
+            />
+          </picture>
+        </figure>
+        <p class="text-xs uppercase tracking-[0.2em]">
+          {{ referece.attributes.Datum | date : 'MMMM YYYY' }}
+        </p>
+        <h2 class="text-3xl font-PlayfairDisplay leading-none">
+          {{ referece.attributes.Titel }}
+        </h2>
+      </a>
+    </ng-container>
   </div>
 </section>
 
 <ng-template #loading>
-  <div class="fixed inset-0 flex flex-col gap-4 items-center justify-center">
-    <mat-spinner class="jgh-white-spinner"></mat-spinner>
-    LOADING
-  </div>
+  <div
+    class="aspect-video relative bg-stone-100 skeleton"
+    *ngFor="let item of [0, 1, 2, 3, 4, 5]; let index = index"
+    [ngStyle]="{ 'animation-delay': index * 0.15 + 's' }"
+  ></div>
 </ng-template>

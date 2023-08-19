@@ -4,9 +4,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ObserverService {
-  readonly observer = new IntersectionObserver((entries) => {
+  readonly observer = new IntersectionObserver((entries, options) => {
     entries.forEach((entry) => {
-      entry.target.classList.toggle('hide', !entry.isIntersecting);
+      entry.target.classList.toggle('observer-show', entry.isIntersecting);
     });
+  }, {
+    threshold: 0.2,
   });
 }

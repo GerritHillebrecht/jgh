@@ -2,4 +2,13 @@
   p {
     margin-top: 1rem;
   }
+  ul {
+    margin-top: 1rem;
+    list-style: circle;
+
+    li {
+      list-style-position: inside;
+      margin-top: 0.5rem;
+    }
+  }
 }

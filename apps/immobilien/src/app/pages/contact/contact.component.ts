@@ -1,4 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
+/* eslint-disable @nx/enforce-module-boundaries */
+import { Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatStepperModule } from '@angular/material/stepper';
 import {
@@ -23,6 +24,13 @@ import {
   AccordionSectionComponent,
 } from '@jgh/ui-angular/ui/accordion-section/accordion-section.component';
 import { AccordionElementComponent } from '@jgh/ui-angular/ui/accordion-section/ui/accordion-element/accordion-element.component';
+import { StrapiService } from '@jgh/ui-angular/data-access';
+
+interface FaqElement {
+  Frage: string;
+  Antwort: string;
+  slug: string;
+}
 
 @Component({
   selector: 'im-contact',
@@ -46,6 +54,25 @@ export default class ContactComponent {
   protected readonly contactForm: FormGroup;
 
   private readonly breakpointObserver = inject(BreakpointObserver);
+
+  private strapi = inject(StrapiService);
+  private readonly faqElements = toSignal(
+    this.strapi
+      .fetchData<FaqElement>({
+        path: 'faqs',
+        query: { sortBy: 'createdAt', sortOrder: 'asc' },
+      })
+      .pipe(map((faqs) => faqs.data))
+  );
+
+  protected readonly faqAccordionElements = computed(() => {
+    return this.faqElements()?.map((faq) => {
+      return {
+        title: faq.attributes.Frage,
+        body: faq.attributes.Antwort,
+      } as AccordionElement;
+    });
+  });
 
   protected readonly isLandscape = toSignal(
     this.breakpointObserver

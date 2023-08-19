@@ -15,7 +15,7 @@ import { tap } from 'rxjs';
 import { ProjectsService } from 'apps/immobilien/src/app/shared/data-access/projects';
 
 @Component({
-  selector: 'im-section-projects-preview',
+  selector: 'jgh-section-projects-preview',
   standalone: true,
   imports: [CommonModule, ButtonComponent, RouterModule],
   templateUrl: './section-projects-preview.component.html',

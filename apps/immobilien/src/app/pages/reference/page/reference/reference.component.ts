@@ -1,7 +1,6 @@
 /* eslint-disable @nx/enforce-module-boundaries */
-import { Component, inject } from '@angular/core';
+import { Component, ViewEncapsulation, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StrapiService } from '@jgh/ui-angular/data-access';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   AvatarComponent,
@@ -9,34 +8,36 @@ import {
 } from '@jgh/ui-angular/ui/avatar/avatar.component';
 import { map, switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { Reference } from 'apps/immobilien/src/app/shared/data-access/projects/project.model';
+import { ProjectsService } from 'apps/immobilien/src/app/shared/data-access/projects';
+import { MarkdownModule } from 'ngx-markdown';
+import {
+  EquirectProjection,
+  NgxView360Module,
+  View360Options,
+} from '@egjs/ngx-view360';
+import { AvatarBlockComponent } from 'apps/immobilien/src/app/shared/ui/avatar-block/avatar-block.component';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'im-reference',
   standalone: true,
-  imports: [CommonModule, AvatarComponent],
+  imports: [CommonModule, AvatarComponent, MarkdownModule, NgxView360Module, AvatarBlockComponent],
   templateUrl: './reference.component.html',
   styleUrls: ['./reference.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export default class ReferenceComponent {
   private readonly route = inject(ActivatedRoute);
-  private readonly strapi = inject(StrapiService);
+  private readonly projectsService = inject(ProjectsService);
 
   protected readonly project = toSignal(
     this.route.params.pipe(
       map(({ slug }) => slug),
       switchMap((slug) => {
-        return this.strapi
-          .fetchData<Reference>({
-            path: 'referencess',
-            query: `?populate=images&filters[slug][$eq]=${slug}&populate=image`,
-          })
-          .pipe(map((posts) => posts.data[0]));
+        return this.projectsService.project(slug);
       })
     )
   );
-
-  protected admin_url = 'https://admin.chatera-gross.de';
 
   protected readonly avatarOptions: AvatarOptions = {
     size: '3rem',
@@ -44,5 +45,18 @@ export default class ReferenceComponent {
     borderColor: '#ccc',
     imageSize: '100%',
     imagePosition: 'cover',
+  };
+
+  protected readonly options: Partial<View360Options> = {
+    projection: new EquirectProjection({
+      src: 'assets/images/tiles/004.jpg',
+    }),
+    scrollable: true,
+    wheelScrollable: true,
+    // initialZoom: 0,
+    // autoplay: {
+    //   speed: 0.25,
+    //   pauseOnHover: false,
+    // },
   };
 }

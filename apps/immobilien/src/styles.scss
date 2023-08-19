@@ -30,3 +30,21 @@
 .specific-headline-addon {
   @apply text-xs 3xl:text-sm font-bold tracking-[0.2em] uppercase;
 }
+
+.observer-item:not(.observer-show) {
+  opacity: 0;
+  transform: translate3d(0, 20%, 0);
+}
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 80%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}

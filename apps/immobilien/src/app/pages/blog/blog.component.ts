@@ -9,7 +9,6 @@ import { ButtonComponent } from '../../shared/ui/button/button.component';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { HttpClientModule } from '@angular/common/http';
 import { MarkdownModule } from 'ngx-markdown';
-import { StrapiService } from '@jgh/ui-angular/data-access';
 import { RouterModule } from '@angular/router';
 import { BlogService } from '../../shared/data-access/blog';
 import { tap } from 'rxjs';
@@ -30,20 +29,9 @@ import { tap } from 'rxjs';
   styleUrls: ['./blog.component.scss'],
 })
 export default class BlogComponent {
-  private readonly strapi = inject(StrapiService);
   private readonly blogService = inject(BlogService);
-  protected readonly blogPosts = toSignal(
-    this.blogService.blogPosts().pipe(tap(console.log))
-  );
 
-  // protected blogPosts = toSignal(
-  //   this.strapi.fetchData<BlogPost>(
-  //     'blogentries',
-  //     '?populate=image&sort[0]=publishedAt:desc'
-  //   )
-  // );
-
-  protected admin_url = 'https://admin.chatera-gross.de';
+  protected readonly blogPosts = this.blogService.blogPosts();
 
   protected readonly avatarOptions: AvatarOptions = {
     size: '3rem',

@@ -1,5 +1,5 @@
 /* eslint-disable @nx/enforce-module-boundaries */
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ImageInfoGridComponent } from '@jgh/ui-angular/ui/image-info-grid';
@@ -13,13 +13,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { ButtonComponent } from '../../shared/ui/button/button.component';
 import {
-  SectionProjectsPreviewComponent,
+  // SectionProjectsPreviewComponent,
   SectionAreasOfWorkComponent,
-  SectionBlogPreviewComponent,
+  // SectionBlogPreviewComponent,
   SectionMarzipanoComponent,
   SectionRecommendationsComponent,
   SectionStatsComponent,
 } from './ui/sections';
+import { SectionProjectsPreviewComponent } from '@jgh/ui-angular/ui/section-projects-preview';
+import { SectionBlogPreviewComponent } from '@jgh/ui-angular/ui/section-blog-preview';
+import { QuoteService } from '../../shared/data-access/quote';
 
 @Component({
   selector: 'im-landing',
@@ -45,9 +48,11 @@ import {
   styleUrls: ['./landing.component.scss'],
 })
 export default class LandingComponent {
+  private readonly quoteService = inject(QuoteService);
   protected readonly production = signal(environment.production);
 
   protected readonly quotes = signal<BlockQuote[]>(quotes);
+  protected readonly blockquotes = this.quoteService.quotes();
   protected readonly lists = signal<List[]>(lists);
   protected readonly infoBoxes = signal(infoBoxes);
 

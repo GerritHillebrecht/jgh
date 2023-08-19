@@ -1,0 +1,11 @@
+<div class="flex gap-4 items-center">
+  <jgh-avatar
+    *ngIf="image"
+    [options]="avatarOptions"
+    [image]="image"
+  ></jgh-avatar>
+  <div class="body">
+    <p class="font-bold">{{ title }}</p>
+    <p class="text-sm">{{ subtitle }}</p>
+  </div>
+</div>

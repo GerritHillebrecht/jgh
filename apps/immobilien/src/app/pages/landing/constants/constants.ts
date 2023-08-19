@@ -1,3 +1,4 @@
+/* eslint-disable @nx/enforce-module-boundaries */
 import { CanvasOptions } from '@jgh/ui-angular/ui/canvas/canvas.component';
 
 export const lists = [

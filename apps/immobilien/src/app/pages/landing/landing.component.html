@@ -5,11 +5,6 @@
         <img src="assets/images/logo/logo 4.svg" class="h-52" />
       </picture>
     </figure>
-    <!-- <h1
-      class="text-5xl sm:text-6xl lg:text-7xl 2xl:text-8xl font-black inline-block pointer-events-auto w-max font-Americana"
-    >
-      Khatera Gross
-    </h1> -->
 
     <p class="uppercase font-bold text-xs xl:text-sm tracking-[0.2em] my-8">
       Professional Home staging
@@ -27,7 +22,7 @@
     </div>
   </im-section-marzipano>
 
-  <im-section-blog-preview></im-section-blog-preview>
+  <jgh-section-blog-preview></jgh-section-blog-preview>
 
   <im-section-stats></im-section-stats>
 
@@ -39,7 +34,16 @@
 
   <im-section-areas-of-work></im-section-areas-of-work>
 
-  <jgh-section-split-image-content
+  <ng-container *ngFor="let quote of blockquotes(); let index = index">
+    <jgh-section-split-image-content
+      [reverse]="index % 2 === 0"
+      [image]="quote.image.data.attributes.formats.medium.url"
+    >
+      <jgh-blockquote [blockquote]="quote"></jgh-blockquote>
+    </jgh-section-split-image-content>
+  </ng-container>
+
+  <!-- <jgh-section-split-image-content
     [reverse]="true"
     image="assets/images/landing/quotes/cecelia_ahern.jpg"
   >
@@ -49,13 +53,12 @@
     image="assets/images/landing/quotes/barbara_corcoran.jpg"
   >
     <jgh-blockquote [blockquote]="quotes()[1]"></jgh-blockquote>
-  </jgh-section-split-image-content>
+  </jgh-section-split-image-content> -->
 
-  <im-section-projects-preview></im-section-projects-preview>
-  <!-- <im-section-recommendations></im-section-recommendations> -->
+  <jgh-section-projects-preview></jgh-section-projects-preview>
 
   <jgh-section-split-image-content
-    image="https://byonoy.com/site/assets/files/1346/byonoy_headquarter-1625.jpg"
+    image="https://res-console.cloudinary.com/khatera-gross/thumbnails/v1/image/upload/v1692449888/bGFyZ2Vfc29ubmllX2hpbGVzX0wwX0Jhb3doX0ZlNGNfdW5zcGxhc2hfMGQ3OTA5ZWEwYw==/drilldown"
     id="analysis"
   >
     <im-list [list]="lists()[0]"></im-list>
@@ -63,7 +66,7 @@
 
   <jgh-section-split-image-content
     id="decoration"
-    image="https://byonoy.com/site/assets/files/1347/byonoy_headquarter-1885.jpg"
+    image="https://res-console.cloudinary.com/khatera-gross/thumbnails/v1/image/upload/v1692449889/bGFyZ2VfdWxpYW5hX2tvcGFueXRzaWFfRXhmMV9ONl9VVFpNX3Vuc3BsYXNoX2VmOWUyYTk2NTg=/drilldown"
     [reverse]="true"
   >
     <im-list [list]="lists()[1]"></im-list>
@@ -71,7 +74,7 @@
 
   <jgh-section-split-image-content
     id="presentation"
-    image="https://byonoy.com/site/assets/files/1346/byonoy_headquarter-1625.jpg"
+    image="https://res-console.cloudinary.com/khatera-gross/thumbnails/v1/image/upload/v1692449890/bGFyZ2VfamFzb25fYnJpc2NvZV9BX1FsX0oxOW9jX1dFX3Vuc3BsYXNoX2UxMzY1ZTMzYjQ=/drilldown"
   >
     <im-list [list]="lists()[2]"></im-list>
   </jgh-section-split-image-content>

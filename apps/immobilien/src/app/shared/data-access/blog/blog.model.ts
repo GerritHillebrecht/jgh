@@ -9,6 +9,16 @@ export interface BlogPost {
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date;
+  createdBy?: {
+    id: number;
+    firstname: string;
+    lastname: string;
+  };
+  updatedBy?: {
+    id: number;
+    firstname: string;
+    lastname: string;
+  };
 }
 
 interface Author {

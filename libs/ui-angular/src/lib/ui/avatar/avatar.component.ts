@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   Input,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -38,7 +39,7 @@ export interface AvatarOptions extends Partial<Omit<AvatarSettings, 'image'>> {
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss'],
 })
-export class AvatarComponent implements AfterViewInit {
+export class AvatarComponent implements OnInit, AfterViewInit {
   @ViewChild('avatarInner')
   avatarInnerRef?: ElementRef<HTMLDivElement>;
 
@@ -62,6 +63,12 @@ export class AvatarComponent implements AfterViewInit {
 
   @Input() set options(options: Partial<AvatarSettings>) {
     this._options = { ...this._options, ...options, image: this.image };
+  }
+
+  ngOnInit(): void {
+    if (this.image) {
+      this._options.image = this.image;
+    }
   }
 
   ngAfterViewInit(): void {
