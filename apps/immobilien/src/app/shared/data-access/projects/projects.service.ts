@@ -1,7 +1,10 @@
+/* eslint-disable @nx/enforce-module-boundaries */
 import { Injectable, inject } from '@angular/core';
 import { StrapiService } from '@jgh/ui-angular/data-access';
 import { map } from 'rxjs/operators';
 import { Reference } from './project.model';
+import { QueryParams } from '@jgh/ui-angular/data-access/strapi.model';
+import { environment } from 'apps/immobilien/src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +12,7 @@ import { Reference } from './project.model';
 export class ProjectsService {
   private readonly strapi = inject(StrapiService);
 
-  projects() {
+  projects({ page, pageSize }: Partial<QueryParams> = {}) {
     return this.strapi
       .fetchData<Reference>({
         path: 'references',
@@ -17,7 +20,10 @@ export class ProjectsService {
           populate: ['Bilder'],
           sortBy: 'publishedAt',
           sortOrder: 'desc',
+          page,
+          pageSize,
         },
+        server: environment.backend_server,
       })
       .pipe(map((data) => data.data));
   }
@@ -30,6 +36,7 @@ export class ProjectsService {
           populate: ['Bilder'],
           slug,
         },
+        server: environment.backend_server,
       })
       .pipe(map((data) => data.data[0]));
   }

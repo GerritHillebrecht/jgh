@@ -1,36 +1,50 @@
-<section class="py-36" *ngIf="blogPost() as blogPost">
+<section class="py-36">
   <div class="max-w-4xl px-4 mx-auto flex flex-col gap-6">
-    <h1 class="text-4xl">{{ blogPost.attributes.Titel }}</h1>
-    <div class="flex justify-between items-center">
-      <im-avatar-block
-        [title]="
-          blogPost.attributes.createdBy
-            ? blogPost.attributes.createdBy.firstname +
-              ' ' +
-              blogPost.attributes.createdBy.lastname
-            : 'Khatera Gross'
-        "
-        [subtitle]="
-          (blogPost.attributes.publishedAt | date : 'shortDate') || ''
-        "
-      ></im-avatar-block>
-      <div class="flex gap-4">
-        <button mat-icon-button matTooltip="Teile diese Story">
-          <mat-icon>ios_share</mat-icon>
-        </button>
-      </div>
-    </div>
-    <figure>
-      <picture>
-        <img
-          [src]="
-            blogPost.attributes.Vorschaubild.data.attributes.formats.large.url
+    <ng-container *ngIf="blogPost() as blogPost; else loading">
+      <h1 class="text-4xl">{{ blogPost.attributes.Titel }}</h1>
+      <div class="flex justify-between items-center">
+        <im-avatar-block
+          [title]="
+            blogPost.attributes.createdBy
+              ? blogPost.attributes.createdBy.firstname +
+                ' ' +
+                blogPost.attributes.createdBy.lastname
+              : 'Khatera Gross'
           "
-        />
-      </picture>
-    </figure>
-    <div class="markdown-blog">
-      <markdown [data]="blogPost.attributes.Inhalt"></markdown>
-    </div>
+          [subtitle]="
+            (blogPost.attributes.publishedAt | date : 'shortDate') || ''
+          "
+        ></im-avatar-block>
+        <div class="flex gap-4">
+          <button mat-icon-button matTooltip="Teile diese Story">
+            <mat-icon>ios_share</mat-icon>
+          </button>
+        </div>
+      </div>
+      <figure>
+        <picture>
+          <img
+            [src]="
+              blogPost.attributes.Vorschaubild.data.attributes.formats.large.url
+            "
+          />
+        </picture>
+      </figure>
+      <div class="markdown-blog">
+        <markdown [data]="blogPost.attributes.Inhalt"></markdown>
+      </div>
+    </ng-container>
   </div>
 </section>
+<ng-template #loading>
+  <div class="skeleton skeleton-text"></div>
+  <div class="skeleton skeleton-text"></div>
+  <div class="skeleton rounded-full w-16 aspect-square"></div>
+  <div class="skeleton aspect-video"></div>
+
+  <div class="skeleton skeleton-text skeleton-text__body"></div>
+  <div class="skeleton skeleton-text skeleton-text__body"></div>
+  <div class="skeleton skeleton-text skeleton-text__body"></div>
+  <div class="skeleton skeleton-text skeleton-text__body"></div>
+  <div class="skeleton skeleton-text skeleton-text__body"></div>
+</ng-template>

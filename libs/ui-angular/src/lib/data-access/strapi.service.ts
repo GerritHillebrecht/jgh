@@ -38,8 +38,6 @@ export class StrapiService {
       .filter((string) => string !== null)
       .join('&')}`;
 
-    console.log('query', query);
-
     return this.http.get<StrapiCollectionQuery<T>>(
       `${server}/api/${path}${query}`
     );

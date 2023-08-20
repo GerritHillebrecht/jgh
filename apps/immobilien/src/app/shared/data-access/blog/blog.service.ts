@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { BlogPost } from './blog.model';
 import { QueryParams } from '@jgh/ui-angular/data-access/strapi.model';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { environment } from 'apps/immobilien/src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +25,7 @@ export class BlogService {
             page,
             pageSize,
           },
+          server: environment.backend_server,
         })
         .pipe(map((data) => data.data))
     );
@@ -37,6 +39,7 @@ export class BlogService {
           populate: ['Vorschaubild'],
           slug,
         },
+        server: environment.backend_server,
       })
       .pipe(map((data) => data.data[0]));
   }

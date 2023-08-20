@@ -17,5 +17,7 @@ export class FooterComponent {
   private readonly projectService = inject(ProjectsService);
 
   protected readonly blogPosts = this.blogService.blogPosts({ pageSize: 4 });
-  protected readonly references = toSignal(this.projectService.projects());
+  protected readonly references = toSignal(
+    this.projectService.projects({ pageSize: 4 })
+  );
 }

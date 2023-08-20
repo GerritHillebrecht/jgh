@@ -26,7 +26,7 @@ export class SectionBlogPreviewComponent {
 
   private readonly observer = inject(ObserverService).observer;
   private readonly blogServerice = inject(BlogService);
-  protected readonly blogPosts = this.blogServerice.blogPosts();
+  protected readonly blogPosts = this.blogServerice.blogPosts({ pageSize: 4 });
 
   private observeEffect = effect(() => {
     const blogPosts = this.blogPosts();

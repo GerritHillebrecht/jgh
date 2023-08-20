@@ -4,7 +4,7 @@
         {{ project() | json }}
     </pre>
   </code> -->
-  <ng-container *ngIf="project() as project">
+  <ng-container *ngIf="project() as project; else loading">
     <div class="">
       <p class="specific-headline-addon">Projekt</p>
       <h1 class="mt-2 mb-6 text-4xl sm:text-5xl xl:text-6xl 3xl:text-8xl">
@@ -47,7 +47,9 @@
         <markdown [data]="project.attributes.Beschreibung"> </markdown>
       </div>
       <p class="specific-headline-addon mb-6">See it yourself</p>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 3xl:grid-cols-5 gap-8">
+      <div
+        class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 3xl:grid-cols-5 gap-8"
+      >
         <div
           class="image relative aspect-square"
           *ngFor="let image of project.attributes.Bilder.data"
@@ -68,3 +70,10 @@
     </div>
   </ng-container>
 </section>
+<ng-template #loading>
+  <div class="skeleton skeleton-text skeleton-text__small mb-2"></div>
+  <div class="skeleton skeleton-text max-w-[80ch!important]"></div>
+  <div class="skeleton skeleton-text max-w-[65ch!important]"></div>
+  <div class="skeleton rounded-full aspect-square w-16 my-4"></div>
+  <div class="skeleton aspect-square"></div>
+</ng-template>

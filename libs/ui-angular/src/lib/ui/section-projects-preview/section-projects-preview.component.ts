@@ -30,7 +30,7 @@ export class SectionProjectsPreviewComponent {
   private readonly projectsService = inject(ProjectsService);
 
   protected readonly projects = toSignal(
-    this.projectsService.projects().pipe(
+    this.projectsService.projects({ pageSize: 4 }).pipe(
       tap(() => {
         setTimeout(() => {
           this.projectsRef?.forEach((project) => {

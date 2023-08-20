@@ -1,5 +1,5 @@
 export const environment = {
-  backend_server: 'https://admin.chatera-gross.de/api',
+  backend_server: 'https://admin.chatera-gross.de',
   production: true,
   firebase: {
     projectId: 'chatera-gross',
