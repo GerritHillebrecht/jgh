@@ -29,6 +29,7 @@ import { registerLocaleData } from '@angular/common';
 import de from '@angular/common/locales/de';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientModule } from '@angular/common/http';
+import { provideFunctions, getFunctions } from '@angular/fire/functions';
 
 registerLocaleData(de);
 
@@ -44,6 +45,7 @@ registerLocaleData(de);
     }),
     NavbarComponent,
     FooterComponent,
+    MarkdownModule.forRoot(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
@@ -52,10 +54,10 @@ registerLocaleData(de);
       enableIndexedDbPersistence(firestore);
       return firestore;
     }),
-    MarkdownModule.forRoot(),
     provideMessaging(() => getMessaging()),
     providePerformance(() => getPerformance()),
     provideStorage(() => getStorage()),
+    provideFunctions(() => getFunctions()),
     AuthGuardModule,
   ],
   providers: [
