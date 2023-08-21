@@ -1,3 +1,4 @@
+/* eslint-disable @nx/enforce-module-boundaries */
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SectionSplitImageContentComponent } from '@jgh/ui-angular/ui/section-split-image-content';

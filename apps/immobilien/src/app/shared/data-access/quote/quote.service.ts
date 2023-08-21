@@ -6,6 +6,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { BlockQuote } from '@jgh/ui-angular/ui/blockquote';
 import { StrapiImage } from '../models';
+import { environment } from 'apps/immobilien/src/environments/environment';
 
 interface QuoteWithImage extends BlockQuote {
   image: StrapiImage;
@@ -27,6 +28,7 @@ export class QuoteService {
             sortBy: 'publishedAt',
             sortOrder: 'asc',
           },
+          server: environment.backend_server
         })
         .pipe(
           map((data) =>

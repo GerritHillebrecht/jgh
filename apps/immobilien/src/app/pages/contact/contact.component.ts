@@ -25,6 +25,7 @@ import {
 } from '@jgh/ui-angular/ui/accordion-section/accordion-section.component';
 import { AccordionElementComponent } from '@jgh/ui-angular/ui/accordion-section/ui/accordion-element/accordion-element.component';
 import { StrapiService } from '@jgh/ui-angular/data-access';
+import { environment } from 'apps/immobilien/src/environments/environment';
 
 interface FaqElement {
   Frage: string;
@@ -61,6 +62,7 @@ export default class ContactComponent {
       .fetchData<FaqElement>({
         path: 'faqs',
         query: { sortBy: 'createdAt', sortOrder: 'asc' },
+        server: environment.backend_server
       })
       .pipe(map((faqs) => faqs.data))
   );

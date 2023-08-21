@@ -92,9 +92,24 @@
 </section>
 
 <ng-template #loading>
-  <div
-    class="aspect-[16/5] relative bg-stone-100 skeleton col-span-2 rounded-xl shadow-md"
-    *ngFor="let item of [0]; let index = index"
-    [ngStyle]="{ 'animation-delay': index * 0.15 + 's' }"
-  ></div>
+  <div class="grid items-center sm:grid-cols-2 gap-8 sm:col-span-2 w-full">
+    <div
+      class="aspect-video relative bg-stone-100 skeleton rounded-xl shadow-md"
+      *ngFor="let item of [0]; let index = index"
+    ></div>
+    <div class="flex flex-col">
+      <div class="skeleton skeleton-text"></div>
+      <div class="skeleton skeleton-text mb-8"></div>
+      <div class="skeleton skeleton-text skeleton-text__body mt-8"></div>
+      <div class="skeleton skeleton-text skeleton-text__body"></div>
+      <div class="skeleton skeleton-text skeleton-text__body"></div>
+      <div class="skeleton skeleton-text skeleton-text__body"></div>
+      <div class="skeleton skeleton-text skeleton-text__body"></div>
+      <div class="skeleton skeleton-text skeleton-text__body"></div>
+      <div class="skeleton skeleton-text skeleton-text__body"></div>
+      <div class="skeleton skeleton-text skeleton-text__body"></div>
+      <div class="skeleton skeleton-text skeleton-text__body"></div>
+      <div class="skeleton w-12 aspect-square rounded-full mt-4"></div>
+    </div>
+  </div>
 </ng-template>
