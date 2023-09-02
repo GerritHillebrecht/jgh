@@ -1,0 +1,22 @@
+.cheese-layer--top {
+  @apply pt-[138px];
+
+  &::before {
+    content: '';
+    @apply top-0 bg-[url('assets/images/pattern/cheese.png')] bg-contain inset-x-0 absolute h-[122px] drop-shadow-lg bg-repeat-x pointer-events-none;
+  }
+}
+
+.cheese-layer--bottom {
+  @apply pb-[138px];
+
+  &::after {
+    content: '';
+    @apply rotate-180 bottom-0 bg-[url('assets/images/pattern/cheese.png')] bg-contain inset-x-0 absolute h-[122px] drop-shadow-lg bg-repeat-x pointer-events-none;
+    background-position-x: 10%;
+  }
+}
+
+.cheese-layer {
+  @apply cheese-layer--top cheese-layer--bottom;
+}

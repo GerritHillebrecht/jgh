@@ -21,6 +21,17 @@
           "destination": "/index.html"
         }
       ]
+    },
+    {
+      "target": "cheeseitup",
+      "public": "dist/apps/cheeseitup",
+      "ignore": ["**/.*"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
     }
   ]
 }

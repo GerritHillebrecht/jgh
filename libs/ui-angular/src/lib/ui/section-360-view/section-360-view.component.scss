@@ -1,0 +1,59 @@
+@import '@egjs/view360/css/view360.min.css';
+
+.view360-hotspot--search {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .view360-hotspot--search:before {
+    position: absolute;
+    content: "";
+    width: 12px;
+    height: 12px;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+  }
+  
+  .view360-hotspot--search:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    left: 14px;
+    width: 3px;
+    height: 8px;
+    background: #fff;
+    transform-origin: 50% 0%;
+    transform: rotate(-45deg);
+  }
+  
+  .view360-hotspot--link {
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .view360-hotspot--search,
+  .view360-hotspot--link {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  
+  .modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+  .modal[data-visible="true"] {
+    z-index: 9999;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }

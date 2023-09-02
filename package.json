@@ -114,6 +114,7 @@
     "marzipano": "^0.10.2",
     "next": "13.4.1",
     "next-auth": "^4.22.1",
+    "ng-particles": "^3.12.0",
     "ngx-markdown": "^16.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -123,6 +124,8 @@
     "rxjs": "~7.8.0",
     "swiper": "^9.3.2",
     "tslib": "^2.3.0",
+    "tsparticles-engine": "^2.12.0",
+    "tsparticles-slim": "^2.12.0",
     "zod": "^3.21.4",
     "zone.js": "~0.13.0",
     "zustand": "^4.3.8"

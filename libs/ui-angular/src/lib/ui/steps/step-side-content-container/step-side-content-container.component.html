@@ -1,0 +1,14 @@
+<div class="w-full grid grid-cols-[max-content,auto] gap-10 px-8">
+  <jgh-lib-step-side-indicator
+    [icon]="icon"
+    [iconColor]="iconColor"
+    [gradientStart]="gradientStart"
+    [gradientEnd]="gradientEnd"
+  ></jgh-lib-step-side-indicator>
+  <div class="content pb-32">
+    <jgh-lib-step-side-headline class="text-white">
+      {{ title }}
+    </jgh-lib-step-side-headline>
+    <ng-content></ng-content>
+  </div>
+</div>

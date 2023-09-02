@@ -1,0 +1,27 @@
+<div
+  class="h-full grid grid-rows-[max-content,auto] gap-4 pt-1 pb-3"
+  [ngStyle]="{ color: iconColor }"
+>
+  <div class="relative grid place-items-center w-full isolate">
+    <fa-icon [icon]="icon"></fa-icon>
+    <div
+      class="line h-full w-full absolute inset-0 rounded-full shadow-xl -z-10 blur-md"
+      [ngStyle]="{ 'background-color': gradientStart }"
+    ></div>
+  </div>
+  <div
+    #lineContainer
+    class="line-container w-full h-full grid grid-rows-[0fr] justify-center"
+  >
+    <div
+      class="w-[3px] h-full rounded-md bg-rose-400 bg-gradient-to-b"
+      [ngStyle]="{
+        '--tw-gradient-from':
+          gradientStart + ' var(--tw-gradient-from-position)',
+        '--tw-gradient-to': gradientEnd + ' var(--tw-gradient-to-position)',
+        '--tw-gradient-stops':
+          'var(--tw-gradient-from) 50%, var(--tw-gradient-to)'
+      }"
+    ></div>
+  </div>
+</div>

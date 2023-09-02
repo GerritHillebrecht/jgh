@@ -20,6 +20,7 @@ import { ObserverService } from '@jgh/ui-angular/service/observer';
 import { StrapiImage, StrapiService } from '@jgh/ui-angular/data-access';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, tap } from 'rxjs';
+import { environment } from 'apps/immobilien/src/environments/environment';
 
 interface HomeStagingBereich {
   Bereichsname: string;
@@ -52,6 +53,7 @@ export class SectionAreasOfWorkComponent {
         query: {
           populate: ['Hintergrundbild'],
         },
+        server: environment.backend_server,
       })
       .pipe(
         map((data) => data.data),

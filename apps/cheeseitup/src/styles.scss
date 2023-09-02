@@ -1,0 +1,16 @@
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+/* You can add global styles to this file, and also import other style files */
+@import './assets/scss/cheese-layer.scss';
+@import './assets/scss/animations.scss';
+
+@import 'swiper/swiper-bundle.css';
+
+@import './assets/fonts/Adobe Text Pro/adobe-text-pro.scss';
+@import './assets/fonts/Americana Font Regular/americana.font.scss';
+@import './assets/fonts/regular-pro/reader-pro.scss';

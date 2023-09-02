@@ -16,12 +16,21 @@ import {
   View360Options,
 } from '@egjs/ngx-view360';
 import { AvatarBlockComponent } from 'apps/immobilien/src/app/shared/ui/avatar-block/avatar-block.component';
-import { BreakpointObserver } from '@angular/cdk/layout';
+import { Section360ViewComponent } from '@jgh/ui-angular/ui/section-360-view';
+import { GlasBorderComponent } from '@jgh/ui-angular/ui/glas-border';
 
 @Component({
   selector: 'im-reference',
   standalone: true,
-  imports: [CommonModule, AvatarComponent, MarkdownModule, NgxView360Module, AvatarBlockComponent],
+  imports: [
+    CommonModule,
+    AvatarComponent,
+    MarkdownModule,
+    NgxView360Module,
+    AvatarBlockComponent,
+    Section360ViewComponent,
+    GlasBorderComponent,
+  ],
   templateUrl: './reference.component.html',
   styleUrls: ['./reference.component.scss'],
   encapsulation: ViewEncapsulation.None,

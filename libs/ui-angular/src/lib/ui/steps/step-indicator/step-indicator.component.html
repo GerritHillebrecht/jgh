@@ -1,0 +1,41 @@
+<div class="mx-auto flex flex-col items-center gap-4">
+  <span class="tracking-[0.2em] font-bold uppercase text-xs">
+    <ng-content select="[headline]"></ng-content>
+  </span>
+  <div class="flex flex-col items-center">
+    <div
+      #line
+      class="w-[1px] h-[100px] bg-gradient-to-t"
+      [ngStyle]="{
+        '--tw-gradient-from': fromColor + ' var(--tw-gradient-from-position)',
+        '--tw-gradient-to': toColor + '00 var(--tw-gradient-to-position)',
+        '--tw-gradient-stops':
+          'var(--tw-gradient-from), ' +
+          toColor +
+          ' var(--tw-gradient-via-position), var(--tw-gradient-to)'
+      }"
+    ></div>
+    <div
+      #circle
+      class="relative opacity-0 h-10 w-10 rounded-full bg-gradient-to-r from-[#7928CA] to-[#FF0080] font-bold grid place-items-center text-white"
+      [ngStyle]="{
+        '--tw-gradient-from': fromColor + ' var(--tw-gradient-from-position)',
+        '--tw-gradient-to': toColor + ' var(--tw-gradient-to-position)',
+        '--tw-gradient-stops': 'var(--tw-gradient-from), var(--tw-gradient-to)'
+      }"
+    >
+      {{ number }}
+    </div>
+  </div>
+  <span
+    #title
+    class="font-black opacity-0 text-4xl bg-gradient-to-r bg-clip-text text-transparent"
+    [ngStyle]="{
+      '--tw-gradient-from': fromColor + ' var(--tw-gradient-from-position)',
+      '--tw-gradient-to': toColor + ' var(--tw-gradient-to-position)',
+      '--tw-gradient-stops': 'var(--tw-gradient-from), var(--tw-gradient-to)'
+    }"
+  >
+    <ng-content select="[title]"></ng-content>
+  </span>
+</div>

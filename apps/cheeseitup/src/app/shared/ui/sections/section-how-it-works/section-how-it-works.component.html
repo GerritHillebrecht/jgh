@@ -1,0 +1,34 @@
+<div class="mx-auto max-w-7xl py-20 text-stone-50">
+  <h2 class="text-6xl mb-16 px-6 font-americana font-bold">
+    So funktioniert <span class="text-cheese">Cheese it up</span>
+  </h2>
+
+  <jgh-lib-step-side-content-container
+    title="Du hast die Wahl aus"
+    gradientStart="#fdc616"
+    gradientEnd="#ec4899"
+    [icon]="iconShop"
+  >
+    <!-- Slider main container -->
+    <div class="relative overflow-hidden aspect-square">
+      <div #swiper class="swiper aspect-video">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">Slide 1</div>
+          <div class="swiper-slide">Slide 2</div>
+          <div class="swiper-slide">Slide 3</div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+      </div>
+    </div>
+  </jgh-lib-step-side-content-container>
+</div>

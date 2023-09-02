@@ -27,9 +27,16 @@
           "chatera-gross"
         ]
       }
+    },
+    "cheese-it-up": {
+      "hosting": {
+        "cheeseitup": [
+          "cheese-it-up"
+        ]
+      }
     }
   },
   "projects": {
-    "default": "chatera-gross"
+    "default": "cheese-it-up"
   }
 }

@@ -1,0 +1,15 @@
+<div
+  class="backdrop-blur backdrop-saturate-[180] relative"
+  [ngClass]="{
+    'rounded-none': containerOptions().radius === 'none',
+    'rounded-md': containerOptions().radius === 'small',
+    'rounded-lg': containerOptions().radius === 'medium',
+    'rounded-xl': containerOptions().radius === 'large',
+    'p-0': containerOptions().radius === 'none',
+    'p-4': containerOptions().radius === 'small',
+    'p-8': containerOptions().radius === 'medium',
+    'p-12': containerOptions().radius === 'large',
+  }"
+>
+  <ng-content></ng-content>
+</div>
