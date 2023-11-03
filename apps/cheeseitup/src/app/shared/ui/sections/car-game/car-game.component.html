@@ -1,0 +1,27 @@
+<div class="relative">
+  <div class="absolute inset-x-0 top-1/4" *ngIf="!loading() && started()">
+    <h2 class="text-center text-7xl text-stone-50 uppercase mix-blend-overlay">
+      Deliver your Pizza
+    </h2>
+  </div>
+  <div
+    class="absolute inset-0 flex items-center justify-center"
+    *ngIf="loading()"
+  >
+    <div *ngIf="!started()" class="flex gap-4 items-center text-2xl font-bold">
+      <button (click)="loadGame()">Spiel starten</button>
+    </div>
+    <div
+      *ngIf="started()"
+      class="flex gap-4 items-center text-2xl font-bold relative"
+    >
+      <div class="absolute inset-0 flex items-center justify-center">
+        <mat-spinner color="accent"></mat-spinner>
+      </div>
+      <p class="uppercase relative z-10">Game is</p>
+      <img class="h-10 relative z-10" src="assets/images/game/car-game.png" />
+      <p class="uppercase relative z-10">Loading</p>
+    </div>
+  </div>
+  <canvas #canvas3d id="canvas3d" class="h-[calc(100vh_-_120px)]"></canvas>
+</div>

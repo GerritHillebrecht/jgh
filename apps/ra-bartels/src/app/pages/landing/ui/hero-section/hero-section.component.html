@@ -1,31 +1,39 @@
-<div
-  class="py-24 sm:py-0 relative sm:aspect-[16/7] bg-purple-400 flex items-center"
->
+<div class="py-24 sm:py-0 relative sm:aspect-[16/7] flex items-center">
   <picture
-    class="absolute inset-0 after:content-[''] after:absolute after:inset-0 after:bg-black/60 sm:after:bg-black/50 after:z-10"
+    class="absolute inset-0 after:content-[''] after:absolute after:inset-0 after:bg-black/60 sm:after:bg-black/60 after:z-10"
   >
     <img
       class="absolute inset-0 w-full h-full object-cover"
       src="assets/images/landing/hero/hero-4.jpg"
     />
   </picture>
-  <div class="grid sm:grid-cols-2 gap-8 mx-auto w-full max-w-7xl relative">
-    <div class="flex flex-col gap-4 sm:gap-4 relative z-10 text-stone-50 px-6">
+  <div class="mx-auto w-full max-w-7xl relative z-20">
+    <div class="max-w-[50rem] mx-auto">
+      <jgh-animated-headline
+        [options]="{
+          headline: 'Willkommen in der Kanzlei Bernd-Alfred Bartels',
+          subline:
+            'Sie brauchen einen starken Verbündeten in schwierigen rechtlichen Angelegenheiten? Vertrauen Sie auf meine jahrelange Erfahrung als renommierter Strafverteidiger. Ich stehen Ihnen mit Fachkenntnis und Leidenschaft zur Seite.'
+        }"
+      ></jgh-animated-headline>
+    </div>
+    <!-- <div class="flex flex-col gap-4 sm:gap-4 relative z-10 text-stone-50 px-6">
+      
       <h3
         class="text-xs sm:text-md sm:opacity-80 uppercase tracking-[0.2rem] font-bold"
       >
         Ihr Rechtsanwalt
       </h3>
-      <h2 class="text-4xl sm:text-6xl leading-none font-medium font-Playfair">
+      <h2 class="text-4xl sm:text-7xl leading-none font-medium font-Playfair">
         Bernd-Alfred Bartels
       </h2>
-      <p class="text-base leading-[1.55] sm:leading-normal">
+      <p class="text-lg leading-[1.55] sm:leading-normal">
         Sie brauchen einen starken Verbündeten in schwierigen rechtlichen
         Angelegenheiten? Vertrauen Sie auf meine jahrelange Erfahrung als
         renommierter Strafverteidiger. Ich stehen Ihnen mit Fachkenntnis und
         Leidenschaft zur Seite.
       </p>
-      <div class="flex gap-2">
+      <div class="flex gap-2 mt-2">
         <button
           routerLink="contact"
           class="flex gap-2 items-center rounded-[3rem] active:translate-y-1 w-max active:scale-95 focus:outline-[2px] focus:outline outline-stone-100 bg-stone-50 text-stone-700 text-xs tracking-wide border border-stone-50 font-bold px-4 py-3 uppercase hover:bg-transparent hover:text-stone-50 hover:border-stone-300 transition-all duration-300"
@@ -33,14 +41,8 @@
           <fa-icon [icon]="phoneIcon"></fa-icon>
           <span>Termin vereinbaren</span>
         </button>
-        <button
-          class="flex gap-2 items-center rounded-[3rem] active:translate-y-1 w-max active:scale-95 focus:outline-[2px] focus:outline outline-stone-100 text-stone-50 text-xs tracking-wider border border-stone-50 font-bold px-4 py-3 uppercase hover:bg-stone-50 hover:text-stone-700 transition-all duration-300"
-        >
-          <fa-icon [icon]="philosophyIcon"></fa-icon>
-          <span>Philosophie</span>
-        </button>
       </div>
-    </div>
+    </div> -->
     <!-- <picture class="sm:hidden z-20 relative w-full aspect-video">
       <img class="absolute inset-0 w-full h-full object-contain object-bottom" src="assets/images/landing/bartels/ra_bartels.png" />
     </picture> -->

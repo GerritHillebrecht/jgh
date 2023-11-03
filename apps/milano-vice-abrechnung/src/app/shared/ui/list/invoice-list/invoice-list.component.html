@@ -1,0 +1,395 @@
+<div class="-mx-8 px-8 -mt-8 pt-8 pb-4 flex gap-8 items-center">
+  <img src="assets/images/logo/milanoVice-logo.svg" class="w-16" />
+  <div>
+    <span
+      class="font-black text-4xl text-[var(--primary-color)] mb-2 leading-none block text-brutalism-shadow uppercase"
+    >
+      Dein Auszahlungsticket
+    </span>
+    <p class="italic text-sm">
+      Bei den angeführten Daten handelt es sich um vorläufige Werte, die
+      zunächst geprüft und freigegeben werden müssen.
+    </p>
+  </div>
+</div>
+<div class="ticket-rip"><div class="line"></div></div>
+<div class="grid grid-cols-[2fr,1fr] gap-8">
+  <div class="invoice-section">
+    <mat-accordion multi>
+      <!-- Umsatz Speisen -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>Erzielter Umsatz</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <span>Umsatz Speisen & Getränke</span>
+            <p>
+              {{
+                revenue().foods.total + revenue().drinks.total
+                  | currency : 'EUR'
+              }}
+            </p>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-accordion multi>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p>Umsatz Speisen</p>
+              </mat-panel-title>
+              <mat-panel-description>
+                <span>Umsatz aller Channels</span>
+                <p>{{ revenue().foods.total | currency : 'EUR' }}</p>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div
+              class="line"
+              *ngFor="let revenueDetail of revenue().foods.detailed"
+            >
+              <p>{{ revenueDetail.service }}</p>
+              <p>{{ revenueDetail.orderAmount }} Bestellungen</p>
+              <p>{{ revenueDetail.amount | currency : 'EUR' }}</p>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p>Umsatz Getränke</p>
+              </mat-panel-title>
+              <mat-panel-description>
+                <span>Umsatz aller Channels</span>
+                <p>{{ revenue().drinks.total | currency : 'EUR' }}</p>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div
+              class="line"
+              *ngFor="let revenueDetail of revenue().drinks.detailed"
+            >
+              <p>{{ revenueDetail.service }}</p>
+              <p>{{ revenueDetail.orderAmount }} Bestellungen</p>
+              <p>{{ revenueDetail.amount | currency : 'EUR' }}</p>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-expansion-panel>
+
+      <!-- Gewährte Rabatte -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>Rabattaktionen</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <p>
+              Von
+              <span class="text-[var(--primary-color)]">Milano Vice</span>
+              gewährte Rabatte
+            </p>
+            <span>{{ discounts().total | currency : 'EUR' }}</span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="line" *ngFor="let discountDetail of discounts().detailed">
+          <p>{{ discountDetail.service }}</p>
+          <span>Gewährte Rabatte Lieferando</span>
+          <p>{{ discountDetail.amount | currency : 'EUR' }}</p>
+        </div>
+      </mat-expansion-panel>
+
+      <!-- Stornierte Bestellungen -->
+      <mat-expansion-panel [disabled]="cancelledOrders().total === 0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>Stornierte Bestellungen</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <span>Summe aller stornierten Bestellungen</span>
+            <p>
+              {{ cancelledOrders().total * -1 | currency : 'EUR' }}
+            </p>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div
+          class="line"
+          *ngFor="let cancelledOrderDetail of cancelledOrders().detailed"
+        >
+          <p>{{ cancelledOrderDetail.service }}</p>
+          <p>{{ cancelledOrderDetail.orderAmount }} Bestellungen</p>
+          <p>{{ cancelledOrderDetail.amount * -1 | currency : 'EUR' }}</p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <div class="line highlighted new-line mb-6">
+      <h2 class="main-line">Gesamtumsatz</h2>
+      <span></span>
+      <p>
+        {{
+          revenue().foods.total +
+            revenue().drinks.total +
+            discounts().total -
+            cancelledOrders().total | currency : 'EUR'
+        }}
+      </p>
+    </div>
+    <mat-accordion>
+      <!-- Umsatzsteuer -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>Umsatzsteuer</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <span>Angefallene Umsatzsteuer</span>
+            <p>{{ vat().total * -1 | currency : 'EUR' }}</p>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="line">
+          <p>Umsatzsteuer</p>
+          <p>7%</p>
+          <p>
+            {{ vat().detailed.sevenPercent * -1 | currency : 'EUR' }}
+          </p>
+        </div>
+        <div class="line">
+          <p>Umsatzsteuer</p>
+          <p>19%</p>
+          <p>
+            {{ vat().detailed.nineteenPercent * -1 | currency : 'EUR' }}
+          </p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <!-- Zusammenfassung Block -->
+    <div class="line highlighted new-line mb-6">
+      <h2 class="main-line">Nettoumsatz</h2>
+      <span></span>
+      <p>{{ netRevenue() | currency : 'EUR' }}</p>
+    </div>
+
+    <mat-accordion class="example-headers-align" multi>
+      <!-- Anteil Milano Vice -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>Anteil Milano Vice</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <p>Auszahlungsbetrag 52%</p>
+            <span>{{ franchiseCosts() * -1 | currency : 'EUR' }}</span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <!-- Zusammenfassung Block -->
+    <div class="line highlighted new-line mb-6">
+      <h2 class="main-line">Eigenanteil</h2>
+      <span></span>
+      <p>{{ ownerEarnings() | currency : 'EUR' }}</p>
+    </div>
+
+    <mat-accordion class="example-headers-align" multi>
+      <!-- Kartenzahlungsgebühren -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>Kartenzahlungsgebühren</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <p>Kosten für Online-Bestellungen</p>
+            <span>{{
+              onlinePaymentCosts().total * -1 | currency : 'EUR'
+            }}</span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div
+          class="line"
+          *ngFor="let onlinePaymentDetails of onlinePaymentCosts().detailed"
+        >
+          <p>{{ onlinePaymentDetails.service }}</p>
+          <span>2% des Umsatzes</span>
+          <p>{{ onlinePaymentDetails.amount * -1 | currency : 'EUR' }}</p>
+        </div>
+      </mat-expansion-panel>
+
+      <!-- Bonus für Bewertungen -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>Bonus für Bewertungen</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <p>Bewertungsbonus 3%</p>
+            <span>{{ bonusForRating() | currency : 'EUR' }}</span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+
+      <!-- Eigenlieferung -->
+      <mat-expansion-panel [disabled]="refundForOwnDelivery().total === 0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>Erstattungen Eigenlieferung</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <p>Rückerstattung für eigene Fahrer (14%)</p>
+            <span>{{ refundForOwnDelivery().total | currency : 'EUR' }}</span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div
+          class="line"
+          *ngFor="let ownDeliveryDetail of refundForOwnDelivery().detailed"
+        >
+          <p>{{ ownDeliveryDetail.service }}</p>
+          <span>Eigenlieferungen</span>
+          <p>{{ ownDeliveryDetail.amount | currency : 'EUR' }}</p>
+        </div>
+      </mat-expansion-panel>
+
+      <!-- Erstattungen Wareneinsatz -->
+      <mat-expansion-panel [disabled]="refundForBadQuality() === 0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>Erstattungen Ware</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <p>Reklamierte Ware</p>
+            <span>{{ refundForBadQuality() | currency : 'EUR' }}</span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+
+      <!-- Erstattungen Wareneinsatz -->
+      <mat-expansion-panel [disabled]="refundsOnOrders().total === 0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>Erstattungen Lieferservice</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <p>Erstattungen der Product-Costs durch Lieferservices</p>
+            <span>{{ refundsOnOrders().total | currency : 'EUR' }}</span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div
+          class="line"
+          *ngFor="let refundsOnOrdersDetail of refundsOnOrders().detailed"
+        >
+          <p>{{ refundsOnOrdersDetail.service }}</p>
+          <span>Rückerstattung des Wareneinsatzes</span>
+          <p>{{ refundsOnOrdersDetail.amount | currency : 'EUR' }}</p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <!-- Zusammenfassung Block -->
+    <div class="line highlighted new-line mb-6">
+      <h2 class="main-line">Gutschriftsbetrag</h2>
+      <span></span>
+      <p>{{ creditNote() | currency : 'EUR' }}</p>
+    </div>
+
+    <mat-accordion class="example-headers-align" multi>
+      <!-- Kartenzahlungsgebühren -->
+      <mat-expansion-panel [disabled]="productOrderCost() === 0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>Warenlieferung</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <p>Kosten für Warenlieferungen</p>
+            <span>{{ productOrderCost() * -1 | currency : 'EUR' }}</span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="line">
+          <p>Choco</p>
+          <span>Warenbestellungen</span>
+          <p>{{ productOrderCost() * -1 | currency : 'EUR' }}</p>
+        </div>
+      </mat-expansion-panel>
+
+      <!-- Kartenzahlungsgebühren -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>Anteilige Umsatzsteuer</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <p>USt. auf Umsatz</p>
+            <span>{{ owedVAT().total | currency : 'EUR' }}</span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="line">
+          <p>Umsatz</p>
+          <span>52% der Umsatzsteuer</span>
+          <p>
+            {{ owedVAT().detailed.revenue | currency : 'EUR' }}
+          </p>
+        </div>
+        <div class="line">
+          <p>Eigenlieferung</p>
+          <span>Versteuerung des Eigenlieferungsanteils</span>
+          <p>
+            {{ owedVAT().detailed.refundsDelivery | currency : 'EUR' }}
+          </p>
+        </div>
+        <div class="line">
+          <p>Produktionskostenerstattungen</p>
+          <span>von Lieferservices</span>
+          <p>
+            {{ owedVAT().detailed.refundsOrders | currency : 'EUR' }}
+          </p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <!-- Zusammenfassung Block -->
+
+    <div class="line highlighted new-line mb-6">
+      <h2 class="main-line">Auszahlungsbetrag</h2>
+      <span></span>
+      <p>{{ payout() | currency : 'EUR' }}</p>
+    </div>
+
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>Vorsteuer</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <p>USt. auf Umsatz</p>
+            <span>{{
+              owedVAT().detailed.orderVAT * -1 | currency : 'EUR'
+            }}</span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <div class="line highlighted new-line mb-6">
+      <h2 class="main-line">Abzuführen ans FA</h2>
+      <span></span>
+      <p>
+        {{ owedVAT().total - owedVAT().detailed.orderVAT | currency : 'EUR' }}
+      </p>
+    </div>
+
+    <div class="line highlighted new-line mb-6 text-lg">
+      <h2 class="main-line">Dein Gewinn</h2>
+      <span></span>
+      <p>
+        {{
+          payout() - owedVAT().total + owedVAT().detailed.orderVAT
+            | currency : 'EUR'
+        }}
+      </p>
+    </div>
+  </div>
+  <div>
+    <button (click)="openAll()" class="mr-4">open</button>
+    <button (click)="closeAll()">close</button>
+  </div>
+</div>

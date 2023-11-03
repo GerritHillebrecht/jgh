@@ -1,0 +1,27 @@
+.animation-marquee {
+  animation: animation-marquee-1 160s linear infinite;
+  animation-delay: -160s;
+}
+
+.animation-marquee-2 {
+  animation: animation-marquee-2 160s linear infinite;
+  animation-delay: -80s;
+}
+
+@keyframes animation-marquee-1 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes animation-marquee-2 {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}

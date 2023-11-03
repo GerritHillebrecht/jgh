@@ -1,34 +1,42 @@
-<div class="mx-auto max-w-7xl py-20 text-stone-50">
-  <h2 class="text-6xl mb-16 px-6 font-americana font-bold">
-    So funktioniert <span class="text-cheese">Cheese it up</span>
+<div class="text-stone-50">
+  <h2 class="text-7xl mb-16 px-6 font-black tracking-wider uppercase">
+    So funktioniert <span class="text-cheese font-thunder">Cheese it up</span>
   </h2>
 
-  <jgh-lib-step-side-content-container
-    title="Du hast die Wahl aus"
-    gradientStart="#fdc616"
-    gradientEnd="#ec4899"
-    [icon]="iconShop"
+  <jgh-glas-border
+    [options]="{ saturation: 'small', blur: 'small', padding: 'large' }"
   >
-    <!-- Slider main container -->
-    <div class="relative overflow-hidden aspect-square">
-      <div #swiper class="swiper aspect-video">
-        <!-- Additional required wrapper -->
+    <div class="rounded-xl bg-stone-50 px-10 py-16 shadow-xl text-stone-800">
+      <jgh-lib-step-side-content-container
+        stepTitle="Du hast die Wahl aus"
+        gradientStart="#fdc616"
+        gradientEnd="#ec4899"
+        [icon]="iconShop()"
+      >
+        <div class="relative overflow-hidden">
+          <!-- <div #swiper class="swiper aspect-video">
         <div class="swiper-wrapper">
-          <!-- Slides -->
           <div class="swiper-slide">Slide 1</div>
           <div class="swiper-slide">Slide 2</div>
           <div class="swiper-slide">Slide 3</div>
         </div>
-        <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
 
-        <!-- If we need navigation buttons -->
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
 
-        <!-- If we need scrollbar -->
         <div class="swiper-scrollbar"></div>
-      </div>
+      </div> -->
+        </div>
+      </jgh-lib-step-side-content-container>
+      <jgh-lib-step-side-content-container
+        stepTitle="Wir bereiten es für dich zu"
+        gradientStart="#ec4899"
+        gradientEnd="#fdc616"
+        [icon]="iconPizza()"
+      >
+        <div class="relative overflow-hidden"></div>
+      </jgh-lib-step-side-content-container>
     </div>
-  </jgh-lib-step-side-content-container>
+  </jgh-glas-border>
 </div>

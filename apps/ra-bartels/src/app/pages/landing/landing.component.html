@@ -1,12 +1,18 @@
 <main>
-  <jgh-canvas></jgh-canvas>
+  <!-- <jgh-canvas></jgh-canvas> -->
   <rab-hero-section></rab-hero-section>
-  <rab-information-section></rab-information-section>
-  <rab-location-section></rab-location-section>
-  <jgh-accordion-section
-    [title]="title"
-    [subtitle]="subtitle"
-    [accordionElements]="accordionElements"
-    [options]="accordionOptions"
-  ></jgh-accordion-section>
+  <section class="py-20">
+    <rab-information-section></rab-information-section>
+  </section>
+  <section class="py-20">
+    <rab-location-section></rab-location-section>
+  </section>
+  <section class="py-20">
+    <jgh-accordion-section
+      [title]="title"
+      [subtitle]="subtitle"
+      [accordionElements]="accordionElements"
+      [options]="accordionOptions"
+    ></jgh-accordion-section>
+  </section>
 </main>

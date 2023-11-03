@@ -1,7 +1,21 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  ViewChild,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StepSideContentContainerComponent } from '@jgh/ui-angular/ui/steps';
-import { faStore } from '@fortawesome/free-solid-svg-icons';
+import {
+  IconDefinition,
+  faPizzaSlice,
+  faStore,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  GlasBorderComponent,
+  GlasBorderOptions,
+} from '@jgh/ui-angular/ui/glas-border';
 
 import Swiper, {
   Controller,
@@ -14,14 +28,25 @@ import Swiper, {
 @Component({
   selector: 'ciu-section-how-it-works',
   standalone: true,
-  imports: [CommonModule, StepSideContentContainerComponent],
+  imports: [
+    CommonModule,
+    StepSideContentContainerComponent,
+    GlasBorderComponent,
+  ],
   templateUrl: './section-how-it-works.component.html',
   styleUrls: ['./section-how-it-works.component.scss'],
 })
 export class SectionHowItWorksComponent implements AfterViewInit {
   @ViewChild('swiper') swiperRef?: ElementRef<HTMLDivElement>;
 
-  protected readonly iconShop = faStore;
+  protected readonly iconShop = signal<IconDefinition>(faStore);
+  protected readonly iconPizza = signal<IconDefinition>(faPizzaSlice);
+
+  protected readonly glasBorderOptions = signal<Partial<GlasBorderOptions>>({
+    saturation: 'small',
+    blur: 'small',
+    padding: 'large',
+  });
 
   private readonly swiper = new Swiper('.swiper', {
     // Optional parameters

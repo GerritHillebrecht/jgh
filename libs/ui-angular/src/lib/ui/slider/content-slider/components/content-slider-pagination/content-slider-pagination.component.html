@@ -1,0 +1,14 @@
+<div
+  class="slide-selector absolute w-full bottom-4 flex justify-center items-center gap-2 z-[100]"
+>
+  <div
+    *ngFor="let slide of sliderService.slides; let index = index"
+    class="slide-selector-btn w-4 h-1 rounded-xl cursor-pointer transition-all"
+    [ngClass]="{
+      'bg-rose-500 w-[2rem!important]':
+        sliderService.selectedSlides.get('active') === index,
+      'bg-stone-400': sliderService.selectedSlides.get('active') !== index
+    }"
+    (click)="selectSlide(index)"
+  ></div>
+</div>

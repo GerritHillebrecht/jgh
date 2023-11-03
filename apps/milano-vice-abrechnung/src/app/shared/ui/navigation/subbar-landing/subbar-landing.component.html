@@ -1,0 +1,50 @@
+<header
+  class="toolbar px-8 flex items-center justify-between bg-[var(--secondary-color)] sticky top-14 z-40 shadow"
+>
+  <div class="flex flow-col items-center gap-4">
+    <mat-form-field class="mt-4 -mb-1">
+      <mat-label>Standort</mat-label>
+      <mat-select [value]="'Eppendorf'">
+        <mat-optgroup label="Hamburg">
+          <mat-option [value]="'Eppendorf'">Eppendorf</mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="mt-4 -mb-1">
+      <mat-label>Monat</mat-label>
+      <mat-select
+        [value]="dateSelectionService.timeperiods()[0]"
+        (selectionChange)="onSelectionChange($event.value)"
+      >
+        <mat-optgroup label="2023">
+          <mat-option
+            *ngFor="let period of dateSelectionService.timeperiods()"
+            [value]="period"
+          >
+            <div class="flex flex-col">
+              <p>{{ period.label }}</p>
+              <p class="text-xs">
+                {{ period.from | date : 'dd.MM' }} -
+                {{ period.to | date : 'dd.MM YYYY' }}
+              </p>
+            </div>
+          </mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <nav class="flex items-center gap-4">
+    <div
+      matTooltip="An <email> schicken"
+      class="button w-10 flex items-center justify-center aspect-square rounded bg-stone-50 p-2 hover:shadow-xl hover:bg-[var(--primary-color)] hover:text-[var(--secondary-color)] hover:-translate-y-[2px] cursor-pointer duration-300 transition-all"
+    >
+      <fa-icon [icon]="sendMailIcon()"></fa-icon>
+    </div>
+    <div
+      matTooltip="Abrechnung herunterladen"
+      class="button w-10 flex items-center justify-center aspect-square rounded bg-stone-50 p-2 hover:shadow-xl hover:bg-[var(--primary-color)] hover:text-[var(--secondary-color)] hover:-translate-y-[2px] cursor-pointer duration-300 transition-all"
+    >
+      <fa-icon [icon]="downloadIcon()"></fa-icon>
+    </div>
+  </nav>
+</header>

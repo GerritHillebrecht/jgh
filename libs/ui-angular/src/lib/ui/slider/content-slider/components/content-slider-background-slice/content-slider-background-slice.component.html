@@ -1,0 +1,9 @@
+<div
+  class="background-slice"
+  [ngStyle]="{
+    'background-image': 'url(' + image + ')',
+    'animation-delay': sliderService.animationDelays[index],
+    'clip-path': clipPath
+  }"
+  [ngClass]="{ active, hide: !active }"
+></div>

@@ -1,4 +1,10 @@
-import { Component, OnChanges, SimpleChanges, signal } from '@angular/core';
+import {
+  Component,
+  OnChanges,
+  SimpleChanges,
+  ViewEncapsulation,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LogoFullComponent } from '../../shared/ui/logo';
 
@@ -6,7 +12,14 @@ import { NgParticlesModule } from 'ng-particles';
 import { Engine } from 'tsparticles-engine';
 import { loadSlim } from 'tsparticles-slim'; // if you are going to use `loadSlim`, install the "tsparticles-slim" package too.
 
-import { SectionHowItWorksComponent } from '../../shared/ui/sections/section-how-it-works/section-how-it-works.component';
+import { SectionHowItWorksComponent } from '../../shared/ui/sections/section-how-it-works';
+import { AnimationIconsBackgroundComponent } from '../../shared/ui/sections/animation-icons-background';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { environment } from 'apps/cheeseitup/src/environments/environment';
+import { CarGameComponent } from '../../shared/ui/sections/car-game/car-game.component';
+
+import { ContentSliderComponent } from '@jgh/ui-angular/ui/slider/content-slider/content-slider.component';
+import { FooterComponent } from '../../shared/ui/footer/footer.component';
 
 export interface Deliverer {
   name: string;
@@ -22,13 +35,19 @@ export interface Deliverer {
     LogoFullComponent,
     NgParticlesModule,
     SectionHowItWorksComponent,
+    AnimationIconsBackgroundComponent,
+    CarGameComponent,
+    ContentSliderComponent,
+    FooterComponent,
   ],
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss'],
 })
 export default class LandingComponent implements OnChanges {
   id = 'tsparticles';
   particlesUrl = 'assets/particles/particlesjs-config.json';
+  protected readonly env = environment.production;
 
   async particlesInit(engine: Engine): Promise<void> {
     console.log(engine);

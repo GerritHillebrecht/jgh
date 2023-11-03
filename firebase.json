@@ -3,7 +3,9 @@
     {
       "target": "stadtbistro",
       "public": "dist/apps/stadtbistro",
-      "ignore": ["**/.*"],
+      "ignore": [
+        "**/.*"
+      ],
       "rewrites": [
         {
           "source": "**",
@@ -14,7 +16,9 @@
     {
       "target": "immobilien",
       "public": "dist/apps/immobilien",
-      "ignore": ["**/.*"],
+      "ignore": [
+        "**/.*"
+      ],
       "rewrites": [
         {
           "source": "**",
@@ -25,13 +29,33 @@
     {
       "target": "cheeseitup",
       "public": "dist/apps/cheeseitup",
-      "ignore": ["**/.*"],
+      "ignore": [
+        "**/.*"
+      ],
       "rewrites": [
         {
           "source": "**",
           "destination": "/index.html"
         }
       ]
+    },
+    {
+      "target": "ra-bartels",
+      "public": "dist/apps/ra-bartels",
+      "ignore": [
+        "**/.*"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "milano-vice-abrechnung",
+      "source": ".",
+      "frameworksBackend": {}
     }
   ]
 }

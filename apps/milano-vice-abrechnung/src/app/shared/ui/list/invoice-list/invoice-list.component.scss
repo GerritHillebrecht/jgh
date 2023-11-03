@@ -1,0 +1,92 @@
+.line {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-right: 1.5rem;
+  padding-block: 0.15rem;
+  position: relative;
+
+  :last-child {
+    text-align: right;
+  }
+  :nth-child(2) {
+    padding-left: 0.75rem;
+  }
+
+  &.subline {
+    @apply text-sm italic;
+  }
+
+  &.highlighted {
+    @apply font-bold;
+    padding-inline: 1.5rem;
+    padding-block: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 0.25rem;
+    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.25);
+  }
+
+  &.new-line {
+    @apply -mt-[2px] bg-white rounded-t-none;
+    z-index: 2;
+    position: relative;
+  }
+}
+
+.mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.invoice-section {
+  counter-reset: invoice-nummeration;
+}
+
+.main-line {
+  &::before {
+    counter-increment: invoice-nummeration;
+    content: counter(invoice-nummeration) '. ';
+  }
+}
+
+.ticket-rip {
+  position: relative;
+  margin-block: 1rem;
+  margin-inline: -3rem;
+  height: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .line {
+    transform: translateY(25%);
+    width: calc(100% - 5rem);
+    height: 0px;
+    border-top: 3px dashed rgba(0, 0, 0, 0.2);
+  }
+
+  &::before {
+    left: 0;
+    // transform: translateX(-60%);
+    box-shadow: -1.5px 0px 1px rgba(0, 0, 0, 0.15) inset;
+    // rotate: 90deg;
+  }
+
+  &::after {
+    right: 0;
+    // transform: translateX(60%);
+    box-shadow: 1.5px 0px 1px rgba(0, 0, 0, 0.15) inset;
+    // rotate: -90deg;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    border-radius: 50%;
+    top: 0;
+    background-color: var(--secondary-color);
+  }
+}

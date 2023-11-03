@@ -34,9 +34,23 @@
           "cheese-it-up"
         ]
       }
+    },
+    "kanzlei-bartels": {
+      "hosting": {
+        "ra-bartels": [
+          "kanzlei-bartels"
+        ]
+      }
+    },
+    "milano-vice-abrechnung": {
+      "hosting": {
+        "milano-vice-abrechnung": [
+          "milano-vice-abrechnung"
+        ]
+      }
     }
   },
   "projects": {
-    "default": "cheese-it-up"
+    "default": "milano-vice-abrechnung"
   }
 }

@@ -9,27 +9,23 @@
 >
   <div class="mx-auto max-w-7xl w-full flex items-center justify-between">
     <div class="flex items-center gap-2">
-      <img src="assets/images/logo/bird.png" class="h-6 brightness" [ngClass]="{
-        'invert': !scrolled()
-      }">
+      <img
+        src="assets/images/logo/bird.png"
+        class="h-6 brightness"
+        [ngClass]="{
+          invert: !scrolled()
+        }"
+      />
       <p class="font-logo text-xl font-medium">Kanzlei Bartels</p>
     </div>
-    <div class="items-center hidden sm:flex">
-      <button
-        class="text-inherit"
-        mat-button
-        *ngFor="let link of ['RA Bartels', 'Kontakt', 'Philosophie']"
-      >
-        <span
-          class="transition-all duration-300"
-          [ngClass]="{
-            'text-stone-50': !scrolled(),
-            'text-stone-950': scrolled()
-          }"
-        >
-          {{ link }}
-        </span>
-      </button>
-    </div>
+    <button class="block sm:hidden" (click)="openSidenav()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <jgh-navbar-rounded-overlay
+      class="hidden sm:block"
+      hightlightColor="#8E793E"
+      fontColor="white"
+      [routes]="routes()"
+    ></jgh-navbar-rounded-overlay>
   </div>
 </div>

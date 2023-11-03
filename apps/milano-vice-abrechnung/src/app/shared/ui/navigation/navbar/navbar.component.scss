@@ -1,0 +1,7 @@
+.link-item {
+  @apply px-6 h-14 flex items-center font-medium cursor-pointer;
+
+  &.active {
+    @apply border-b-[3px] border-[var(--primary-color)] font-bold;
+  }
+}

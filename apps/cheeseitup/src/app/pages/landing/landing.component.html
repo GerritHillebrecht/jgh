@@ -8,6 +8,8 @@
   ></div> -->
   <div id="cheeseHolesParticleJS" class="absolute inset-0">
     <ng-particles
+      *ngIf="env"
+      class="particles-wrapper"
       [id]="id"
       [url]="particlesUrl"
       [particlesInit]="particlesInit"
@@ -30,7 +32,7 @@
         </picture>
       </figure>
       <div class="text-stone-50">
-        <h2 class="text-6xl uppercase font-bold">
+        <h2 class="text-6xl uppercase font-black">
           Ready for a <span class="text-pink-500">cheese</span> infusion?
         </h2>
         <p class="my-8 uppercase font-bold text-sm tracking-[0.2em]">
@@ -45,10 +47,7 @@
           >
             <figure>
               <picture>
-                <img
-                  class="object-contain"
-                  [src]="delivery_service.image"
-                />
+                <img class="object-contain" [src]="delivery_service.image" />
               </picture>
             </figure>
           </a>
@@ -57,11 +56,30 @@
     </div>
   </div>
 </div>
-<div
-  class="h-[1200px] bg-cyan-500 relative cheese-layer--top cheese-layer--bottom"
->
-  <ciu-section-how-it-works></ciu-section-how-it-works>
+<div class="bg-cyan-500 relative cheese-layer--top cheese-layer--bottom">
+  <div class="absolute inset-0">
+    <ciu-animation-icons-background
+      *ngIf="env"
+    ></ciu-animation-icons-background>
+  </div>
+  <div class="relative z-10 my-32 max-w-7xl mx-auto">
+    <ciu-section-how-it-works></ciu-section-how-it-works>
+  </div>
+</div>
+<div class="h-96 bg-[#fdc616] relative"></div>
+<div class="relative z-10 cheese-layer--top cheese-layer--bottom">
+  <div class="relative h-screen 3xl:h-[90vh] -my-[125px] isolate">
+    <jgh-lib-content-slider [turbulenceState]="false" *ngIf="env"></jgh-lib-content-slider>
+  </div>
+</div>
+<div class="h-96 bg-[#fdc616] relative"></div>
+<div class="relative cheese-layer--top cheese-layer--bottom">
+  <div class="-my-[130px]" *ngIf="env">
+    <ciu-car-game></ciu-car-game>
+  </div>
 </div>
 <!-- 
 <div class="bg-stone-800 pb-[1200px] relative"></div> -->
-<div class="h-96 bg-[#fdc616] relative"></div>
+<div class="bg-[#fdc616] relative">
+  <ciu-footer></ciu-footer>
+</div>

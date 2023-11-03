@@ -1,0 +1,115 @@
+nav {
+  --clr-font: rgb(236 72 153);
+  --clr-hightlight: #fdc616;
+  --item-width: 8rem;
+  //   --clr-hightlight: rgb(226, 223, 254);
+
+  display: flex;
+  position: relative;
+
+  &:hover {
+    .slider {
+      opacity: 1;
+    }
+  }
+
+  &.animate {
+    .slider {
+      transition-delay: 150ms;
+      transition: all 350ms ease-in-out;
+    }
+  }
+
+  .slider {
+    width: var(--item-width);
+    height: 100%;
+    background-color: var(--clr-hightlight);
+    position: absolute;
+    border-radius: 3rem;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 250ms ease;
+    z-index: 1;
+  }
+
+  ul {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
+    li {
+      list-style: none;
+
+      &:hover {
+        a {
+          .icon {
+            scale: 1;
+            margin: 0 0.5rem 0 0;
+          }
+        }
+      }
+
+      a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        color: var(--clr-font);
+        color: #fff;
+        cursor: pointer;
+        padding: 0.8rem 2rem;
+        border-radius: 3rem;
+        width: var(--item-width);
+        transition: 350ms all ease-in-out;
+        font-weight: 900;
+        // font-family: Thunder;
+        line-height: 1rem;
+        vertical-align: middle;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-transform: uppercase;
+
+        &:hover {
+          color: var(--clr-font);
+
+          img {
+            filter: invert(41%) sepia(58%) saturate(2772%) hue-rotate(305deg)
+              brightness(97%) contrast(90%);
+          }
+          //   color: #fff;
+        }
+
+        &.active-route {
+          .icon {
+            scale: 1;
+            margin: -1px 0.5rem 0 0;
+            color: var(--clr-font) !important;
+          }
+        }
+
+        img {
+          filter: invert(1);
+        }
+
+        .icon {
+          width: 1rem;
+          height: 1rem;
+          font-size: 0.85rem;
+          line-height: 1rem;
+          scale: 0;
+          margin: -1px -1rem 0 0;
+          position: relative;
+
+          transform-origin: -0.4rem 50%;
+          transition: all 350ms ease-in-out;
+        }
+      }
+    }
+  }
+}

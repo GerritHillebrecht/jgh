@@ -1,14 +1,22 @@
 <div
-  class="backdrop-blur backdrop-saturate-[180] relative"
+  class="relative border border-stone-100/20"
   [ngClass]="{
+    'backdrop-blur-none': containerOptions().blur === 'none',
+    'backdrop-blur-sm': containerOptions().blur === 'small',
+    'backdrop-blur': containerOptions().blur === 'medium',
+    'backdrop-blur-md': containerOptions().blur === 'large',
+    'backdrop-saturate-100': containerOptions().saturation === 'none',
+    'backdrop-saturate-[1.1]': containerOptions().saturation === 'small',
+    'backdrop-saturate-[1.45]': containerOptions().saturation === 'medium',
+    'backdrop-saturate-[1.8]': containerOptions().saturation === 'large',
     'rounded-none': containerOptions().radius === 'none',
     'rounded-md': containerOptions().radius === 'small',
     'rounded-lg': containerOptions().radius === 'medium',
     'rounded-xl': containerOptions().radius === 'large',
-    'p-0': containerOptions().radius === 'none',
-    'p-4': containerOptions().radius === 'small',
-    'p-8': containerOptions().radius === 'medium',
-    'p-12': containerOptions().radius === 'large',
+    'p-0': containerOptions().padding === 'none',
+    'p-4': containerOptions().padding === 'small',
+    'p-8': containerOptions().padding === 'medium',
+    'p-12': containerOptions().padding === 'large',
   }"
 >
   <ng-content></ng-content>

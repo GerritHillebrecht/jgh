@@ -1,0 +1,46 @@
+<div class="stats shadow mx-auto">
+  <div class="stat">
+    <div class="stat-figure text-primary">
+      <div class="w-16">
+        <img src="assets/images/delivery/wolt.png" />
+      </div>
+    </div>
+    <div class="stat-title">Umsatz</div>
+    <div class="stat-value text-cyan-600">
+      {{ revenues['wolt'] - discounts['wolt'] | currency : '€' }}
+    </div>
+    <div class="stat-desc">
+      Davon {{ discounts['wolt'] * -1 | currency : '€' }} aus Rabatten
+    </div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-figure text-secondary">
+      <div class="w-12">
+        <img src="assets/images/delivery/uber_eats.png" />
+      </div>
+    </div>
+    <div class="stat-title">Umsatz</div>
+    <div class="stat-value text-lime-600">
+      {{ revenues['ubereats'] - discounts['ubereats'] | currency : '€' }}
+    </div>
+    <div class="stat-desc">
+      Davon {{ discounts['ubereats'] | currency : '€' }} aus Rabatten
+    </div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-figure text-secondary">
+      <div class="w-16">
+        <img src="assets/images/delivery/lieferando.png" />
+      </div>
+    </div>
+    <div class="stat-title">Umsatz</div>
+    <div class="stat-value text-orange-500">
+      {{ revenues['lieferando'] - discounts['lieferando'] | currency : '€' }}
+    </div>
+    <div class="stat-desc">
+      Davon {{ discounts['lieferando'] * -1 | currency : '€' }} aus Rabatten
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<section class="h-full relative flex flex-col overflow-hidden justify-center">
+  <div
+    class="row -top-1/2 rotate-[-30deg] relative w-full flex whitespace-nowrap py-10"
+    *ngFor="let row of rows; let ri = index"
+  >
+    <div
+      *ngFor="let tab of [0, 1]; let i = index"
+      [ngClass]="{
+        'animation-marquee': i % 2 === 0,
+        'animation-marquee-2': i % 2 !== 0
+      }"
+      [ngStyle]="{ 'animation-direction': ri % 2 === 0 ? 'normal' : 'reverse' }"
+      class="flex gap-10 whitespace-nowrap text-[1em] animation-marquee px-5"
+    >
+      <fa-icon
+        *ngFor="let icon of icons; let ii = index"
+        [icon]="ii % 2 === 0 ? pizzaIcon() : wheatIcon()"
+        class="text-7xl opacity-5 hover:opacity-100 text-black hover:text-yellow-500 select-none transition-[color,_filter,_opacity] duration-1000 hover:drop-shadow-[0_0_120px_rgb(234_179_8)] hover:duration-0"
+      ></fa-icon>
+    </div>
+  </div>
+</section>

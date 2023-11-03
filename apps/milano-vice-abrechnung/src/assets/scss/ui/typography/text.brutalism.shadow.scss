@@ -1,0 +1,11 @@
+.text-brutalism-shadow {
+  --drop-shadow-distance: 0.04em;
+  --drop-shadow-blur: 0em;
+  --drop-shadow-color: rgba(0, 0, 0, 0.7);
+
+  filter: drop-shadow(
+    calc(var(--drop-shadow-distance) * -1)
+      calc(var(--drop-shadow-distance) * 1.5) var(--drop-shadow-blur)
+      var(--drop-shadow-color)
+  );
+}

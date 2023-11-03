@@ -1,0 +1,10 @@
+.brutalism-shadow {
+  .mat-mdc-text-field-wrapper {
+    --shadow-distance: 0.15rem;
+    --shadow-blur: 0rem;
+    --shadow-color: rgba(0, 0, 0, 0.7);
+
+    box-shadow: calc(var(--shadow-distance) * -1)
+      calc(var(--shadow-distance) * 1.25) var(--shadow-blur) var(--shadow-color);
+  }
+}

@@ -1,0 +1,54 @@
+<div
+  class="w-screen h-screen grid place-items-center bg-[var(--secondary-color)] px-4"
+>
+  <div
+    class="sm:aspect-square px-4 py-8 w-full sm:p-12 flex items-center justify-center sm:w-[600px] max-w-screen bg-[var(--secondary-color)] shadow-xl rounded-xl"
+    style="perspective: 1000px"
+  >
+    <div class="content">
+      <img
+        src="assets/images/logo/milanoVice-logo.svg"
+        class="w-28 sm:w-32 mx-auto"
+      />
+      <h1
+        class="text-brutalism-shadow text-center mb-10 mt-8 text-4xl sm:text-5xl font-black"
+        style="color: var(--primary-color)"
+      >
+        Milano Vice
+        <span class="uppercase text-clipped block mt-2">Partnerhub</span>
+      </h1>
+      <div>
+        <mat-form-field class="w-full brutalism-shadow" floatLabel="always">
+          <mat-label>E-Mail</mat-label>
+          <input
+            matInput
+            type="email"
+            placeholder="maxmustermann@email.de"
+            autocomplete="email"
+          />
+          <mat-icon matIconSuffix>mail</mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="w-full brutalism-shadow" floatLabel="always">
+          <mat-label>Passwort</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="password"
+            autocomplete="current-password"
+          />
+          <mat-icon matIconSuffix>key</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="text-right">
+        <a href="#" class="text-brutalism-shadow"> Passwort vergessen? </a>
+      </div>
+      <div class="flex justify-center mt-4">
+        <button class="btn-primary">
+          <span class="text-brutalism-shadow">Anmelden</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

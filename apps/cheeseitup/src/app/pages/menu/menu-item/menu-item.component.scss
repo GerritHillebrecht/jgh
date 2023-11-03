@@ -1,0 +1,45 @@
+.slide {
+  &.active {
+    img {
+      opacity: 100%;
+      filter: blur(0px);
+
+      &.inner {
+        rotate: 0deg;
+      }
+
+      &.middle {
+        rotate: 0deg;
+      }
+
+      &.outer {
+        rotate: 0deg;
+      }
+    }
+  }
+
+  img {
+    opacity: 0;
+    scale: 1.2;
+    filter: blur(50px);
+    transition: all 1s ease;
+
+    &.inner {
+      z-index: 3;
+      rotate: -30deg;
+      clip-path: ellipse(var(--inner) var(--inner) at 50% 50%);
+
+    }
+
+    &.middle {
+      z-index: 2;
+      rotate: 30deg;
+      clip-path: ellipse(var(--middle) var(--middle) at 50% 50%);
+    }
+
+    &.outer {
+      z-index: 1;
+      rotate: -5deg;
+    }
+  }
+}

@@ -9,11 +9,17 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        '3xl': '2000px',
+      },
       fontFamily: {
+        monaSans: ['Mona Sans', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
         righteous: ['Righteous', 'cursive'],
         adobeTextPro: ['Adobe Text Pro', 'serif'],
         americana: ['Americana', 'sans-serif'],
         readerPro: ['Reader Pro', 'sans-serif'],
+        thunder: ['Thunder', 'sans-serif'],
       },
       colors: {
         cheese: '#F9D423',

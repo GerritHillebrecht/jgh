@@ -1,0 +1,33 @@
+<button
+  #btn
+  class="gooey-btn bg-rose-400 dark:bg-indigo-600 text-rose-100 dark:text-stone-200 active:translate-y-0 hover:-translate-y-1"
+>
+  <span class="m-0 p-0 dark:bg-indigo-600">
+    <ng-content></ng-content>
+  </span>
+  <span class="bubbles">
+    <span
+      class="bubble bg-rose-400 dark:bg-indigo-600"
+      *ngFor="let bubble of bubbleArray"
+    ></span>
+  </span>
+</button>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="hidden">
+  <defs>
+    <filter id="gooey">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+      <feColorMatrix
+        in="blur"
+        type="matrix"
+        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+        result="highContrastGraphic"
+      />
+      <feComposite
+        in="SourceGraphic"
+        in2="highContrastGraphic"
+        operator="atop"
+      />
+    </filter>
+  </defs>
+</svg>

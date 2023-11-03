@@ -1,4 +1,5 @@
 export const environment = {
+  production: true,
   firebase: {
     projectId: 'cheese-it-up',
     appId: '1:552809104196:web:f06f3e448fb9ee18f18d11',

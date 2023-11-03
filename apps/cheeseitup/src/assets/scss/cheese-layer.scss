@@ -3,7 +3,7 @@
 
   &::before {
     content: '';
-    @apply top-0 bg-[url('assets/images/pattern/cheese.png')] bg-contain inset-x-0 absolute h-[122px] drop-shadow-lg bg-repeat-x pointer-events-none;
+    @apply top-0 bg-[url('assets/images/pattern/cheese.png')] bg-contain inset-x-0 absolute h-[122px] drop-shadow-lg bg-repeat-x pointer-events-none z-10;
   }
 }
 
@@ -12,7 +12,7 @@
 
   &::after {
     content: '';
-    @apply rotate-180 bottom-0 bg-[url('assets/images/pattern/cheese.png')] bg-contain inset-x-0 absolute h-[122px] drop-shadow-lg bg-repeat-x pointer-events-none;
+    @apply rotate-180 bottom-0 bg-[url('assets/images/pattern/cheese.png')] bg-contain inset-x-0 absolute h-[122px] drop-shadow-lg bg-repeat-x pointer-events-none z-10;
     background-position-x: 10%;
   }
 }

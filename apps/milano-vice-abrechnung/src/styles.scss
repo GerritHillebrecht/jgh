@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'swiper/css/bundle';
+
+@import './assets/scss/theme.scss';
+
+/* You can add global styles to this file, and also import other style files */
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+:root {
+  --primary-color: rgb(255, 42, 157);
+  --secondary-color: rgb(255, 226, 12);
+  --tertiary-color: rgb(0, 220, 221);
+}

@@ -1,0 +1,25 @@
+<div
+  class="slider"
+  sliderGesture
+  (swipeLeft)="nextSlide()"
+  (swipeRight)="previousSlide()"
+>
+  <ng-container *ngFor="let slide of sliderService.slides; let index = index">
+    <jgh-lib-content-slider-slide
+      *ngIf="
+        [
+          sliderService.selectedSlides.get('active'),
+          sliderService.selectedSlides.get('previous')
+        ].includes(index)
+      "
+      [slide]="slide"
+      [turbulenceState]="turbulenceState"
+      [index]="index"
+      [active]="index === sliderService.selectedSlides.get('active')"
+    ></jgh-lib-content-slider-slide>
+  </ng-container>
+
+  <jgh-monorepo-content-slider-pagination
+    *ngIf="slides.length > 1"
+  ></jgh-monorepo-content-slider-pagination> 
+</div>

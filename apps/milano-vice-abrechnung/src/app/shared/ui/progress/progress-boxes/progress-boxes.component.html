@@ -1,0 +1,23 @@
+<div class="progress-boxes-container flex flex-row item-center flex-nowrap">
+  <div
+    class="progress-box w-16 h-10 -ml-3 text-white"
+    *ngFor="let date of days(); let index = index"
+  >
+    <div
+      class="wrapper absolute w-full h-full flex items-center justify-center"
+      [ngClass]="{
+        'bg-[var(--tertiary-color)]':
+          date.toDate().getTime() <
+          dateSelectionService.currentDate().toDate().getTime(),
+        'text-[var(--secondary-color)] text-lg font-black':
+          date.startOf('day').toDate().getTime() ===
+          dateSelectionService.currentDate().startOf('day').toDate().getTime(),
+        'bg-[var(--primary-color)]':
+          date.toDate().getTime() >=
+          dateSelectionService.currentDate().toDate().getTime()
+      }"
+    >
+      <p>{{ date.format('DD') }}.</p>
+    </div>
+  </div>
+</div>

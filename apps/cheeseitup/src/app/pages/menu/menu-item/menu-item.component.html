@@ -1,0 +1,35 @@
+<div #slider class="slider relative h-screen w-screen max-w-7xl 3xl:max-w-[2000px] mx-auto overflow-hidden">
+  <div class="slides-wrapper relative h-full">
+    <div
+      #slide
+      class="slide absolute inset-0 w-full h-full"
+      *ngFor="let slide of slides(); let index = index"
+      [ngClass]="{ active: index === active() }"
+    >
+      <img
+        [src]="slide.image"
+        class="inner absolute inset-0 w-full h-full object-contain object-center"
+        aria-hidden="true"
+      />
+      <img
+        [src]="slide.image"
+        class="middle absolute inset-0 w-full h-full object-contain object-center"
+        aria-hidden="true"
+      />
+      <img
+        [src]="slide.image"
+        class="outer absolute inset-0 w-full h-full object-contain object-center"
+      />
+    </div>
+  </div>
+  <button
+    id="next"
+    (click)="next()"
+    class="slider-button next absolute bottom-4 right-4 rounded-lg bg-stone-50/20 backdrop-blur w-12 aspect-square z-40"
+  ></button>
+  <button
+    id="prev"
+    (click)="prev()"
+    class="slider-button prev absolute bottom-4 left-4 rounded-lg bg-stone-50/20 backdrop-blur w-12 aspect-square z-40"
+  ></button>
+</div>

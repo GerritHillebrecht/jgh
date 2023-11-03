@@ -11,6 +11,13 @@
 
 @import 'swiper/swiper-bundle.css';
 
+@import './assets/scss/typography.scss';
+@import './assets/fonts/Mona Sans Thin/mona-sans-thin.scss';
 @import './assets/fonts/Adobe Text Pro/adobe-text-pro.scss';
 @import './assets/fonts/Americana Font Regular/americana.font.scss';
 @import './assets/fonts/regular-pro/reader-pro.scss';
+@import './assets/fonts/thunder/thunder.scss';
+
+* {
+  -webkit-font-smoothing: antialiased;
+}

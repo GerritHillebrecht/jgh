@@ -1,0 +1,79 @@
+<div class="slide grid grid-cols-5" [ngClass]="{ active: activeSlide }">
+  <div
+    *ngIf="
+      [
+        sliderService.selectedSlides.get('active'),
+        sliderService.selectedSlides.get('previous')
+      ].includes(index)
+    "
+    class="text-content flex flex-col gap-10 justify-center col-span-full sm:col-span-3 xl:col-span-2 px-8 sm:px-12 z-[180] text-stone-100 opacity-90"
+    [ngClass]="{ show: activeSlide }"
+    style="font-family: Roboto"
+  >
+    <h2
+      class="fadeInElement uppercase text-6xl sm:text-7xl first-line:text-rose-400 bg-stone-50 p-6 m-0 w-fit font-monaSans font-black"
+    >
+      {{ slide.body.title }}
+    </h2>
+    <div class="fadeInElement flex flex-col gap-2">
+      <div class="tags flex flex-row gap-3 mb-2">
+        <div
+          *ngFor="let tag of slide.body.tags"
+          class="rounded-2xl text-[0.6rem] py-1 px-3 bg-rose-400"
+        >
+          {{ tag }}
+        </div>
+      </div>
+      <h3 class="text-xl font-bold uppercase">
+        {{ slide.body.subtitle }}
+      </h3>
+      <p class="text-sm opacity-75">
+        {{ slide.body.text }}
+      </p>
+    </div>
+    <jgh-lib-gooey-button class="fadeInElement group" [btnClass]="'bg-black'">
+      <span class="flex opacity-1 flex-row items-center gap-2 text-sm">
+        {{ slide.cta?.text || 'View Project' }}
+        <mat-icon class="group-hover:ml-2 transition-all">
+          arrow_forward
+        </mat-icon>
+      </span>
+    </jgh-lib-gooey-button>
+  </div>
+
+  <!-- <div class="slide-overlay z-[110] absolute inset-0"></div> -->
+
+  <div
+    class="slices absolute inset-0"
+    [ngClass]="{ turbulence: turbulence && turbulenceState }"
+  >
+    <jgh-lib-content-slider-background-slice
+      *ngFor="let slice of sliderService.slices; let index = index"
+      [image]="slide.image!"
+      [index]="index"
+      [maxIndex]="sliderService.settings.amounts.elements"
+      [active]="activeSlide"
+    ></jgh-lib-content-slider-background-slice>
+  </div>
+</div>
+
+<svg style="display: none">
+  <filter id="turbulence" x="0" y="0" width="100%" height="100%">
+    <feTurbulence
+      id="sea-filter"
+      numOctaves="3"
+      seed="2"
+      baseFrequency="0.02 0.05"
+    ></feTurbulence>
+    <feDisplacementMap scale="3" in="SourceGraphic"></feDisplacementMap>
+    <animate
+      xlink:href="#sea-filter"
+      attributeName="baseFrequency"
+      dur="60s"
+      keyTimes="0;0.5;1"
+      values="0.02 0.06;0.04 0.08;0.02 0.06"
+      repeatCount="indefinite"
+      begin="2s"
+    />
+  </filter>
+</svg>

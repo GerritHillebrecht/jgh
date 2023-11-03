@@ -1,0 +1,44 @@
+<div class="stats shadow mx-auto">
+  <div class="stat">
+    <div class="stat-figure text-stone-700">
+      <div class="w-10 flex justify-end">
+        <fa-icon size="2xl" [icon]="faClock"></fa-icon>
+      </div>
+    </div>
+    <div class="stat-title">Umsatz</div>
+    <div class="stat-value text-stone-700">
+      {{ data.revenueTotal | currency : '€' }}
+    </div>
+    <div class="stat-desc">
+      Zudem <b>{{ data.ratingsEarnings | currency : '€' }}</b> aus Bewertungen
+    </div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-figure text-secondary">
+      <div class="w-16">
+        <img src="assets/images/delivery/lieferando.png" />
+      </div>
+    </div>
+    <div class="stat-title">Auszahlung</div>
+    <div class="stat-value text-orange-500">
+      {{ data.earningsTotal | currency : '€' }}
+    </div>
+    <div class="stat-desc">
+      <!-- Davon {{ discounts['lieferando'] * -1 | currency : '€' }} aus Rabatten -->
+    </div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-figure text-secondary">
+      <div class="w-12">
+        <img src="assets/images/delivery/uber_eats.png" />
+      </div>
+    </div>
+    <div class="stat-title">Bewertungen</div>
+    <div class="stat-value text-lime-600">
+      {{ data.ratingsTotal | number : '0.0' }}
+    </div>
+    <div class="stat-desc">Aus {{ data.ratingsAmount }} aus Bewertungen</div>
+  </div>
+</div>

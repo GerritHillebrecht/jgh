@@ -1,0 +1,14 @@
+<section class="py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-0">
+    <ng-container *ngFor="let list of menuItemList()">
+      <h2>{{ list.name }}</h2>
+      <p class="mb-4">Unser handgemachte Pizzateig hat in der Regel einen Durchmesser von 32cm.</p>
+      <div class="menuGroup grid sm:grid-cols-3 gap-8">
+        <ciu-card-product-background
+          *ngFor="let item of list.items"
+          [menuItem]="item"
+        ></ciu-card-product-background>
+      </div>
+    </ng-container>
+  </div>
+</section>

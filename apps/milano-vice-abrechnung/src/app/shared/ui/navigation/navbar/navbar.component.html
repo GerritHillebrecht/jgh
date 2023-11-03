@@ -1,0 +1,27 @@
+<header
+  class="px-0 sm:px-8 flex items-center shadow-md sticky top-0 text-stone-700 z-50"
+  style="background-color: var(--secondary-color)"
+>
+  <div class="flex items-center justify-between mx-auto w-full">
+    <div class="flex items-center gap-4">
+      <img src="assets/images/logo/milanoVice-logo.svg" class="h-10" />
+      <nav class="sm:flex items-center hidden ml-8">
+        <ul class="flex items-center gap-4">
+          <li
+            *ngFor="let route of routes()"
+            [routerLink]="route.path"
+            routerLinkActive="link-item active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a class="link-item">{{ route.label }}</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div
+      class="rounded-full px-6 py-2 bg-stone-50 text-sm font-bold hover:shadow-lg hover:-translate-y-[2px] transition-all duration-300 active:shadow-none active:translate-y-[2px] active:scale-95 cursor-pointer"
+    >
+      Abmelden
+    </div>
+  </div>
+</header>

@@ -1,0 +1,95 @@
+:root {
+  --prime: 255, 110, 72;
+  --ciBlue: 0, 255, 241;
+  --ciRed: 255, 0, 170;
+  --ciWhite: 255, 255, 255;
+  --ciGreen: 70, 252, 180;
+  --ciSecond: 12, 16, 22;
+}
+
+$roboto: 'Roboto';
+
+@font-face {
+  font-family: $roboto;
+  src: url('https://assets.codepen.io/907368/Roboto-Bold.ttf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: $roboto;
+  src: url('https://assets.codepen.io/907368/Roboto-Regular.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: $roboto;
+  src: url('https://assets.codepen.io/907368/Roboto-Light.ttf');
+  font-weight: 300;
+}
+
+// Tutorial Start
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  padding: 5rem;
+  border-bottom: 1px solid grey;
+
+  .content {
+    min-height: 100vh;
+    width: 100%;
+  }
+}
+
+.cta-button {
+  position: sticky;
+  bottom: 5rem;
+  display: block;
+  width: 6rem;
+  scale: 0;
+  height: 6rem;
+  border-radius: 6rem;
+  cursor: pointer;
+
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    width: auto;
+    padding: 1rem;
+    border-radius: 4rem;
+    background-color: rgba(255, 255, 255, 0.1);
+
+    p {
+      display: none;
+      white-space: nowrap;
+      overflow: hidden;
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .icon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      height: 4rem;
+      width: 4rem;
+      border-radius: 4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 110, 72, 1);
+
+      img {
+        height: 3rem;
+        width: 3rem;
+      }
+    }
+  }
+}

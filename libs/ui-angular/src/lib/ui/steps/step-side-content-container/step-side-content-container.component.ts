@@ -20,5 +20,5 @@ export class StepSideContentContainerComponent {
   @Input() iconColor = 'white';
   @Input() gradientStart = '#7928CA';
   @Input() gradientEnd = '#FF0080';
-  @Input({ required: true }) title!: string;
+  @Input({ required: true }) stepTitle!: string;
 }

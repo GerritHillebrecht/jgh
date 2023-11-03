@@ -5,10 +5,18 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLightbulb, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { RouterModule } from '@angular/router';
 
+import { AnimatedHeadlineComponent } from '@jgh/ui-angular/ui/typography/animated-headline';
+
 @Component({
   selector: 'rab-hero-section',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, FontAwesomeModule, RouterModule],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    FontAwesomeModule,
+    RouterModule,
+    AnimatedHeadlineComponent,
+  ],
   templateUrl: './hero-section.component.html',
   styleUrls: ['./hero-section.component.scss'],
 })

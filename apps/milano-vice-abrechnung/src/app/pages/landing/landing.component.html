@@ -1,0 +1,88 @@
+<mva-subbar-landing></mva-subbar-landing>
+<section class="pb-20" style="background-color: var(--secondary-color)">
+  <div
+    class="bg-stone-100 py-4 flex flex-col gap-12 items-center border-y border-[var(--tertiary-color)]"
+  >
+    <!-- Slider main container -->
+    <div class="swiper max-w-7xl w-screen">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide py-20">
+          <div class="w-full flex flex-col items-center justify-center gap-8">
+            <h2 class="font-black uppercase tracking-[0.2em] text-clipped">
+              Overview
+            </h2>
+            <mva-stats-summary [data]="statsSummary()"></mva-stats-summary>
+          </div>
+        </div>
+        <div class="swiper-slide py-20">
+          <div class="-full flex flex-col items-center justify-center gap-8">
+            <h2 class="font-black uppercase tracking-[0.2em] text-clipped">
+              Revenue
+            </h2>
+            <mva-stats-revenue
+              [revenues]="revenues"
+              [discounts]="discounts"
+            ></mva-stats-revenue>
+          </div>
+        </div>
+        <div class="swiper-slide py-20">Slide 3</div>
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto mt-20 px-4">
+    <div
+      class="text-brutalism-shadow w-fit mb-6 mt-8 ml-6 text-4xl sm:text-5xl font-black"
+      style="color: var(--primary-color)"
+    >
+      <span class="p-10">
+        {{ dateSelectionService.selectedTimePeriod().from | date : 'dd.' }} -
+        {{
+          dateSelectionService.selectedTimePeriod().to | date : 'dd. MMMM YYYY'
+        }}
+      </span>
+      <span class="text-clipped block uppercase mt-4 w-fit">Vorauszahlung</span>
+    </div>
+    <div class="ml-8 mb-8">
+      <p
+        class="font-black text-xs text-stone-700/60 uppercase tracking-[0.2em]"
+      >
+        Laufende Auszahlungsperiode
+      </p>
+      <mva-progress-boxes></mva-progress-boxes>
+    </div>
+    <mat-tab-group
+      color="accent"
+      mat-stretch-tabs="false"
+      mat-align-tabs="start"
+      fitInkBarToContent
+      preserveContent
+      animationDuration="0ms"
+      [selectedIndex]="0"
+    >
+      <mat-tab label="Abrechnung">
+        <div
+          class="p-8 mx-4 my-8 bg-white rounded shadow"
+        >
+          <mva-invoice-list></mva-invoice-list>
+        </div>
+      </mat-tab>
+      <mat-tab label="Einzelaufstellung">
+        <div class="p-4 mt-4">
+          <mva-table-deliverect
+            [data]="dataSource"
+            [displayedColumns]="displayedColumns"
+          ></mva-table-deliverect>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</section>

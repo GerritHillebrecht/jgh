@@ -1,0 +1,98 @@
+.slide {
+  --animation-duration: 1000ms;
+
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  perspective: 400px;
+  transition: perspective var(--animation-duration) ease-in-out;
+
+  &.active {
+    perspective: 1800px;
+    z-index: 60;
+
+    .turbulence {
+      filter: url(#turbulence);
+      transform: scale(1.01);
+    }
+  }
+
+  .slide-overlay {
+    mix-blend-mode: multiply;
+    background-image: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+
+    animation: breathe 5s ease-in-out infinite both;
+  }
+
+  // .slices {
+  //   animation: fadeBlack 1s ease-in-out calc(var(--animation-duration) + 300ms)
+  //     both;
+  // }
+}
+.text-content {
+  .fadeInElement {
+    opacity: 0;
+    transform: translateY(-20%);
+    transition: 1.5s;
+  }
+
+  .fadeInElement:nth-child(1) {
+    transition-delay: 0.5s;
+  }
+  .fadeInElement:nth-child(2) {
+    transition-delay: 1s;
+  }
+  .fadeInElement:nth-child(3) {
+    transition-delay: 1.5s;
+  }
+
+  &.show {
+    .fadeInElement {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@keyframes showText {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeBlack {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.7;
+  }
+}
+
+@keyframes breathe {
+  0% {
+    filter: hue-rotate(0deg);
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    filter: hue-rotate(90deg);
+    opacity: 0.85;
+    transform: scale(1.1);
+  }
+  100% {
+    filter: hue-rotate(0deg);
+    opacity: 0.15;
+    transform: scale(1);
+  }
+}

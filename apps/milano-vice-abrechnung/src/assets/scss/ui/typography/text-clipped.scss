@@ -1,0 +1,17 @@
+.text-clipped {
+  --clipping-strength: 0.7em;
+  padding: 0.5rem 3rem;
+  line-height: 1;
+  color: white;
+  background-color: black;
+  clip-path: polygon(
+    var(--clipping-strength) 0%,
+    100% 0%,
+    calc(100% - var(--clipping-strength)) 100%,
+    0% 100%
+  );
+
+  @media screen and (max-width: 639px) {
+    padding-inline: 2rem;
+  }
+}

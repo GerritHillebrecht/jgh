@@ -1,0 +1,24 @@
+<nav #nav>
+  <div #slider class="slider"></div>
+  <ul>
+    <li #navLink *ngFor="let route of routes">
+      <a [routerLink]="route.path" routerLinkActive="active-route">
+        <img
+          class="icon"
+          *ngIf="route.icon.image"
+          [src]="route.icon.image"
+          [alt]="route.label"
+        />
+        <fa-icon
+          class="icon"
+          *ngIf="route.icon.fontAwesome"
+          [icon]="route.icon.fontAwesome"
+        ></fa-icon>
+        <mat-icon class="icon" *ngIf="route.icon.mui">{{
+          route.icon.mui
+        }}</mat-icon>
+        <span>{{ route.label }}</span>
+      </a>
+    </li>
+  </ul>
+</nav>

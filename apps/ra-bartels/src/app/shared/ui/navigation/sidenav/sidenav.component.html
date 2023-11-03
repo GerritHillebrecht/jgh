@@ -1,0 +1,17 @@
+<div
+  class="backdrop w-full h-full fixed inset-0 bg-stone-950/20 backdrop-blur z-[999]"
+  (click)="closeSidenav()"
+  *ngIf="sidenavService.sidenavOpened()"
+></div>
+<section
+  class="fixed top-0 right-0 h-full bg-stone-50 z-[1000] overflow-hidden max-w-full transition-all duration-300"
+  [ngClass]="{ 'w-0 px-0': !sidenavService.sidenavOpened(), 'p-8 w-[300px]': sidenavService.sidenavOpened() }"
+>
+  <h2>Kanzlei Bartels</h2>
+  <ul>
+    <li>Home</li>
+    <li>Home</li>
+    <li>Home</li>
+    <li>Home</li>
+  </ul>
+</section>
